@@ -1,4 +1,4 @@
-## WooKey Wallet: For Privacy
+# WooKey Wallet: For Privacy
 
 > Less Privacy Collection; More Privacy Coins; Fully Open Source; Better User Experience
 
