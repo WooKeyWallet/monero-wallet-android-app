@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<item name="ios_dialog_title" type="id"/>
+	<item name="ios_dialog_content" type="id"/>
+	<item name="ios_dialog_bottom" type="id"/>
+</resources>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:paddingStart="25dp"
+    android:paddingEnd="25dp">
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginTop="15dp" />
+
+    <TextView
+        android:id="@+id/direction"
+        style="@style/text_14_333333"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="12dp"
+        android:layout_toEndOf="@id/icon" />
+
+    <TextView
+        android:id="@+id/amount"
+        style="@style/text_14_333333"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/direction"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/time"
+        style="@style/text_12_9E9E9E"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/direction"
+        android:layout_alignStart="@id/direction"
+        android:layout_marginTop="4dp" />
+
+    <TextView
+        android:id="@+id/state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/amount"
+        android:layout_alignTop="@id/time"
+        android:layout_alignParentEnd="true"
+        android:textSize="@dimen/text_size_12" />
+</RelativeLayout>

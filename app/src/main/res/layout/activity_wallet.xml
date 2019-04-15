@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_FFFFFF"
+    android:orientation="vertical"
+    tools:context=".feature.generate.WalletActivity">
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3" />
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/icon_wallet" />
+
+    <TextView
+        android:id="@+id/slogan"
+        style="@style/text_12_004C6D"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="6dp"
+        android:text="@string/slogan" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2" />
+
+    <TextView
+        android:id="@+id/prompt"
+        style="@style/text_12_4A565E"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:lineSpacingMultiplier="1.2"
+        android:paddingStart="25dp"
+        android:paddingEnd="25dp"
+        android:text="@string/wallet_prompt" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5" />
+
+    <TextView
+        android:id="@+id/createWallet"
+        style="@style/button_text_16"
+        android:enabled="true"
+        android:text="@string/create_wallet" />
+
+    <TextView
+        android:id="@+id/recoveryWallet"
+        style="@style/button_text_16"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="45dp"
+        android:enabled="true"
+        android:text="@string/recovery_wallet" />
+</LinearLayout>

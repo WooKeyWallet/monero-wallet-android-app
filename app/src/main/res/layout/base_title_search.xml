@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="@color/color_F6F6F6"
+    android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+    app:contentInsetLeft="0dp"
+    app:contentInsetStart="0dp"
+    app:contentInsetStartWithNavigation="0dp"
+    app:navigationIcon="@drawable/arrow_back">
+
+    <ImageView
+        android:id="@+id/leftIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|start"
+        android:minHeight="?attr/actionBarSize"
+        android:paddingStart="18dp"
+        android:paddingEnd="12dp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/cancel"
+        style="@style/text_14_333333"
+        android:layout_width="wrap_content"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_gravity="center_vertical|end"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:text="@string/cancel" />
+
+    <io.wookey.wallet.widget.CancelledEditText
+        android:id="@+id/search"
+        style="@style/text_14_333333"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="15dp"
+        android:drawableStart="@drawable/icon_search"
+        android:drawableEnd="@drawable/icon_cancel"
+        android:drawablePadding="6dp"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:maxLines="1"
+        android:paddingStart="16dp"
+        android:paddingEnd="10dp"
+        android:singleLine="true"
+        android:textColorHint="@color/color_9E9E9E" />
+</android.support.v7.widget.Toolbar>

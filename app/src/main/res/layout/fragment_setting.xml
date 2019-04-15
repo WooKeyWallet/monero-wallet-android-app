@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_F6F6F6"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include layout="@layout/base_title_second" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/color_DEDEDE" />
+
+        <com.allen.library.SuperTextView
+            android:id="@+id/walletManager"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/color_FFFFFF"
+            app:sBottomDividerLineMarginLeft="65dp"
+            app:sDividerLineColor="@color/color_DEDEDE"
+            app:sDividerLineHeight="1px"
+            app:sLeftIconMarginLeft="25dp"
+            app:sLeftIconRes="@drawable/icon_wallet_manager"
+            app:sLeftTextColor="@color/color_333333"
+            app:sLeftTextSize="@dimen/text_size_16"
+            app:sLeftTextString="@string/wallet_manager"
+            app:sLeftViewGravity="left_center"
+            app:sRightIconMarginRight="25dp"
+            app:sRightIconRes="@drawable/arrow_right"
+            app:sUseRipple="false" />
+
+        <com.allen.library.SuperTextView
+            android:id="@+id/addressBook"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/color_FFFFFF"
+            app:sDividerLineColor="@color/color_DEDEDE"
+            app:sDividerLineHeight="1px"
+            app:sLeftIconMarginLeft="25dp"
+            app:sLeftIconRes="@drawable/icon_address"
+            app:sLeftTextColor="@color/color_333333"
+            app:sLeftTextSize="@dimen/text_size_16"
+            app:sLeftTextString="@string/address_book"
+            app:sLeftViewGravity="left_center"
+            app:sRightIconMarginRight="25dp"
+            app:sRightIconRes="@drawable/arrow_right"
+            app:sUseRipple="false" />
+
+        <com.allen.library.SuperTextView
+            android:id="@+id/nodeSetting"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="15dp"
+            android:background="@color/color_FFFFFF"
+            app:sBottomDividerLineMarginLeft="65dp"
+            app:sDividerLineColor="@color/color_DEDEDE"
+            app:sDividerLineHeight="1px"
+            app:sLeftIconMarginLeft="25dp"
+            app:sLeftIconRes="@drawable/icon_node_setting"
+            app:sLeftTextColor="@color/color_333333"
+            app:sLeftTextSize="@dimen/text_size_16"
+            app:sLeftTextString="@string/node_setting"
+            app:sLeftViewGravity="left_center"
+            app:sRightIconMarginRight="25dp"
+            app:sRightIconRes="@drawable/arrow_right"
+            app:sUseRipple="false" />
+
+        <com.allen.library.SuperTextView
+            android:id="@+id/language"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/color_FFFFFF"
+            app:sDividerLineColor="@color/color_DEDEDE"
+            app:sDividerLineHeight="1px"
+            app:sLeftIconMarginLeft="25dp"
+            app:sLeftIconRes="@drawable/icon_language"
+            app:sLeftTextColor="@color/color_333333"
+            app:sLeftTextSize="@dimen/text_size_16"
+            app:sLeftTextString="@string/language"
+            app:sLeftViewGravity="left_center"
+            app:sRightIconMarginRight="25dp"
+            app:sRightIconRes="@drawable/arrow_right"
+            app:sUseRipple="false" />
+
+        <com.allen.library.SuperTextView
+            android:id="@+id/contactUs"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="15dp"
+            android:background="@color/color_FFFFFF"
+            app:sBottomDividerLineMarginLeft="65dp"
+            app:sDividerLineColor="@color/color_DEDEDE"
+            app:sDividerLineHeight="1px"
+            app:sLeftIconMarginLeft="25dp"
+            app:sLeftIconRes="@drawable/icon_help_center"
+            app:sLeftTextColor="@color/color_333333"
+            app:sLeftTextSize="@dimen/text_size_16"
+            app:sLeftTextString="@string/contact_us"
+            app:sLeftViewGravity="left_center"
+            app:sRightIconMarginRight="25dp"
+            app:sRightIconRes="@drawable/arrow_right"
+            app:sUseRipple="false" />
+
+        <com.allen.library.SuperTextView
+            android:id="@+id/about"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/color_FFFFFF"
+            app:sDividerLineColor="@color/color_DEDEDE"
+            app:sDividerLineHeight="1px"
+            app:sLeftIconMarginLeft="25dp"
+            app:sLeftIconRes="@drawable/icon_about_us"
+            app:sLeftTextColor="@color/color_333333"
+            app:sLeftTextSize="@dimen/text_size_16"
+            app:sLeftTextString="@string/about_us"
+            app:sLeftViewGravity="left_center"
+            app:sRightIconMarginRight="25dp"
+            app:sRightIconRes="@drawable/arrow_right"
+            app:sUseRipple="false" />
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

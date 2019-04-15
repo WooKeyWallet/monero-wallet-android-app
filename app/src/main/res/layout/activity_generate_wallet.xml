@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".feature.generate.GenerateWalletActivity">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_26B479"
+            android:paddingStart="25dp"
+            android:paddingTop="15dp"
+            android:paddingEnd="25dp"
+            android:paddingBottom="15dp">
+
+            <ImageView
+                android:id="@+id/dot1"
+                android:layout_width="6dp"
+                android:layout_height="6dp"
+                android:layout_marginTop="6dp" />
+
+            <TextView
+                android:id="@+id/prompt1"
+                style="@style/text_12_FFFFFF"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_toEndOf="@id/dot1"
+                android:lineSpacingMultiplier="1.2"
+                android:text="@string/generate_wallet_prompt_one" />
+
+            <ImageView
+                android:id="@+id/dot2"
+                android:layout_width="6dp"
+                android:layout_height="6dp"
+                android:layout_below="@id/prompt1"
+                android:layout_marginTop="12dp" />
+
+            <TextView
+                android:id="@+id/prompt2"
+                style="@style/text_12_FFFFFF"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/prompt1"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="6dp"
+                android:layout_toEndOf="@id/dot2"
+                android:lineSpacingMultiplier="1.2"
+                android:text="@string/generate_wallet_prompt_two" />
+        </RelativeLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/walletName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="25dp"
+            app:errorEnabled="true">
+
+            <EditText
+                style="@style/edit_text_16"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/wallet_name"
+                android:imeOptions="actionDone"
+                android:inputType="textMultiLine"
+                android:textAlignment="textStart" />
+        </android.support.design.widget.TextInputLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/setPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="25dp"
+                app:errorEnabled="true">
+
+                <EditText
+                    style="@style/edit_text_16"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/set_password"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPassword"
+                    android:textAlignment="textStart" />
+            </android.support.design.widget.TextInputLayout>
+
+            <io.wookey.wallet.widget.GradeIndicator
+                android:id="@+id/passwordGrade"
+                android:layout_width="14dp"
+                android:layout_height="28dp"
+                android:layout_alignBottom="@id/setPassword"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="32dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/confirmPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="25dp"
+                app:errorEnabled="true">
+
+                <EditText
+                    style="@style/edit_text_16"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/confirm_password"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPassword"
+                    android:paddingEnd="35dp"
+                    android:textAlignment="textStart" />
+            </android.support.design.widget.TextInputLayout>
+
+            <ImageView
+                android:id="@+id/switchPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/confirmPassword"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="32dp"
+                android:src="@drawable/icon_password_hide" />
+        </RelativeLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/passwordPrompt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="25dp">
+
+            <EditText
+                style="@style/edit_text_16"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/password_prompt_optional"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:textAlignment="textStart" />
+        </android.support.design.widget.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="25dp"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/agree"
+                style="@style/text_14_9E9E9E"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@null" />
+
+            <TextView
+                android:id="@+id/agreement"
+                style="@style/text_14_9E9E9E"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/next"
+            style="@style/button_text_16"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="45dp"
+            android:text="@string/next" />
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">WooKey Wallet</string>
+
+    <string name="slogan">为 隐 私 而 生</string>
+    <string name="wallet_prompt">使用 WooKey Wallet 至少需要一个钱包，您可以选择创建钱包或导入已有的钱包</string>
+    <string name="create_wallet">创建钱包</string>
+    <string name="recovery_wallet">导入钱包</string>
+
+    <string name="coin_select">币种选择</string>
+
+    <string name="generate_wallet_prompt_one">为了保护您的资产安全，请先设置密码，密码用于私钥和交易授权</string>
+    <string name="generate_wallet_prompt_two">密码为本地密码，WooKey 将不存储密码，也无法找回，请务必妥善保管</string>
+    <string name="wallet_name">钱包名称</string>
+    <string name="set_password">设置密码</string>
+    <string name="confirm_password">确认密码</string>
+    <string name="password_prompt_optional">密码提示（选填）</string>
+    <string name="agreement_prompt">我已仔细阅读并同意</string>
+    <string name="agreement_term">服务及隐私条款</string>
+    <string name="next">下一步</string>
+
+    <string name="backup_mnemonic_prompt_one">备份助记词：\n助记词用于恢复钱包，请将它准确的抄写在纸上并存放在安全的地方</string>
+    <string name="backup_mnemonic_prompt_two">请勿截图，如果有人获取您的助记词将直接获取您的资产</string>
+    <string name="no_screenshot">备份助记词，请勿截图</string>
+    <string name="bak_mnemonic">请抄写您的助记词</string>
+    <string name="has_bak">我已抄写保存</string>
+
+    <string name="verify_mnemonic_prompt">为了确保您已将助记词正确抄写，请选择对应序号的单词</string>
+    <string name="verify_mnemonic_title">请确认您的助记词</string>
+    <string name="verify_mnemonic_hint">请按以上序号顺序点击助记词</string>
+    <string name="verify">验证</string>
+
+    <string name="recovery_mnemonic">助记词导入</string>
+    <string name="recovery_private_key">私钥导入</string>
+    <string name="mnemonic_title">助记词</string>
+    <string name="mnemonic_prompt">输入助记词，用空格分割</string>
+    <string name="block_height_prompt">* 为了极大提升区块同步速度，我们强烈建议您填写区块号或近期交易时间</string>
+    <string name="block_height_optional">区块号（选填）</string>
+    <string name="transaction_date">近期交易日期（选填）</string>
+    <string name="recovery">导入</string>
+    <string name="private_key_prompt">请在下方表格输入您的私钥，并注意字符大小写</string>
+    <string name="private_view_key">查看私钥</string>
+    <string name="private_view_key_hint">输入您的查看私钥</string>
+    <string name="private_spend_key">支付私钥</string>
+    <string name="private_spend_key_hint">输入您的支付私钥</string>
+    <string name="input_address">钱包地址</string>
+    <string name="input_address_hint">输入您的钱包地址</string>
+
+    <string name="asset">资产</string>
+    <string name="setting">设置</string>
+
+    <string name="wallet_manager">钱包管理</string>
+    <string name="pin_code">PIN码</string>
+    <string name="address_book">地址簿</string>
+    <string name="node_setting">节点设置</string>
+    <string name="language">语言</string>
+    <string name="contact_us">联系我们</string>
+    <string name="about_us">关于 WooKey</string>
+    <string name="edit_node_url">请输入有效的节点地址</string>
+    <string name="edit_node_url_hint">请输入节点地址</string>
+    <string name="current_node_prompt">当前节点为%1$s</string>
+    <string name="confirm">确定</string>
+
+    <string name="add_address">添加地址</string>
+    <string name="notes">备注</string>
+    <string name="address">地址</string>
+    <string name="select_coin">选择币种</string>
+    <string name="cancel">取消</string>
+    <string name="copy">复制</string>
+
+    <string name="coin_asset">币种资产</string>
+    <string name="copy_success">复制成功</string>
+
+    <string name="send">发送</string>
+    <string name="receive">接收</string>
+
+    <string name="transfer_all">全部</string>
+    <string name="transfer_in">转入</string>
+    <string name="transfer_out">转出</string>
+
+    <string name="balance_available">可用余额</string>
+    <string name="received_address">接收地址</string>
+    <string name="received_address_mark">接收地址：</string>
+    <string name="sent_address">付款地址</string>
+    <string name="sent_address_mark">付款地址：</string>
+    <string name="transfer_amount">转账金额</string>
+    <string name="payment_id_optional">Payment ID（选填）</string>
+    <string name="payment_id">Payment ID</string>
+    <string name="payment_id_mark">Payment ID:</string>
+
+    <string name="confirm_transfer">确认转账</string>
+    <string name="account_send">转账</string>
+    <string name="account_receive">收款</string>
+
+    <string name="input_password">请输入密码</string>
+
+    <string name="transaction_detail">交易详情</string>
+
+    <string name="amount">到账金额：</string>
+    <string name="fee_mark">手续费：</string>
+    <string name="fee">手续费</string>
+    <string name="direction">方向：</string>
+    <string name="txID">交易ID：</string>
+    <string name="block_height">区块号：</string>
+
+    <string name="wallet_running">当前使用</string>
+
+    <string name="verify_failed">验证失败，请重试</string>
+
+    <string name="block_connecting">连接中</string>
+    <string name="block_synchronizing">同步中，剩余区块：%1$s</string>
+    <string name="block_synchronized">已同步</string>
+    <string name="block_synchronize_failed">同步失败</string>
+    <string name="password_error">密码错误</string>
+
+    <string name="receive_prompt">注意：此地址只接收 %1$s，任何其他币种转到此地址将无法找回</string>
+
+    <string name="amount_optional">金额（选填）</string>
+    <string name="integrated_optional">Integrated Address（选填）</string>
+
+    <string name="no_net">暂无网络</string>
+    <string name="no_address">还未添加地址哦</string>
+    <string name="no_transaction">暂无交易记录</string>
+    <string name="search_failed">搜索不到</string>
+
+    <string name="success">成功</string>
+    <string name="transfer_success">转账成功</string>
+    <string name="failed">失败</string>
+    <string name="transfer_failed">转账失败</string>
+    <string name="pending">进行中</string>
+    <string name="scan_prompt">将二维码放入框内，即可快速扫描</string>
+    <string name="scan">扫一扫</string>
+    <string name="dialog_permissions_camera">请检查权限管理软件\n是否允许相机权限\n</string>
+
+    <string name="please_transfer_in">请转入</string>
+    <string name="more_options">更多选项</string>
+    <string name="collapsing_options">收起选项</string>
+
+    <string name="data_exception">数据异常</string>
+    <string name="wallet_create_exception">钱包创建失败，请重试</string>
+    <string name="wallet_recovery_exception">钱包恢复失败，请重试</string>
+    <string name="transaction_create_exception">创建交易失败，请重试</string>
+    <string name="transaction_send_exception">确认交易失败，请重试</string>
+
+    <string name="address_invalid">地址有误</string>
+    <string name="payment_id_invalid">paymentID 有误</string>
+    <string name="integrated_invalid">Integrated Address 有误</string>
+    <string name="password_invalid">不少于8位，建议混合大小写字母、数字、特殊符号</string>
+    <string name="confirm_password_invalid">两次输入的密码不一致</string>
+    <string name="wallet_invalid">钱包已存在</string>
+    <string name="block_height_invalid">区块号有误</string>
+    <string name="transaction_date_invalid">交易日期有误</string>
+
+    <string name="version_placeholder">版本号 V %1$s</string>
+    <string name="about">WooKey 团队致力于提供安全、专业、可靠、易用的数字资产钱包应用，守护用户的隐私和财产自由，推动加密货币的普及与发展</string>
+    <string name="agreement">《服务协议》</string>
+
+    <string name="select_language">选择语言</string>
+
+    <string name="backup_mnemonic">导出助记词</string>
+    <string name="backup_key">导出私钥</string>
+    <string name="asset_placeholder">资产（%1$s）</string>
+    <string name="password_prompt">密码提示</string>
+    <string name="no_prompt">无</string>
+
+    <string name="backup_key_prompt">私钥未经加密，导出存在风险</string>
+
+    <string name="public_view_key">查看公钥</string>
+    <string name="secret_view_key">查看私钥</string>
+    <string name="public_spend_key">支付公钥</string>
+    <string name="secret_spend_key">支付私钥</string>
+
+    <string name="can_not_delete">默认节点，不可删除</string>
+    <string name="confirm_delete">节点删除</string>
+    <string name="confirm_delete_content">\n确定删除节点 %1$s 吗？\n</string>
+
+    <string name="dialog_ok">OK</string>
+    <string name="node_connect_failed">节点连接失败，请重试</string>
+
+    <string name="more_node">更多节点地址 >></string>
+
+</resources>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="io.wookey.wallet.feature.address.ScanActivity">
+
+    <cn.bingoogolapple.qrcode.zxing.ZXingView
+            android:id="@+id/zxingView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:qrcv_animTime="1000"
+            app:qrcv_borderColor="@color/color_8D8D8D"
+            app:qrcv_borderSize="1dp"
+            app:qrcv_cornerColor="@color/color_006DFF"
+            app:qrcv_cornerLength="20dp"
+            app:qrcv_cornerSize="3dp"
+            app:qrcv_maskColor="#B2000000"
+            app:qrcv_rectWidth="260dp"
+            app:qrcv_barcodeRectHeight="260dp"
+            app:qrcv_scanLineMargin="20dp"
+            app:qrcv_customScanLineDrawable="@drawable/icon_scan_line"
+            app:qrcv_tipTextSize="@dimen/text_size_12"
+            app:qrcv_tipTextColor="@color/color_8D8D8D"
+            app:qrcv_tipTextMargin="15dp"
+            app:qrcv_isTipTextBelowRect="true"
+            app:qrcv_qrCodeTipText="@string/scan_prompt"
+            app:qrcv_toolbarHeight="?attr/actionBarSize"
+            app:qrcv_topOffset="100dp"/>
+
+    <include layout="@layout/base_title_second"/>
+
+</RelativeLayout>

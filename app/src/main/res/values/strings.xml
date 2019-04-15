@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">WooKey Wallet</string>
+
+    <string name="slogan">For Privacy</string>
+    <string name="wallet_prompt">When using WooKey Wallet you must first create a new wallet or restore an existing one.</string>
+    <string name="create_wallet">Create Wallet</string>
+    <string name="recovery_wallet">Restore Wallet</string>
+
+    <string name="coin_select">Select Asset</string>
+
+    <string name="generate_wallet_prompt_one">For the security and safety of your assets, please set a password used for authorization of your private key and transactions</string>
+    <string name="generate_wallet_prompt_two">WooKey will not save your password, nor will you be able to recover the password, please keep it secure</string>
+    <string name="wallet_name">Wallet Name</string>
+    <string name="set_password">Set Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="password_prompt_optional">Password Hint (Optional)</string>
+    <string name="agreement_prompt">I have carefully read and agree with</string>
+    <string name="agreement_term">Terms of Service and Privacy Policy</string>
+    <string name="next">Next</string>
+
+    <string name="backup_mnemonic_prompt_one">Backup Mnemonic Words:\nThis is for restoring your wallet, please write it down legibly and store it in a safe place.</string>
+    <string name="backup_mnemonic_prompt_two">DO NOT screenshot, anyone with your mnemonic words can access or spend your assets.</string>
+    <string name="no_screenshot">Backup and DO NOT screenshot</string>
+    <string name="bak_mnemonic">Please write down your mnemonic words</string>
+    <string name="has_bak">Already Written Down</string>
+
+    <string name="verify_mnemonic_prompt">To ensure you have written down mnemonic words correctly, please select the following words corresponding to the sequence numbers</string>
+    <string name="verify_mnemonic_title">Please check your mnemonic words</string>
+    <string name="verify_mnemonic_hint">Click the correct words corresponding to the numbers above</string>
+    <string name="verify">Verify</string>
+
+    <string name="recovery_mnemonic">From Mnemonic Words</string>
+    <string name="recovery_private_key">From Private Key</string>
+    <string name="mnemonic_title">Mnemonic Words</string>
+    <string name="mnemonic_prompt">Please enter mnemonic words and separate each word by spaces</string>
+    <string name="block_height_prompt">It is highly recommended to fill Block Height or Recent Transaction Date to speed up Sync</string>
+    <string name="block_height_optional">Height (Optional)</string>
+    <string name="transaction_date">Recent Transaction Date (Optional)</string>
+    <string name="recovery">Restore</string>
+    <string name="private_key_prompt">Please enter your private key in text fields below, and pay attention to case sensitivity</string>
+    <string name="private_view_key">Private View Key</string>
+    <string name="private_view_key_hint">Enter your private view key</string>
+    <string name="private_spend_key">Private Spend Key</string>
+    <string name="private_spend_key_hint">Enter your private spend key</string>
+    <string name="input_address">Wallet\'s Address</string>
+    <string name="input_address_hint">Enter your wallet\'s address</string>
+
+    <string name="asset">Assets</string>
+    <string name="setting">Settings</string>
+
+    <string name="wallet_manager">Wallet Management</string>
+    <string name="pin_code">PIN</string>
+    <string name="address_book">Address Book</string>
+    <string name="node_setting">Node</string>
+    <string name="language">Language</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="about_us">About WooKey</string>
+    <string name="edit_node_url">Enter a valid node address</string>
+    <string name="edit_node_url_hint">Please enter node address</string>
+    <string name="current_node_prompt">Current node is %1$s</string>
+    <string name="confirm">Confirm</string>
+
+    <string name="add_address">Add Address</string>
+    <string name="notes">Note</string>
+    <string name="address">Address</string>
+    <string name="select_coin">Select Asset</string>
+    <string name="cancel">Cancel</string>
+    <string name="copy">Copy</string>
+
+    <string name="coin_asset">Assets</string>
+    <string name="copy_success">Copied</string>
+
+    <string name="send">Send</string>
+    <string name="receive">Receive</string>
+
+    <string name="transfer_all">All</string>
+    <string name="transfer_in">In</string>
+    <string name="transfer_out">Out</string>
+
+    <string name="balance_available">Available Balance</string>
+    <string name="received_address">Receive Address</string>
+    <string name="received_address_mark">Receive Address:</string>
+    <string name="sent_address">Send Address</string>
+    <string name="sent_address_mark">Send Address:</string>
+    <string name="transfer_amount">Amount</string>
+    <string name="payment_id_optional">Payment ID (Optional)</string>
+    <string name="payment_id">Payment ID</string>
+    <string name="payment_id_mark">Payment ID:</string>
+
+    <string name="confirm_transfer">Order Confirm</string>
+    <string name="account_send">Send</string>
+    <string name="account_receive">Receive</string>
+
+    <string name="input_password">Please enter password</string>
+
+    <string name="transaction_detail">Transaction Details</string>
+
+    <string name="amount">Amount:</string>
+    <string name="fee_mark">Fee:</string>
+    <string name="fee">Fee</string>
+    <string name="direction">Type:</string>
+    <string name="txID">Transaction ID:</string>
+    <string name="block_height">Height:</string>
+
+    <string name="wallet_running">Online</string>
+
+    <string name="verify_failed">Verification failed, please try again</string>
+
+    <string name="block_connecting">Connecting</string>
+    <string name="block_synchronizing">Syncing, blocks remaining: %1$s</string>
+    <string name="block_synchronized">Synced</string>
+    <string name="block_synchronize_failed">Sync failed</string>
+    <string name="password_error">Password error</string>
+
+    <string name="receive_prompt">Notice: Send only %1$s to this address. Sending any other assets to this address may result in the loss of your deposit.</string>
+
+    <string name="amount_optional">Amount (Optional)</string>
+    <string name="integrated_optional">Integrated Address (Optional)</string>
+
+    <string name="no_net">No Networks Found</string>
+    <string name="no_address">No Addresses</string>
+    <string name="no_transaction">No Transaction Records</string>
+    <string name="search_failed">No Records</string>
+
+    <string name="success">Succeeded</string>
+    <string name="transfer_success">Transaction Success</string>
+    <string name="failed">Failed</string>
+    <string name="transfer_failed">Transaction Failure</string>
+    <string name="pending">Pending</string>
+    <string name="scan_prompt">Align QR Code within frame to scan</string>
+    <string name="scan">Scan</string>
+    <string name="dialog_permissions_camera">Please check your app permission settings\n and whether it allows Apps to access your camera\n</string>
+
+    <string name="please_transfer_in">Please Transfer</string>
+    <string name="more_options">More Options</string>
+    <string name="collapsing_options">Hide Options</string>
+
+    <string name="data_exception">Abnormal Data</string>
+    <string name="wallet_create_exception">Wallet creation failed. Please try again</string>
+    <string name="wallet_recovery_exception">Wallet restoration failed. Please try again</string>
+    <string name="transaction_create_exception">Transaction creation failed. Please try again</string>
+    <string name="transaction_send_exception">Transaction confirmation failed. Please try again</string>
+
+    <string name="address_invalid">Incorrect address</string>
+    <string name="payment_id_invalid">Incorrect Payment ID</string>
+    <string name="integrated_invalid">Incorrect Integrated address</string>
+    <string name="password_invalid">8 characters or more, a mixture of lower and upper case letters and characters and symbols is recommended.</string>
+    <string name="confirm_password_invalid">Passwords don’t match</string>
+    <string name="wallet_invalid">Wallet already exists</string>
+    <string name="block_height_invalid">Incorrect block height</string>
+    <string name="transaction_date_invalid">Incorrect transaction date</string>
+
+    <string name="version_placeholder">Version V %1$s</string>
+    <string name="about">The WooKey team develops secure, professional, reliable and simple digital asset wallet applications. We strive to protect private data and property of users. We measure success by the ease with which new and non-tech savvy users can get started using cryptocurrencies.</string>
+    <string name="agreement">Terms of Service</string>
+
+    <string name="select_language">Select Language</string>
+
+    <string name="backup_mnemonic">Export Mnemonic Words</string>
+    <string name="backup_key">Export Private Key</string>
+    <string name="asset_placeholder">Assets (%1$s)</string>
+    <string name="password_prompt">Password Hint</string>
+    <string name="no_prompt">None</string>
+
+    <string name="backup_key_prompt">There is a security risk when you export private keys in an unencrypted format.</string>
+
+    <string name="public_view_key">Public View Key</string>
+    <string name="secret_view_key">Private View Key</string>
+    <string name="public_spend_key">Public Spend Key</string>
+    <string name="secret_spend_key">Private Spend key</string>
+
+    <string name="can_not_delete">Default node can not be deleted</string>
+    <string name="confirm_delete">Node deletion</string>
+    <string name="confirm_delete_content">\nConfirm to delete node %1$s?\n</string>
+
+    <string name="dialog_ok">OK</string>
+    <string name="node_connect_failed">Node connection failure, please try again</string>
+
+    <string name="more_node">More node addresses >></string>
+
+</resources>

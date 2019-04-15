@@ -1,0 +1,229 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlNormal">@color/color_DEDEDE</item>
+        <item name="colorControlActivated">@color/color_26B479</item>
+        <item name="colorControlHighlight">@color/color_26B479</item>
+        <item name="android:selectableItemBackground">@null</item>
+        <item name="android:selectableItemBackgroundBorderless">@null</item>
+        <item name="toolbarNavigationButtonStyle">@style/CustomNavigation</item>
+    </style>
+
+    <style name="text_10">
+        <item name="android:textSize">@dimen/text_size_10</item>
+    </style>
+
+    <style name="text_10_9E9E9E" parent="text_10">
+        <item name="android:textColor">@color/color_9E9E9E</item>
+    </style>
+
+    <style name="text_12">
+        <item name="android:textSize">@dimen/text_size_12</item>
+    </style>
+
+    <style name="text_12_004C6D" parent="text_12">
+        <item name="android:textColor">@color/color_004C6D</item>
+    </style>
+
+    <style name="text_12_4A565E" parent="text_12">
+        <item name="android:textColor">@color/color_4A565E</item>
+    </style>
+
+    <style name="text_12_FFFFFF" parent="text_12">
+        <item name="android:textColor">@color/color_FFFFFF</item>
+    </style>
+
+    <style name="text_12_9E9E9E" parent="text_12">
+        <item name="android:textColor">@color/color_9E9E9E</item>
+    </style>
+
+    <style name="text_12_333333" parent="text_12">
+        <item name="android:textColor">@color/color_333333</item>
+    </style>
+
+    <style name="text_12_26B479" parent="text_12">
+        <item name="android:textColor">@color/color_26B479</item>
+    </style>
+
+    <style name="text_12_505050" parent="text_12">
+        <item name="android:textColor">@color/color_505050</item>
+    </style>
+
+    <style name="text_12_FF3A5C" parent="text_12">
+        <item name="android:textColor">@color/color_FF3A5C</item>
+    </style>
+
+    <style name="text_12_8E8E93" parent="text_12">
+        <item name="android:textColor">@color/color_8D8D8D</item>
+    </style>
+
+    <style name="text_13">
+        <item name="android:textSize">@dimen/text_size_13</item>
+    </style>
+
+    <style name="text_13_9E9E9E" parent="text_13">
+        <item name="android:textColor">@color/color_9E9E9E</item>
+    </style>
+
+    <style name="text_13_333333" parent="text_13">
+        <item name="android:textColor">@color/color_333333</item>
+    </style>
+
+    <style name="text_13_93D6CF" parent="text_13">
+        <item name="android:textColor">@color/color_93D6CF</item>
+    </style>
+
+    <style name="text_14">
+        <item name="android:textSize">@dimen/text_size_14</item>
+    </style>
+
+    <style name="text_14_9E9E9E" parent="text_14">
+        <item name="android:textColor">@color/color_9E9E9E</item>
+    </style>
+
+    <style name="text_14_2179FF" parent="text_14">
+        <item name="android:textColor">@color/color_2179FF</item>
+    </style>
+
+    <style name="text_14_333333" parent="text_14">
+        <item name="android:textColor">@color/color_333333</item>
+    </style>
+
+    <style name="text_14_C5C5C5" parent="text_14">
+        <item name="android:textColor">@color/color_C5C5C5</item>
+    </style>
+
+    <style name="text_14_FFFFFF" parent="text_14">
+        <item name="android:textColor">@color/color_FFFFFF</item>
+    </style>
+
+    <style name="text_14_AFAFAF" parent="text_14">
+        <item name="android:textColor">@color/color_AFAFAF</item>
+    </style>
+
+    <style name="text_14_8D8D8D" parent="text_14">
+        <item name="android:textColor">@color/color_8D8D8D</item>
+    </style>
+
+    <style name="text_16">
+        <item name="android:textSize">@dimen/text_size_16</item>
+    </style>
+
+    <style name="text_16_FFFFFF" parent="text_16">
+        <item name="android:textColor">@color/color_FFFFFF</item>
+    </style>
+
+    <style name="text_16_333333" parent="text_16">
+        <item name="android:textColor">@color/color_333333</item>
+    </style>
+
+    <style name="text_16_222222" parent="text_16">
+        <item name="android:textColor">@color/color_222222</item>
+    </style>
+
+    <style name="text_16_9E9E9E" parent="text_16">
+        <item name="android:textColor">@color/color_9E9E9E</item>
+    </style>
+
+    <style name="text_18">
+        <item name="android:textSize">@dimen/text_size_18</item>
+    </style>
+
+    <style name="text_18_222222" parent="text_18">
+        <item name="android:textColor">@color/color_222222</item>
+    </style>
+
+    <style name="text_18_FFFFFF" parent="text_18">
+        <item name="android:textColor">@color/color_FFFFFF</item>
+    </style>
+
+    <style name="text_25">
+        <item name="android:textSize">@dimen/text_size_25</item>
+    </style>
+
+    <style name="text_25_333333" parent="text_25">
+        <item name="android:textColor">@color/color_333333</item>
+    </style>
+
+    <style name="button_text_16" parent="text_16_FFFFFF">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_marginStart">25dp</item>
+        <item name="android:layout_marginEnd">25dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/color_FFFFFF</item>
+        <item name="android:enabled">false</item>
+    </style>
+
+    <style name="edit_text_16" parent="text_16">
+        <item name="android:textColor">@color/color_333333</item>
+        <item name="android:textColorHint">@color/color_9E9E9E</item>
+        <item name="android:backgroundTint">@color/color_DEDEDE</item>
+    </style>
+
+    <style name="edit_text_16_" parent="text_16">
+        <item name="android:textColor">@color/color_333333</item>
+        <item name="android:textColorHint">@color/color_9E9E9E</item>
+        <item name="android:backgroundTint">@color/color_DEDEDE</item>
+    </style>
+
+    <style name="TabTextAppearance">
+        <item name="android:textSize">@dimen/text_size_16</item>
+    </style>
+
+    <style name="Widget.Design.TextInputLayout" parent="AppTheme">
+        <item name="hintTextAppearance">@style/AppTheme.TextFloatLabelAppearance</item>
+        <item name="errorTextAppearance">@style/AppTheme.TextErrorAppearance</item>
+        <item name="counterTextAppearance">@style/TextAppearance.Design.Counter</item>
+        <item name="counterOverflowTextAppearance">@style/TextAppearance.Design.Counter.Overflow
+        </item>
+    </style>
+
+    <style name="AppTheme.TextFloatLabelAppearance" parent="TextAppearance.Design.Hint">
+        <!-- Floating label appearance here -->
+        <item name="android:textColor">@color/color_9E9E9E</item>
+        <item name="android:textSize">@dimen/text_size_12</item>
+    </style>
+
+    <style name="AppTheme.TextErrorAppearance" parent="TextAppearance.Design.Error">
+        <!-- Error message appearance here -->
+        <item name="android:textColor">@color/color_FF3A5C</item>
+        <item name="android:textSize">@dimen/text_size_12</item>
+    </style>
+
+    <style name="CustomDialog" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+    <style name="SplashTheme" parent="AppTheme">
+        <item name="android:windowBackground">@drawable/splash</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="CustomNavigation" parent="Widget.AppCompat.Toolbar.Button.Navigation">
+        <item name="android:background">@null</item>
+    </style>
+
+    <style name="LoadingDialogTheme" parent="Theme.AppCompat.Dialog">
+        <!--  边框  -->
+        <item name="android:windowFrame">@null</item>
+        <!--  是否浮现在activity之上  -->
+        <item name="android:windowIsFloating">true</item>
+        <!--  半透明  -->
+        <item name="android:windowIsTranslucent">true</item>
+        <!--  背景  -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!--  无标题  -->
+        <item name="android:windowNoTitle">true</item>
+        <!--  模糊  -->
+        <item name="android:backgroundDimEnabled">true</item>
+        <!--  颜色  -->
+        <item name="colorAccent">@color/color_00A761</item>
+    </style>
+
+</resources>

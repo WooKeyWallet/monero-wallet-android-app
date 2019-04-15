@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/text_16_333333"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:gravity="center"
+            android:paddingStart="25dp"
+            android:paddingEnd="25dp"
+            android:text="@string/mnemonic_title" />
+
+        <EditText
+            android:id="@+id/mnemonic"
+            style="@style/text_16_333333"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="25dp"
+            android:gravity="top"
+            android:hint="@string/mnemonic_prompt"
+            android:inputType="textMultiLine"
+            android:minHeight="95dp"
+            android:paddingStart="10dp"
+            android:paddingTop="15dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="15dp"
+            android:textColorHint="@color/color_9E9E9E" />
+
+        <TextView
+            style="@style/text_12_26B479"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="30dp"
+            android:text="@string/block_height_prompt" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/blockHeight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="25dp"
+            app:errorEnabled="true">
+
+            <EditText
+                style="@style/edit_text_16"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/block_height_optional"
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                android:textAlignment="textStart" />
+        </android.support.design.widget.TextInputLayout>
+
+        <io.wookey.wallet.widget.InterceptTouchFrameLayout
+            android:id="@+id/dateContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/transactionDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="25dp">
+
+                <EditText
+                    style="@style/edit_text_16"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/transaction_date"
+                    android:imeOptions="actionDone"
+                    android:inputType="date"
+                    android:textAlignment="textStart" />
+            </android.support.design.widget.TextInputLayout>
+        </io.wookey.wallet.widget.InterceptTouchFrameLayout>
+
+        <TextView
+            android:id="@+id/next"
+            style="@style/button_text_16"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="25dp"
+            android:enabled="false"
+            android:text="@string/recovery" />
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>
