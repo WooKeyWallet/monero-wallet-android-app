@@ -24,6 +24,10 @@ Simple, efficient, ease of use. The easiest way to get started with cryptocurren
 - QR code Payment
 - Cross-platform Support
 
+## How To Build
+
+https://github.com/WooKeyWallet/monero-android-lib
+
 ## About Us
 
 The WooKey team develops secure, professional, reliable and simple digital asset wallet applications. We strive to protect private data and property of users. We measure success by the ease with which new and non-tech savvy users can get started using cryptocurrencies.
