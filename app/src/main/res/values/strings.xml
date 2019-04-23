@@ -107,7 +107,7 @@
 
     <string name="verify_failed">Verification failed, please try again</string>
 
-    <string name="block_connecting">Connecting</string>
+    <string name="block_connecting">It may take 5 minutes, please wait</string>
     <string name="block_synchronizing">Syncing, blocks remaining: %1$s</string>
     <string name="block_synchronized">Synced</string>
     <string name="block_synchronize_failed">Sync failed</string>

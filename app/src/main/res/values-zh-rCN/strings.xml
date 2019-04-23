@@ -107,7 +107,7 @@
 
     <string name="verify_failed">验证失败，请重试</string>
 
-    <string name="block_connecting">连接中</string>
+    <string name="block_connecting">连接中，可能需要5分钟，请稍候...</string>
     <string name="block_synchronizing">同步中，剩余区块：%1$s</string>
     <string name="block_synchronized">已同步</string>
     <string name="block_synchronize_failed">同步失败</string>
