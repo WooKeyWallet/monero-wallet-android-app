@@ -14,11 +14,15 @@ import io.wookey.wallet.support.viewmodel.SingleLiveEvent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.lang.StringBuilder
 
 class ReceiveViewModel : BaseViewModel() {
 
     val activeAsset = MutableLiveData<Asset>()
     val activeWallet = MutableLiveData<Wallet>()
+    val address = MutableLiveData<String>()
+    val visibilityIcon = MutableLiveData<Int>()
+    var addressVisibility = true
 
     val QRCodeBitmap = MutableLiveData<Bitmap>()
     val toast = MutableLiveData<Int>()
@@ -43,6 +47,7 @@ class ReceiveViewModel : BaseViewModel() {
                     val wallet = AppDatabase.getInstance().walletDao().getActiveWallet()
                             ?: throw IllegalStateException()
                     activeWallet.postValue(wallet)
+                    address.postValue(wallet.address)
                     if (XMRWalletController.isAddressValid(wallet.address)) {
                         QRCodeBitmap.postValue(QRCodeEncoder.syncEncodeQRCode(wallet.address, dp2px(115)))
                     } else {
@@ -53,6 +58,25 @@ class ReceiveViewModel : BaseViewModel() {
                 e.printStackTrace()
                 toast.postValue(R.string.data_exception)
             }
+        }
+    }
+
+    fun setAddressVisible() {
+        val addressStr = activeWallet.value?.address ?: ""
+        if (addressStr.isBlank()) {
+            return
+        }
+        addressVisibility = !addressVisibility
+        if (addressVisibility) {
+            address.value = addressStr
+            visibilityIcon.value = R.drawable.icon_visible_space
+        } else {
+            visibilityIcon.value = R.drawable.icon_invisible_space
+            val str = StringBuilder()
+            addressStr.forEach {
+                str.append("*")
+            }
+            address.value = str.toString()
         }
     }
 

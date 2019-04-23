@@ -40,12 +40,21 @@ class ReceiveActivity : BaseTitleSecondActivity() {
             }
         })
 
-        viewModel.activeWallet.observe(this, Observer { value ->
+        viewModel.address.observe(this, Observer { value ->
+            address.text = value ?: ""
+
+        })
+
+        viewModel.visibilityIcon.observe(this, Observer { value ->
             value?.let {
-                address.text = it.address
+                visible.setImageResource(it)
             }
 
         })
+
+        visible.setOnClickListener {
+            viewModel.setAddressVisible()
+        }
 
         viewModel.QRCodeBitmap.observe(this, Observer {
             QRCode.setImageBitmap(it)
