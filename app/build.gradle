@@ -4,12 +4,7 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 def computeVersionCode() {
-    def cmd = 'git rev-list HEAD --first-parent --count'
-    def trim = cmd.execute().text.trim()
-    if (trim == null || trim.length() == 0) {
-        trim = 1
-    }
-    trim.toInteger()
+    80
 }
 
 def gitVersionTag() {
@@ -29,7 +24,7 @@ def gitVersionTag() {
 }
 
 def computeVersionName() {
-    return "1.0.1"
+    return "1.0.2"
 }
 
 android {
@@ -51,15 +46,6 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-
-    splits {
-        abi {
-            enable true
-            reset()
-            include 'arm64-v8a', 'armeabi-v7a'
-            universalApk true
         }
     }
 
