@@ -49,3 +49,4 @@ output.json
 
 */src/androidTest
 */src/test
+*.a
