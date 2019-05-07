@@ -179,4 +179,12 @@
 
     <string name="more_node">More node addresses >></string>
 
+    <string name="delete_wallet">Delete Wallet</string>
+    <string name="delete_failed">Failed to delete</string>
+    <string name="delete_success">Deleted successfully</string>
+
+    <string name="dialog_block_height_content">If you don\'t set date or height, it may take several hours to sync.</string>
+    <string name="dialog_block_height_cancel">Continue</string>
+    <string name="dialog_block_height_confirm">Back to set</string>
+
 </resources>

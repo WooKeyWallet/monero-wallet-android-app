@@ -91,10 +91,11 @@ public class IOSDialog implements View.OnClickListener {
     private String mContentText = "内容";
     private int mContentTextSize = 14;     //sp
     private int mContentTextColor = Color.BLACK;
-    private int mContentViewPaddingLeft = 15;   //dp
-    private int mContentViewPaddingRight = 15;  //dp
+    private boolean mContentTextBold = false;
+    private int mContentViewPaddingLeft = 20;   //dp
+    private int mContentViewPaddingRight = 20;  //dp
     private int mContentViewPaddingTop = 0;    //dp
-    private int mContentViewPaddingBottom = 10;  //dp
+    private int mContentViewPaddingBottom = 20;  //dp
 
 
     /**
@@ -220,6 +221,9 @@ public class IOSDialog implements View.OnClickListener {
 
                 mContentView = new TextView(mContext);
                 mContentView.setText(mContentText);
+                if (mContentTextBold) {
+                    mContentView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+                }
                 mContentView.setTextColor(mContentTextColor);
                 mContentView.setTextSize(mContentTextSize);
                 mContentView.setGravity(Gravity.CENTER_HORIZONTAL);
@@ -233,6 +237,9 @@ public class IOSDialog implements View.OnClickListener {
             } else {   //内容不可滑动
                 mContentView = new TextView(mContext);
                 mContentView.setText(mContentText);
+                if (mContentTextBold) {
+                    mContentView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+                }
                 mContentView.setId(mContentView_ID);
                 mContentView.setTextColor(mContentTextColor);
                 mContentView.setTextSize(mContentTextSize);
@@ -387,11 +394,9 @@ public class IOSDialog implements View.OnClickListener {
      * 标题相关--------------------
      */
     public IOSDialog titleText(String title) {
-        if (!TextUtils.isEmpty(title)) {
-            mTitleText = title;
-            if (mTitleView != null) {
-                mTitleView.setText(mTitleText);
-            }
+        mTitleText = title;
+        if (mTitleView != null) {
+            mTitleView.setText(mTitleText);
         }
         return this;
     }
@@ -460,6 +465,24 @@ public class IOSDialog implements View.OnClickListener {
         mContentTextColor = textColor;
         if (mContentView != null) {
             mContentView.setTextColor(mContentTextColor);
+        }
+        return this;
+    }
+
+    public IOSDialog contentTextSize(int textSize) {
+        mContentTextSize = textSize;
+        if (mContentView != null) {
+            mContentView.setTextSize(mContentTextSize);
+        }
+        return this;
+    }
+
+    public IOSDialog contentTextBold(boolean contentTextBold) {
+        mContentTextBold = contentTextBold;
+        if (mContentView != null) {
+            if (mContentTextBold) {
+                mContentView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+            }
         }
         return this;
     }

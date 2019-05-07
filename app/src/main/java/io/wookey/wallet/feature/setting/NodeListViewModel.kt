@@ -7,6 +7,7 @@ import io.wookey.wallet.core.XMRWalletController
 import io.wookey.wallet.data.AppDatabase
 import io.wookey.wallet.data.entity.Node
 import io.wookey.wallet.support.nodeArray
+import io.wookey.wallet.support.viewmodel.SingleLiveEvent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -17,10 +18,14 @@ class NodeListViewModel : BaseViewModel() {
 
     val showLoading = MutableLiveData<Boolean>()
     val hideLoading = MutableLiveData<Boolean>()
+    val toast = MutableLiveData<String>()
     val toastRes = MutableLiveData<Int>()
     val dataChanged = MutableLiveData<Boolean>()
 
+    val finish = SingleLiveEvent<Node>()
+
     private var deleteNode: Node? = null
+    private var canDelete = true
 
     fun insertNode(node: Node) {
         uiScope.launch {
@@ -33,27 +38,36 @@ class NodeListViewModel : BaseViewModel() {
 
     fun updateNode(nodes: List<Node>, node: Node) {
         uiScope.launch {
-            withContext(Dispatchers.IO) {
-                val nodeDao = AppDatabase.getInstance().nodeDao()
-                val filter = nodes.filter {
-                    it.isSelected
+            try {
+                withContext(Dispatchers.IO) {
+                    val nodeDao = AppDatabase.getInstance().nodeDao()
+                    val filter = nodes.filter {
+                        it.isSelected
+                    }
+                    if (filter.isNullOrEmpty()) {
+                        return@withContext
+                    }
+                    if (filter.size != 1) {
+                        return@withContext
+                    }
+                    nodeDao.updateNodes(filter[0].apply { isSelected = false }, node.apply { isSelected = true })
                 }
-                if (filter.isNullOrEmpty()) {
-                    return@withContext
-                }
-                if (filter.size != 1) {
-                    return@withContext
-                }
-                nodeDao.updateNodes(filter[0].apply { isSelected = false }, node.apply { isSelected = true })
+                finish.postValue(node)
+            } catch (e: Exception) {
+                toast.postValue(e.message)
             }
         }
     }
 
     fun onLongClick(node: Node) {
+
+        if (!canDelete) return
+
         var isDefault = false
         nodeArray.forEach {
             if (it.symbol == node.symbol && it.url == node.url) {
                 isDefault = true
+                return@forEach
             }
         }
         if (isDefault) {
@@ -104,5 +118,9 @@ class NodeListViewModel : BaseViewModel() {
             }
             dataChanged.postValue(true)
         }
+    }
+
+    fun setCanDelete(canDelete: Boolean) {
+        this.canDelete = canDelete
     }
 }

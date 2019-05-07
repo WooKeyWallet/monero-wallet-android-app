@@ -1,5 +1,6 @@
 package io.wookey.wallet.feature.setting
 
+import android.app.Activity
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
@@ -32,6 +33,8 @@ class NodeListActivity : BaseTitleSecondActivity() {
         val viewModel = ViewModelProviders.of(this).get(NodeListViewModel::class.java)
 
         val symbol = intent.getStringExtra("symbol")
+        val canDelete = intent.getBooleanExtra("canDelete", true)
+        viewModel.setCanDelete(canDelete)
         setCenterTitle("$symbol ${getString(R.string.node_setting)}")
         setRightIcon(R.drawable.icon_add)
         setRightIconClick(View.OnClickListener { _ ->
@@ -80,13 +83,17 @@ class NodeListActivity : BaseTitleSecondActivity() {
 
         viewModel.showLoading.observe(this, Observer { showLoading() })
         viewModel.hideLoading.observe(this, Observer { hideLoading() })
-
+        viewModel.toast.observe(this, Observer { toast(it) })
         viewModel.dataChanged.observe(this, Observer { adapter.notifyDataSetChanged() })
 
         more.setOnClickListener {
             openBrowser("https://wallet.wookey.io/monero-nodes/app.html")
         }
 
+        viewModel.finish.observe(this, Observer {
+            setResult(Activity.RESULT_OK, Intent().apply { putExtra("node", it) })
+            finish()
+        })
     }
 
     private fun openBrowser(url: String) {

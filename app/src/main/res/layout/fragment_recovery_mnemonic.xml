@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -46,36 +47,17 @@
             android:layout_marginEnd="30dp"
             android:text="@string/block_height_prompt" />
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/blockHeight"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="25dp"
-            app:errorEnabled="true">
-
-            <EditText
-                style="@style/edit_text_16"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/block_height_optional"
-                android:imeOptions="actionDone"
-                android:inputType="number"
-                android:textAlignment="textStart" />
-        </android.support.design.widget.TextInputLayout>
-
         <io.wookey.wallet.widget.InterceptTouchFrameLayout
             android:id="@+id/dateContainer"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/transactionDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
-                android:layout_marginTop="2dp"
                 android:layout_marginEnd="25dp">
 
                 <EditText
@@ -88,6 +70,25 @@
                     android:textAlignment="textStart" />
             </android.support.design.widget.TextInputLayout>
         </io.wookey.wallet.widget.InterceptTouchFrameLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/blockHeight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="25dp"
+            app:errorEnabled="true">
+
+            <EditText
+                style="@style/edit_text_16"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/block_height_optional"
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                android:textAlignment="textStart" />
+        </android.support.design.widget.TextInputLayout>
 
         <TextView
             android:id="@+id/next"

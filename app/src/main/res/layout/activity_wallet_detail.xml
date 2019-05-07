@@ -141,6 +141,25 @@
             app:sRightIconMarginRight="25dp"
             app:sRightIconRes="@drawable/arrow_right"
             app:sUseRipple="false" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/color_F6F6F6" />
+
+        <TextView
+            android:id="@+id/delete"
+            style="@style/text_16_333333"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:minHeight="50dp"
+            android:text="@string/delete_wallet" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/color_DEDEDE" />
     </LinearLayout>
 
 </android.support.v4.widget.NestedScrollView>

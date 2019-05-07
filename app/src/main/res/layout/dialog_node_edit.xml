@@ -15,15 +15,30 @@
         android:paddingEnd="30dp"
         android:paddingBottom="22dp">
 
-        <TextView
-            style="@style/text_16_333333"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center"
-            android:drawableStart="@drawable/icon_dot_green"
-            android:drawablePadding="8dp"
-            android:text="@string/edit_node_url" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/title"
+                style="@style/text_16_333333"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="18dp"
+                android:layout_marginEnd="18dp"
+                android:drawableStart="@drawable/icon_dot_green"
+                android:drawablePadding="8dp"
+                android:text="@string/edit_node_url" />
+
+            <ImageView
+                android:id="@+id/cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_close" />
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/current"
@@ -70,11 +85,4 @@
 
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/cancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="34dp"
-        android:src="@drawable/icon_close" />
 </LinearLayout>

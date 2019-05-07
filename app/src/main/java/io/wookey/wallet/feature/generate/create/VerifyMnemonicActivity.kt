@@ -7,7 +7,6 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import com.google.android.flexbox.*
 import io.wookey.wallet.ActivityStackManager
 import io.wookey.wallet.MainActivity
@@ -28,8 +27,7 @@ class VerifyMnemonicActivity : BaseTitleSecondActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // 禁止截图
-        window.setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE)
+
         setContentView(R.layout.activity_verify_mnemonic)
         setCenterTitle(R.string.create_wallet)
 

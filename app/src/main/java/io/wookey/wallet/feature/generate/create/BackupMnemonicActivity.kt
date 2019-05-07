@@ -6,7 +6,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.view.*
+import android.view.KeyEvent
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import io.wookey.wallet.R
 import io.wookey.wallet.base.BaseTitleSecondActivity
 import io.wookey.wallet.dialog.BakMnemonicDialog
@@ -28,8 +31,7 @@ class BackupMnemonicActivity : BaseTitleSecondActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // 禁止截图
-        window.setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE)
+
         setContentView(R.layout.activity_backup_mnemonic)
 
         walletId = intent.getIntExtra("walletId", -1)

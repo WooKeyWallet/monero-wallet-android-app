@@ -3,7 +3,6 @@ package io.wookey.wallet.feature.generate.recovery
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentPagerAdapter
-import android.view.WindowManager.LayoutParams
 import io.wookey.wallet.R
 import io.wookey.wallet.base.BaseTitleSecondActivity
 import kotlinx.android.synthetic.main.activity_recovery_wallet.*
@@ -12,8 +11,7 @@ class RecoveryWalletActivity : BaseTitleSecondActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // 禁止截图
-        window.setFlags(LayoutParams.FLAG_SECURE, LayoutParams.FLAG_SECURE)
+
         setContentView(R.layout.activity_recovery_wallet)
         setCenterTitle(R.string.recovery_wallet)
 

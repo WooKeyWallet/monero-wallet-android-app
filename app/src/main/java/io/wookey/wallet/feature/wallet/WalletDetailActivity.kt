@@ -2,16 +2,19 @@ package io.wookey.wallet.feature.wallet
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Intent
 import android.os.Bundle
 import io.wookey.wallet.R
 import io.wookey.wallet.base.BaseTitleSecondActivity
 import io.wookey.wallet.dialog.PasswordDialog
 import io.wookey.wallet.dialog.PasswordPromptDialog
+import io.wookey.wallet.feature.generate.WalletActivity
 import io.wookey.wallet.feature.generate.create.BackupMnemonicActivity
 import io.wookey.wallet.support.BackgroundHelper
 import io.wookey.wallet.support.extensions.copy
 import io.wookey.wallet.support.extensions.dp2px
 import io.wookey.wallet.support.extensions.formatterAmountStrip
+import io.wookey.wallet.support.extensions.toast
 import kotlinx.android.synthetic.main.activity_wallet_detail.*
 
 class WalletDetailActivity : BaseTitleSecondActivity() {
@@ -44,6 +47,7 @@ class WalletDetailActivity : BaseTitleSecondActivity() {
         passwordPrompt.setOnClickListener { viewModel.onPasswordPromptClick() }
         backupMnemonic.setOnClickListener { viewModel.onBackupMnemonicClick() }
         backupKey.setOnClickListener { viewModel.onBackupKeyClick() }
+        delete.setOnClickListener { viewModel.onDeleteClick() }
 
         viewModel.showPasswordPrompt.observe(this, Observer { value ->
             value?.let {
@@ -77,6 +81,25 @@ class WalletDetailActivity : BaseTitleSecondActivity() {
                     setClass(this@WalletDetailActivity, BackupKeyActivity::class.java)
                 })
             }
+        })
+
+        viewModel.deleteWallet.observe(this, Observer {
+            PasswordDialog.display(supportFragmentManager, walletId) { value ->
+                viewModel.deleteWallet()
+            }
+        })
+
+        viewModel.showLoading.observe(this, Observer { showLoading() })
+        viewModel.hideLoading.observe(this, Observer { hideLoading() })
+
+        viewModel.toast.observe(this, Observer { toast(it) })
+        viewModel.toastRes.observe(this, Observer { toast(it) })
+        viewModel.finish.observe(this, Observer { finish() })
+        viewModel.restart.observe(this, Observer {
+            startActivity(Intent(this, WalletActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK.or(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            })
+            finish()
         })
     }
 }

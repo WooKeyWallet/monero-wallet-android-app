@@ -24,6 +24,8 @@ class RecoveryMnemonicViewModel : BaseViewModel() {
 
     val blockHeightError = MutableLiveData<Boolean>()
 
+    val showDialog = MutableLiveData<Boolean>()
+
     private val repository = XMRRepository()
 
     private lateinit var walletName: String
@@ -88,6 +90,16 @@ class RecoveryMnemonicViewModel : BaseViewModel() {
 
     fun next() {
         enabled.value = false
+        if (blockHeight <= 0L) {
+            showDialog.value = true
+            enabled.value = true
+            return
+        }
+        create()
+    }
+
+    fun create() {
+        enabled.value = false
         showLoading.postValue(true)
         uiScope.launch {
             withContext(Dispatchers.IO) {
@@ -99,7 +111,7 @@ class RecoveryMnemonicViewModel : BaseViewModel() {
                     navigation.postValue(true)
                 } catch (e: Exception) {
                     e.printStackTrace()
-                    repository.cancelCreate(walletName)
+                    repository.deleteWallet(walletName)
                     hideLoading.postValue(true)
                     toast.postValue(e.message)
                 } finally {

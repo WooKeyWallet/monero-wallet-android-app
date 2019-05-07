@@ -238,6 +238,7 @@ fun SpannableString.clickableSpan(range: IntRange, color: Int, listener: (View) 
 
 fun View.showTimePicker(startDate: Calendar = Calendar.getInstance().apply { set(2014, 4, 1) }, listener: (Date) -> Unit) {
     setOnClickListener {
+        hideKeyboard()
         TimePickerBuilder(context) { date, v -> listener(date) }
                 .setRangDate(startDate, Calendar.getInstance())
                 .setLabel("", "", "", "", "", "")

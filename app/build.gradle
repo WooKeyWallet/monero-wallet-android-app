@@ -4,7 +4,13 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 def computeVersionCode() {
-    80
+    def cmd = 'git rev-list HEAD --first-parent --count'
+    def trim = cmd.execute().text.trim()
+    if (trim == null || trim.length() == 0) {
+        trim = 1
+    }
+    trim.toInteger()
+    103
 }
 
 def gitVersionTag() {
@@ -24,7 +30,7 @@ def gitVersionTag() {
 }
 
 def computeVersionName() {
-    return "1.0.2"
+    return "1.0.3"
 }
 
 android {
@@ -36,6 +42,13 @@ android {
         versionCode computeVersionCode()
         versionName computeVersionName()
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation":
+                                     "$projectDir/schemas".toString()]
+            }
+        }
 
     }
     buildTypes {

@@ -21,16 +21,22 @@ class SplashActivity : BaseActivity() {
             delay(1500)
             val walletId = sharedPreferences().getInt("walletId", -1)
             val activeWallet = withContext(Dispatchers.IO) {
-                val activeWallets = AppDatabase.getInstance().walletDao().getActiveWallets()
-                if (activeWallets.isNullOrEmpty()) {
+                val wallets = AppDatabase.getInstance().walletDao().getWallets()
+                if (wallets.isNullOrEmpty()) {
                     null
                 } else {
-                    activeWallets.forEachIndexed { index, wallet ->
-                        if (index > 0) {
-                            AppDatabase.getInstance().walletDao().updateWallets(wallet.apply { isActive = false })
+                    val activeWallets = AppDatabase.getInstance().walletDao().getActiveWallets()
+                    if (activeWallets.isNullOrEmpty()) {
+                        AppDatabase.getInstance().walletDao().updateWallets(wallets[0].apply { isActive = true })
+                        wallets[0]
+                    } else {
+                        activeWallets.forEachIndexed { index, wallet ->
+                            if (index > 0) {
+                                AppDatabase.getInstance().walletDao().updateWallets(wallet.apply { isActive = false })
+                            }
                         }
+                        activeWallets[0]
                     }
-                    activeWallets[0]
                 }
             }
             val walletAddress = activeWallet?.address

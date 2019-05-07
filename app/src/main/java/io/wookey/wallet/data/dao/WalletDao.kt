@@ -40,6 +40,14 @@ interface WalletDao {
     fun countWalletsByName(symbol: String, name: String): Int
 
     /**
+     * Select wallets from the wallets table.
+     *
+     * @return wallets.
+     */
+    @Query("SELECT * FROM wallets")
+    fun getWallets(): List<Wallet>
+
+    /**
      * Select the active wallet from the wallets table.
      *
      * @return active wallet.
@@ -94,4 +102,12 @@ interface WalletDao {
      */
     @Update(onConflict = OnConflictStrategy.REPLACE)
     fun updateWallets(vararg wallets: Wallet)
+
+    /**
+     * Delete wallets in the database
+     *
+     * @param wallets the wallets to be deleted.
+     */
+    @Delete
+    fun deleteWallets(vararg wallets: Wallet)
 }

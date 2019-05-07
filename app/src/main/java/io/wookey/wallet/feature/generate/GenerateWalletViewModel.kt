@@ -77,6 +77,7 @@ class GenerateWalletViewModel : BaseViewModel() {
         walletValidJob?.cancel()
         if (it.isNullOrBlank()) {
             walletNameError.value = null
+            walletName.value = it
         } else {
             walletValidJob = uiScope.launch {
                 withContext(Dispatchers.IO) {
@@ -87,10 +88,10 @@ class GenerateWalletViewModel : BaseViewModel() {
                     } else {
                         walletNameError.postValue(false)
                     }
+                    walletName.postValue(it)
                 }
             }
         }
-        walletName.value = it
     }
 
     fun setPassword(it: String) {
@@ -237,7 +238,7 @@ class GenerateWalletViewModel : BaseViewModel() {
                     })
                 } catch (e: Exception) {
                     e.printStackTrace()
-                    repository.cancelCreate(name)
+                    repository.deleteWallet(name)
                     hideLoading.postValue(true)
                     toast.postValue(e.message)
                 } finally {

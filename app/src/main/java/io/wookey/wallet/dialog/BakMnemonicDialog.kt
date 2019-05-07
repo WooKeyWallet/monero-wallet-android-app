@@ -43,10 +43,6 @@ class BakMnemonicDialog : DialogFragment() {
             dismiss()
         }
 
-        cancel.setOnClickListener {
-            cancelListener?.invoke()
-            dismiss()
-        }
     }
 
     companion object {

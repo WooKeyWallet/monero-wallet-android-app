@@ -62,4 +62,12 @@ interface AssetDao {
      */
     @Update(onConflict = OnConflictStrategy.REPLACE)
     fun updateAsset(asset: Asset)
+
+    /**
+     * Delete assets in the database
+     *
+     * @param assets the assets to be deleted.
+     */
+    @Delete
+    fun deleteAssets(vararg assets: Asset)
 }

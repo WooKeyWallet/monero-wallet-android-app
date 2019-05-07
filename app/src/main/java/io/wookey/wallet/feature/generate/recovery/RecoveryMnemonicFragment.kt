@@ -13,10 +13,8 @@ import io.wookey.wallet.R
 import io.wookey.wallet.base.BaseFragment
 import io.wookey.wallet.feature.wallet.WalletManagerActivity
 import io.wookey.wallet.support.BackgroundHelper
-import io.wookey.wallet.support.extensions.afterTextChanged
-import io.wookey.wallet.support.extensions.formatterDate
-import io.wookey.wallet.support.extensions.showTimePicker
-import io.wookey.wallet.support.extensions.toast
+import io.wookey.wallet.support.extensions.*
+import io.wookey.wallet.widget.IOSDialog
 import kotlinx.android.synthetic.main.fragment_recovery_mnemonic.*
 
 
@@ -87,6 +85,21 @@ class RecoveryMnemonicFragment : BaseFragment() {
             } else {
                 blockHeight.error = null
             }
+        })
+
+        viewModel.showDialog.observe(this, Observer {
+            IOSDialog(context)
+                    .radius(dp2px(5))
+                    .titleText("")
+                    .contentText(getString(R.string.dialog_block_height_content))
+                    .contentTextSize(16)
+                    .contentTextBold(true)
+                    .leftText(getString(R.string.dialog_block_height_cancel))
+                    .rightText(getString(R.string.dialog_block_height_confirm))
+                    .setIOSDialogLeftListener { viewModel.create() }
+                    .cancelAble(true)
+                    .layout()
+                    .show()
         })
     }
 

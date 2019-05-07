@@ -16,6 +16,14 @@ interface NodeDao {
     fun insertNodes(vararg nodes: Node)
 
     /**
+     * Insert nodes in the database. If the nodes already exists, ignore it.
+     *
+     * @param nodes the nodes to be inserted.
+     */
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertNodesReplace(vararg nodes: Node)
+
+    /**
      * Select all nodes is selected from the nodes table.
      *
      * @return all nodes is selected.

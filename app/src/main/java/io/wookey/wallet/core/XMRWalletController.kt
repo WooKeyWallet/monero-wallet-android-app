@@ -151,6 +151,11 @@ object XMRWalletController {
 
         observer.onWalletOpened()
 
+        if (startRefresh(wallet, restoreHeight, observer)) return
+        observer.onWalletStarted()
+    }
+
+    fun startRefresh(wallet: Wallet, restoreHeight: Long, observer: Observer): Boolean {
         wallet.init(0)
         wallet.restoreHeight = restoreHeight
 
@@ -159,7 +164,7 @@ object XMRWalletController {
         if (wallet.connectionStatus != Wallet.ConnectionStatus.ConnectionStatus_Connected) {
             val error = wallet.errorString
             observer.onWalletStartFailed(error)
-            return
+            return true
         }
 
         wallet.setListener(object : WalletListener {
@@ -210,7 +215,7 @@ object XMRWalletController {
             }
         })
         wallet.startRefresh()
-        observer.onWalletStarted()
+        return false
     }
 
     fun refreshWallet() {

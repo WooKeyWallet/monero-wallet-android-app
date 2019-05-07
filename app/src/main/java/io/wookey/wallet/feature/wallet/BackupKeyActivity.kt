@@ -3,7 +3,6 @@ package io.wookey.wallet.feature.wallet
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.view.WindowManager
 import io.wookey.wallet.R
 import io.wookey.wallet.base.BaseTitleSecondActivity
 import io.wookey.wallet.support.extensions.copy
@@ -13,8 +12,7 @@ import kotlinx.android.synthetic.main.activity_backup_key.*
 class BackupKeyActivity : BaseTitleSecondActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // 禁止截图
-        window.setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE)
+
         setContentView(R.layout.activity_backup_key)
         setCenterTitle(R.string.backup_key)
 

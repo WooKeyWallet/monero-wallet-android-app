@@ -12,7 +12,9 @@ import io.wookey.wallet.R
 import io.wookey.wallet.base.BaseTitleSecondActivity
 import io.wookey.wallet.data.AppDatabase
 import io.wookey.wallet.dialog.PasswordDialog
+import io.wookey.wallet.feature.setting.NodeListActivity
 import io.wookey.wallet.support.BackgroundHelper
+import io.wookey.wallet.support.REQUEST_SELECT_NODE
 import io.wookey.wallet.support.extensions.copy
 import io.wookey.wallet.support.extensions.dp2px
 import io.wookey.wallet.support.extensions.formatterAmountStrip
@@ -42,9 +44,15 @@ class AssetDetailActivity : BaseTitleSecondActivity() {
             return
         }
 
-        setRightIcon(R.drawable.icon_refresh)
+        viewModel.setAssetId(assetId)
+
+        setRightIcon(R.drawable.icon_switch_node)
         setRightIconClick(View.OnClickListener {
-            viewModel.refreshWallet()
+            val symbol = viewModel.activeWallet.value?.symbol ?: return@OnClickListener
+            startActivityForResult(Intent(this, NodeListActivity::class.java).apply {
+                putExtra("symbol", symbol)
+                putExtra("canDelete", false)
+            }, REQUEST_SELECT_NODE)
         })
 
         viewModel.loadWallet(password)
@@ -199,4 +207,8 @@ class AssetDetailActivity : BaseTitleSecondActivity() {
         })
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        viewModel.handleResult(requestCode, resultCode, data)
+    }
 }

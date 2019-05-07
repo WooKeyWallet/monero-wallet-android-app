@@ -179,4 +179,12 @@
 
     <string name="more_node">更多节点地址 >></string>
 
+    <string name="delete_wallet">删除钱包</string>
+    <string name="delete_failed">删除失败</string>
+    <string name="delete_success">删除成功</string>
+
+    <string name="dialog_block_height_content">未填写区块号或近期交易时间，可能需要同步几个小时</string>
+    <string name="dialog_block_height_cancel">坚决不填</string>
+    <string name="dialog_block_height_confirm">去填</string>
+
 </resources>
