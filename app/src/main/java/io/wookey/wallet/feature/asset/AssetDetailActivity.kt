@@ -85,6 +85,12 @@ class AssetDetailActivity : BaseTitleSecondActivity() {
             }
         })
 
+        AppDatabase.getInstance().walletDao().loadActiveWallet().observe(this, Observer { value ->
+            value?.let {
+                address.text = it.address
+            }
+        })
+
         addressBg.setOnClickListener { copy(address.text.toString()) }
 
         send.background = BackgroundHelper.getButtonBackground(this)
@@ -117,11 +123,12 @@ class AssetDetailActivity : BaseTitleSecondActivity() {
         viewModel.openReceive.observe(this, Observer {
             startActivity(Intent(this, ReceiveActivity::class.java).apply {
                 putExtra("assetId", assetId)
+                putExtra("password", password)
             })
         })
 
         val titles =
-                arrayOf(getString(R.string.transfer_all), getString(R.string.receive), getString(R.string.send))
+            arrayOf(getString(R.string.transfer_all), getString(R.string.receive), getString(R.string.send))
         val allTransfer = TransferFragment()
         val inTransfer = TransferFragment()
         val outTransfer = TransferFragment()

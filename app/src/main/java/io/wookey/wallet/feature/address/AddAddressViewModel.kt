@@ -102,13 +102,6 @@ class AddAddressViewModel : BaseViewModel() {
                     }
                 }
             }
-            REQUEST_SELECT_COIN -> {
-                data?.getStringExtra("symbol")?.let {
-                    if (it.isNotBlank()) {
-                        coin.value = it
-                    }
-                }
-            }
         }
     }
 

@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".feature.generate.GenerateWalletActivity">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -34,7 +31,7 @@
                 android:layout_marginStart="6dp"
                 android:layout_toEndOf="@id/dot1"
                 android:lineSpacingMultiplier="1.2"
-                android:text="@string/backup_mnemonic_prompt_one" />
+                android:text="@string/address_setting_prompt_one" />
 
             <ImageView
                 android:id="@+id/dot2"
@@ -53,31 +50,13 @@
                 android:layout_marginTop="6dp"
                 android:layout_toEndOf="@id/dot2"
                 android:lineSpacingMultiplier="1.2"
-                android:text="@string/backup_mnemonic_prompt_two" />
+                android:text="@string/address_setting_prompt_two" />
         </RelativeLayout>
-
-        <TextView
-            style="@style/text_16_333333"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:gravity="center"
-            android:text="@string/bak_mnemonic" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:paddingStart="25dp"
-            android:paddingEnd="25dp" />
-
-        <TextView
-            android:id="@+id/next"
-            style="@style/button_text_16"
-            android:layout_marginTop="50dp"
-            android:layout_marginBottom="45dp"
-            android:enabled="true"
-            android:text="@string/has_bak" />
+            android:layout_height="wrap_content" />
     </LinearLayout>
+
 </android.support.v4.widget.NestedScrollView>

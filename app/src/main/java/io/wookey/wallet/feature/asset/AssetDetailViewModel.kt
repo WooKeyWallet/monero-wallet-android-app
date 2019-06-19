@@ -179,7 +179,7 @@ class AssetDetailViewModel : BaseViewModel() {
     @Synchronized
     private fun updateBalance() {
         val asset = activeAsset ?: return
-        val wallet = activeWallet.value ?: return
+        val wallet = AppDatabase.getInstance().walletDao().getActiveWallet() ?: return
         val balance = XMRWalletController.getBalance() ?: return
         val assetDao = AppDatabase.getInstance().assetDao()
         assetDao.updateAsset(asset.also {
@@ -195,7 +195,7 @@ class AssetDetailViewModel : BaseViewModel() {
     @Synchronized
     private fun updateHistory() {
         val asset = activeAsset ?: return
-        val wallet = activeWallet.value ?: return
+        val wallet = AppDatabase.getInstance().walletDao().getActiveWallet() ?: return
         val value = allTransfers.value
         XMRWalletController.refreshTransactionHistory()
         val list = XMRWalletController.getTransactionHistory()
@@ -215,7 +215,7 @@ class AssetDetailViewModel : BaseViewModel() {
 
     private fun switchNode(node: Node) {
 
-        val activeWallet = activeWallet.value ?: return
+        val activeWallet = AppDatabase.getInstance().walletDao().getActiveWallet() ?: return
         val wallet = XMRWalletController.getWallet()
         // 异常处理
         if (wallet == null) {

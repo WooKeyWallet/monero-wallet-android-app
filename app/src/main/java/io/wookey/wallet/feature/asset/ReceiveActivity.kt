@@ -2,11 +2,14 @@ package io.wookey.wallet.feature.asset
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import io.wookey.wallet.R
 import io.wookey.wallet.base.BaseTitleSecondActivity
+import io.wookey.wallet.feature.wallet.AddressSettingActivity
 import io.wookey.wallet.support.BackgroundHelper
+import io.wookey.wallet.support.REQUEST_SELECT_SUB_ADDRESS
 import io.wookey.wallet.support.extensions.afterTextChanged
 import io.wookey.wallet.support.extensions.copy
 import io.wookey.wallet.support.extensions.dp2px
@@ -14,16 +17,26 @@ import io.wookey.wallet.support.extensions.toast
 import kotlinx.android.synthetic.main.activity_receive.*
 
 class ReceiveActivity : BaseTitleSecondActivity() {
+
+    lateinit var viewModel: ReceiveViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_receive)
 
+        val password = intent.getStringExtra("password")
         val assetId = intent.getIntExtra("assetId", -1)
+
+        if (password.isNullOrBlank()) {
+            finish()
+            return
+        }
+
         if (assetId == -1) {
             finish()
             return
         }
-        val viewModel = ViewModelProviders.of(this).get(ReceiveViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(ReceiveViewModel::class.java)
         viewModel.setAssetId(assetId)
 
         divider.background = BackgroundHelper.getDashDrawable(this)
@@ -42,14 +55,12 @@ class ReceiveActivity : BaseTitleSecondActivity() {
 
         viewModel.address.observe(this, Observer { value ->
             address.text = value ?: ""
-
         })
 
         viewModel.visibilityIcon.observe(this, Observer { value ->
             value?.let {
                 visible.setImageResource(it)
             }
-
         })
 
         visible.setOnClickListener {
@@ -68,6 +79,12 @@ class ReceiveActivity : BaseTitleSecondActivity() {
 
         more.setOnClickListener {
             viewModel.more()
+        }
+
+        switchAddress.setOnClickListener {
+            startActivityForResult(Intent(this, AddressSettingActivity::class.java).apply {
+                putExtra("password", password)
+            }, REQUEST_SELECT_SUB_ADDRESS)
         }
 
         copyAddress.setOnClickListener { copy(address.text.toString()) }
@@ -126,5 +143,10 @@ class ReceiveActivity : BaseTitleSecondActivity() {
                 integratedError.text = getString(it)
             }
         })
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        viewModel.handleResult(requestCode, resultCode, data)
     }
 }

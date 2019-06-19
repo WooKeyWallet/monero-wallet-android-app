@@ -40,6 +40,7 @@ static jclass class_WalletListener;
 static jclass class_TransactionInfo;
 static jclass class_Transfer;
 static jclass class_Ledger;
+static jclass class_SubaddressRow;
 
 std::mutex _listenerMutex;
 
@@ -62,6 +63,8 @@ JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *jvm, void *reserved) {
             jenv->FindClass("io/wookey/monero/model/WalletListener")));
     class_Ledger = static_cast<jclass>(jenv->NewGlobalRef(
             jenv->FindClass("io/wookey/monero/ledger/Ledger")));
+    class_SubaddressRow = static_cast<jclass>(jenv->NewGlobalRef(
+            jenv->FindClass("io/wookey/monero/model/SubaddressRow")));
     return JNI_VERSION_1_6;
 }
 #ifdef __cplusplus
@@ -1140,19 +1143,8 @@ Java_io_wookey_monero_model_Wallet_addSubaddress(JNIEnv *env, jobject instance,
     env->ReleaseStringUTFChars(label, _label);
 }
 
-/*JNIEXPORT jstring JNICALL
-Java_io_wookey_monero_model_Wallet_getLastSubaddress(JNIEnv *env, jobject instance,
-                                                         jint accountIndex) {
 
-    Bitmonero::Wallet *wallet = getHandle<Bitmonero::Wallet>(env, instance);
-    size_t num = wallet->numSubaddresses(accountIndex);
-    //wallet->subaddress()->getAll()[num]->getAddress().c_str()
-    Monero::Subaddress *s = wallet->subaddress();
-    s->refresh(accountIndex);
-    std::vector<Monero::SubaddressRow *> v = s->getAll();
-    return env->NewStringUTF(v[num - 1]->getAddress().c_str());
-}
-*/
+
 //virtual std::string signMessage(const std::string &message) = 0;
 //virtual bool verifySignedMessage(const std::string &message, const std::string &addres, const std::string &signature) const = 0;
 
@@ -1227,6 +1219,19 @@ jobject newTransactionInfo(JNIEnv *env, Bitmonero::TransactionInfo *info) {
     return result;
 }
 
+jobject newSubaddressRow(JNIEnv *env, Bitmonero::SubaddressRow *row) {
+    jmethodID c = env->GetMethodID(class_SubaddressRow, "<init>",
+                                   "(ILjava/lang/String;Ljava/lang/String;)V");
+    auto rowId = static_cast<jint >(row->getRowId());
+    jstring _address = env->NewStringUTF(row->getAddress().c_str());
+    jstring _label = env->NewStringUTF(row->getLabel().c_str());
+    jobject subaddressRow = env->NewObject(class_SubaddressRow, c, rowId, _address, _label);
+    env->DeleteLocalRef(_address);
+    env->DeleteLocalRef(_label);
+
+    return subaddressRow;
+}
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -1243,6 +1248,34 @@ jobject cpp2java(JNIEnv *env, std::vector<Bitmonero::TransactionInfo *> vector) 
         env->DeleteLocalRef(info);
     }
     return arrayList;
+}
+
+jobject cpp2java2(JNIEnv *env, std::vector<Bitmonero::SubaddressRow *> vector) {
+
+    jmethodID java_util_ArrayList_ = env->GetMethodID(class_ArrayList, "<init>", "(I)V");
+    jmethodID java_util_ArrayList_add = env->GetMethodID(class_ArrayList, "add",
+                                                         "(Ljava/lang/Object;)Z");
+
+    jobject arrayList = env->NewObject(class_ArrayList, java_util_ArrayList_, vector.size());
+    for (Bitmonero::SubaddressRow *s: vector) {
+        jobject row = newSubaddressRow(env, s);
+        env->CallBooleanMethod(arrayList, java_util_ArrayList_add, row);
+        env->DeleteLocalRef(row);
+    }
+    return arrayList;
+}
+
+JNIEXPORT jobject JNICALL
+Java_io_wookey_monero_model_Wallet_getSubaddresses(JNIEnv *env, jobject instance,
+                                                   jint accountIndex) {
+
+    Bitmonero::Wallet *wallet = getHandle<Bitmonero::Wallet>(env, instance);
+//    size_t num = wallet->numSubaddresses(accountIndex);
+    //wallet->subaddress()->getAll()[num]->getAddress().c_str()
+    Monero::Subaddress *s = wallet->subaddress();
+    s->refresh(accountIndex);
+    std::vector<Monero::SubaddressRow *> v = s->getAll();
+    return cpp2java2(env, v);
 }
 
 JNIEXPORT jobject JNICALL

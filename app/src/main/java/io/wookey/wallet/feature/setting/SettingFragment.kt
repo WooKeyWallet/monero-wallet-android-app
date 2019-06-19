@@ -6,10 +6,13 @@ import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import io.wookey.wallet.App
 import io.wookey.wallet.R
 import io.wookey.wallet.base.BaseFragment
 import io.wookey.wallet.feature.address.AddressBookActivity
 import io.wookey.wallet.feature.wallet.WalletManagerActivity
+import io.wookey.wallet.support.BackgroundHelper
+import io.wookey.wallet.support.extensions.dp2px
 import io.wookey.wallet.support.extensions.versionName
 import kotlinx.android.synthetic.main.base_title_second.*
 import kotlinx.android.synthetic.main.fragment_setting.*
@@ -47,6 +50,19 @@ class SettingFragment : BaseFragment() {
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        if (App.newVersion) {
+            about.rightTextView.compoundDrawablePadding = dp2px(5)
+            about.rightTextView.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null,
+                    BackgroundHelper.getRedDotDrawable(context), null)
+        } else {
+            about.rightTextView.compoundDrawablePadding = 0
+            about.rightTextView.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null,
+                    null, null)
+        }
+    }
+
     private fun openWalletManager() {
         startActivity(Intent(context, WalletManagerActivity::class.java))
     }
@@ -56,7 +72,7 @@ class SettingFragment : BaseFragment() {
     }
 
     private fun openNodeSetting() {
-        startActivity(Intent(context, NodeSettingActivity::class.java))
+        startActivity(Intent(context, NodeListActivity::class.java))
     }
 
     private fun openLanguage() {

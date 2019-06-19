@@ -64,7 +64,7 @@
     <string name="add_address">添加地址</string>
     <string name="notes">备注</string>
     <string name="address">地址</string>
-    <string name="select_coin">选择币种</string>
+    <string name="select_coin">币种</string>
     <string name="cancel">取消</string>
     <string name="copy">复制</string>
 
@@ -153,7 +153,7 @@
 
     <string name="version_placeholder">版本号 V %1$s</string>
     <string name="about">WooKey 团队致力于提供安全、专业、可靠、易用的数字资产钱包应用，守护用户的隐私和财产自由，推动加密货币的普及与发展</string>
-    <string name="agreement">《服务协议》</string>
+    <string name="agreement">服务协议</string>
 
     <string name="select_language">选择语言</string>
 
@@ -186,5 +186,14 @@
     <string name="dialog_block_height_content">未填写区块号或近期交易时间，可能需要同步几个小时</string>
     <string name="dialog_block_height_cancel">坚决不填</string>
     <string name="dialog_block_height_confirm">去填</string>
+
+    <string name="find_new_version">发现新版本</string>
+
+    <string name="address_setting">地址设置</string>
+    <string name="address_setting_prompt_one">您可以添加多个不同的地址，以保护您的隐私</string>
+    <string name="address_setting_prompt_two">选中的地址将作为默认地址显示在收款页面</string>
+    <string name="address_tag">地址标签</string>
+    <string name="address_tag_hint">请输入地址标签</string>
+    <string name="primary_address">主地址</string>
 
 </resources>

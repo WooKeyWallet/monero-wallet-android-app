@@ -81,7 +81,7 @@ class GenerateWalletViewModel : BaseViewModel() {
         } else {
             walletValidJob = uiScope.launch {
                 withContext(Dispatchers.IO) {
-                    val symbol = sharedPreferences().getString("symbol", "") ?: ""
+                    val symbol = sharedPreferences().getString("symbol", "XMR") ?: "XMR"
                     val count = AppDatabase.getInstance().walletDao().countWalletsByName(symbol, it)
                     if (count > 0) {
                         walletNameError.postValue(true)

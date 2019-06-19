@@ -80,6 +80,14 @@ interface WalletDao {
     fun getWalletById(id: Int): Wallet?
 
     /**
+     * Select the wallet from the wallets table by id.
+     *
+     * @return wallet.
+     */
+    @Query("SELECT * FROM wallets WHERE _id = :id")
+    fun loadWalletById(id: Int): LiveData<Wallet>
+
+    /**
      * Select the active wallet from the wallets table.
      *
      * @return active wallet.

@@ -7,10 +7,8 @@ import android.os.Bundle
 import android.view.View
 import io.wookey.wallet.R
 import io.wookey.wallet.base.BaseTitleSecondActivity
-import io.wookey.wallet.feature.coin.SearchCoinActivity
 import io.wookey.wallet.support.BackgroundHelper
 import io.wookey.wallet.support.REQUEST_SCAN_ADDRESS
-import io.wookey.wallet.support.REQUEST_SELECT_COIN
 import io.wookey.wallet.support.extensions.afterTextChanged
 import io.wookey.wallet.support.extensions.setImage
 import kotlinx.android.synthetic.main.activity_add_address.*
@@ -58,10 +56,6 @@ class AddAddressActivity : BaseTitleSecondActivity() {
             }
         })
 
-        selectCoin.setOnClickListener {
-            selectCoin()
-        }
-
         confirm.background = BackgroundHelper.getButtonBackground(this)
         confirm.setOnClickListener {
             viewModel.next()
@@ -80,10 +74,6 @@ class AddAddressActivity : BaseTitleSecondActivity() {
 
     private fun scanAddress() {
         startActivityForResult(Intent(this, ScanActivity::class.java), REQUEST_SCAN_ADDRESS)
-    }
-
-    private fun selectCoin() {
-        startActivityForResult(Intent(this, SearchCoinActivity::class.java), REQUEST_SELECT_COIN)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

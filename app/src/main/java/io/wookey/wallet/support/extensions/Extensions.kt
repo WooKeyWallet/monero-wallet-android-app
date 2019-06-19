@@ -1,10 +1,13 @@
 package io.wookey.wallet.support.extensions
 
+import android.app.Activity
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
+import android.content.Intent
 import android.content.res.Configuration
 import android.content.res.Resources
+import android.net.Uri
 import android.os.Build
 import android.os.LocaleList
 import android.support.v4.app.Fragment
@@ -89,13 +92,27 @@ fun Fragment.versionName(): String {
     return context?.versionName() ?: ""
 }
 
+fun Context.versionCode(): Int {
+    val packageManager = packageManager
+    val packageInfo = packageManager.getPackageInfo(packageName, 0)
+    return packageInfo.versionCode
+}
+
+fun AppCompatActivity.versionCode(): Int {
+    return applicationContext.versionCode()
+}
+
+fun Fragment.versionCode(): Int {
+    return context?.versionCode() ?: 0
+}
+
 fun dp2px(dp: Float): Float {
     return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, Resources.getSystem().displayMetrics)
 }
 
 fun dp2px(dp: Int): Int {
     return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp.toFloat(), Resources.getSystem().displayMetrics)
-            .toInt()
+        .toInt()
 }
 
 fun screenWidth(): Int {
@@ -236,14 +253,17 @@ fun SpannableString.clickableSpan(range: IntRange, color: Int, listener: (View) 
     }, range.start, range.endInclusive, Spannable.SPAN_INCLUSIVE_EXCLUSIVE)
 }
 
-fun View.showTimePicker(startDate: Calendar = Calendar.getInstance().apply { set(2014, 4, 1) }, listener: (Date) -> Unit) {
+fun View.showTimePicker(
+    startDate: Calendar = Calendar.getInstance().apply { set(2014, 4, 1) },
+    listener: (Date) -> Unit
+) {
     setOnClickListener {
         hideKeyboard()
         TimePickerBuilder(context) { date, v -> listener(date) }
-                .setRangDate(startDate, Calendar.getInstance())
-                .setLabel("", "", "", "", "", "")
-                .build()
-                .show()
+            .setRangDate(startDate, Calendar.getInstance())
+            .setLabel("", "", "", "", "", "")
+            .build()
+            .show()
     }
 }
 
@@ -286,7 +306,8 @@ fun Context.isSelectedLanguage(lang: String): Boolean {
     var locale = getLocale()
     if (locale.isNullOrBlank()) {
         locale = if (App.SYSTEM_DEFAULT_LOCALE.language == "zh"
-                && App.SYSTEM_DEFAULT_LOCALE.country == "CN") {
+            && App.SYSTEM_DEFAULT_LOCALE.country == "CN"
+        ) {
             "zh-CN"
         } else {
             "en"
@@ -299,7 +320,8 @@ fun Context.getCurrentLocale(): String {
     var locale = getLocale()
     if (locale.isNullOrBlank()) {
         locale = if (App.SYSTEM_DEFAULT_LOCALE.language == "zh"
-                && App.SYSTEM_DEFAULT_LOCALE.country == "CN") {
+            && App.SYSTEM_DEFAULT_LOCALE.country == "CN"
+        ) {
             "zh-CN"
         } else {
             "en"
@@ -313,5 +335,16 @@ fun getDisplayName(lang: String): String {
         "zh-CN" -> "简体中文"
         "en" -> "English"
         else -> "English"
+    }
+}
+
+fun Activity.openBrowser(url: String) {
+    //从其他浏览器打开
+    val intent = Intent().apply {
+        action = Intent.ACTION_VIEW
+        data = Uri.parse(url)
+    }
+    if (intent.resolveActivity(packageManager) != null) {
+        startActivity(intent)
     }
 }

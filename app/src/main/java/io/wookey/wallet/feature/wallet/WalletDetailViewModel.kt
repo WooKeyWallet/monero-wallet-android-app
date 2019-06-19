@@ -16,10 +16,12 @@ import kotlinx.coroutines.withContext
 class WalletDetailViewModel : BaseViewModel() {
 
     val wallet = MutableLiveData<Wallet>()
+    val addressSetting = SingleLiveEvent<Unit>()
     val showPasswordPrompt = MutableLiveData<String>()
     val backupMnemonic = SingleLiveEvent<Unit>()
     val backupKey = SingleLiveEvent<Unit>()
     val deleteWallet = SingleLiveEvent<Unit>()
+    val openAddressSetting = MutableLiveData<Intent>()
     val openBackupMnemonic = MutableLiveData<Intent>()
     val openBackupKey = MutableLiveData<Intent>()
 
@@ -43,6 +45,10 @@ class WalletDetailViewModel : BaseViewModel() {
         }
     }
 
+    fun onAddressSettingClick() {
+        addressSetting.call()
+    }
+
     fun onPasswordPromptClick() {
         val value = wallet.value ?: return
         showPasswordPrompt.value = value.passwordPrompt
@@ -54,6 +60,13 @@ class WalletDetailViewModel : BaseViewModel() {
 
     fun onBackupKeyClick() {
         backupKey.call()
+    }
+
+    fun addressSetting(it: String) {
+        openAddressSetting.value = Intent().apply {
+            putExtra("walletId", walletId)
+            putExtra("password", it)
+        }
     }
 
     fun backupMnemonic(it: String) {

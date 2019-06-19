@@ -85,6 +85,15 @@ public class BackgroundHelper {
         return gradientDrawable;
     }
 
+    public static Drawable getRedDotDrawable(Context context) {
+        GradientDrawable gradientDrawable = new GradientDrawable();
+        gradientDrawable.setShape(GradientDrawable.OVAL);
+        gradientDrawable.setColor(ContextCompat.getColor(context, R.color.color_FF3A5C));
+        gradientDrawable.setSize(DisplayHelper.dpToPx(9), DisplayHelper.dpToPx(9));
+        return gradientDrawable;
+    }
+
+
     public static void setItemShadowBackground(View view) {
         ShadowDrawable.setShadowDrawable(view,
                 view.getContext().getResources().getColor(R.color.color_FFFFFF),

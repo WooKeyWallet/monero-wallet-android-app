@@ -1,6 +1,8 @@
 package io.wookey.wallet.feature.asset
 
+import android.app.Activity
 import android.arch.lifecycle.MutableLiveData
+import android.content.Intent
 import android.graphics.Bitmap
 import cn.bingoogolapple.qrcode.zxing.QRCodeEncoder
 import io.wookey.wallet.R
@@ -9,12 +11,12 @@ import io.wookey.wallet.core.XMRWalletController
 import io.wookey.wallet.data.AppDatabase
 import io.wookey.wallet.data.entity.Asset
 import io.wookey.wallet.data.entity.Wallet
+import io.wookey.wallet.support.REQUEST_SELECT_SUB_ADDRESS
 import io.wookey.wallet.support.extensions.dp2px
 import io.wookey.wallet.support.viewmodel.SingleLiveEvent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.lang.StringBuilder
 
 class ReceiveViewModel : BaseViewModel() {
 
@@ -42,10 +44,10 @@ class ReceiveViewModel : BaseViewModel() {
             try {
                 withContext(Dispatchers.IO) {
                     val asset = AppDatabase.getInstance().assetDao().getAssetById(assetId)
-                            ?: throw IllegalStateException()
+                        ?: throw IllegalStateException()
                     activeAsset.postValue(asset)
                     val wallet = AppDatabase.getInstance().walletDao().getActiveWallet()
-                            ?: throw IllegalStateException()
+                        ?: throw IllegalStateException()
                     activeWallet.postValue(wallet)
                     address.postValue(wallet.address)
                     if (XMRWalletController.isAddressValid(wallet.address)) {
@@ -138,6 +140,31 @@ class ReceiveViewModel : BaseViewModel() {
                 } else {
                     QRCodeBitmap.postValue(null)
                 }
+            }
+        }
+    }
+
+    fun generateQRCode(address: String) {
+        uiScope.launch {
+            withContext(Dispatchers.IO) {
+                if (XMRWalletController.isAddressValid(address)) {
+                    QRCodeBitmap.postValue(QRCodeEncoder.syncEncodeQRCode(address, dp2px(115)))
+                } else {
+                    QRCodeBitmap.postValue(null)
+                }
+            }
+        }
+    }
+
+    fun handleResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (resultCode != Activity.RESULT_OK) {
+            return
+        }
+        when (requestCode) {
+            REQUEST_SELECT_SUB_ADDRESS -> {
+                val subAddress = data?.getStringExtra("subAddress") ?: return
+                address.value = subAddress
+                generateQRCode(subAddress)
             }
         }
     }

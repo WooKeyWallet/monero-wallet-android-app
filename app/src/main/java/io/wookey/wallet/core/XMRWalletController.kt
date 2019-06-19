@@ -7,6 +7,7 @@ import io.wookey.monero.data.Node
 import io.wookey.monero.data.TxData
 import io.wookey.monero.model.*
 import io.wookey.monero.util.RestoreHeight
+import io.wookey.wallet.data.entity.SubAddress
 import org.json.JSONObject
 import java.io.*
 import java.net.HttpURLConnection
@@ -32,28 +33,33 @@ object XMRWalletController {
 
     fun createWallet(aFile: File, password: String): io.wookey.wallet.data.entity.Wallet {
         val newWallet = WalletManager.getInstance()
-                .createWallet(aFile, password, MNEMONIC_LANGUAGE)
+            .createWallet(aFile, password, MNEMONIC_LANGUAGE)
         val success = newWallet.status == Wallet.Status.Status_Ok
         return close(success, newWallet)
     }
 
-    fun recoveryWallet(aFile: File, password: String, mnemonic: String, restoreHeight: Long): io.wookey.wallet.data.entity.Wallet {
+    fun recoveryWallet(
+        aFile: File,
+        password: String,
+        mnemonic: String,
+        restoreHeight: Long
+    ): io.wookey.wallet.data.entity.Wallet {
         val newWallet = WalletManager.getInstance()
-                .recoveryWallet(aFile, password, mnemonic, restoreHeight)
+            .recoveryWallet(aFile, password, mnemonic, restoreHeight)
         val success = newWallet.status == Wallet.Status.Status_Ok
         return close(success, newWallet)
     }
 
     fun createWalletWithKeys(
-            aFile: File,
-            password: String,
-            restoreHeight: Long,
-            address: String,
-            viewKey: String,
-            spendKey: String
+        aFile: File,
+        password: String,
+        restoreHeight: Long,
+        address: String,
+        viewKey: String,
+        spendKey: String
     ): io.wookey.wallet.data.entity.Wallet {
         val newWallet = WalletManager.getInstance()
-                .createWalletWithKeys(aFile, password, MNEMONIC_LANGUAGE, restoreHeight, address, viewKey, spendKey)
+            .createWalletWithKeys(aFile, password, MNEMONIC_LANGUAGE, restoreHeight, address, viewKey, spendKey)
         val success = newWallet.status == Wallet.Status.Status_Ok
         return close(success, newWallet)
     }
@@ -86,7 +92,7 @@ object XMRWalletController {
     }
 
     fun verifyWalletPasswordOnly(keyPath: String, password: String) =
-            WalletManager.getInstance().verifyWalletPasswordOnly(keyPath, password)
+        WalletManager.getInstance().verifyWalletPasswordOnly(keyPath, password)
 
 
     fun openWallet(path: String, password: String) {
@@ -287,11 +293,11 @@ object XMRWalletController {
     fun isPaymentIdValid(paymentId: String) = Wallet.isPaymentIdValid(paymentId)
 
     fun createTransaction(
-            isAll: Boolean = false,
-            dstAddress: String,
-            paymentId: String?,
-            amount: String, mixinCount: Int = 10,
-            priority: PendingTransaction.Priority = PendingTransaction.Priority.Priority_Default
+        isAll: Boolean = false,
+        dstAddress: String,
+        paymentId: String?,
+        amount: String, mixinCount: Int = 10,
+        priority: PendingTransaction.Priority = PendingTransaction.Priority.Priority_Default
     ) {
 
         val wallet = getWallet() ?: throw IllegalStateException("wallet opened failed")
@@ -380,7 +386,7 @@ object XMRWalletController {
         var time = Long.MAX_VALUE
         val split = url.split(":")
         val connection = URL("http", split[0], split[1].toInt(), "json_rpc").openConnection() as? HttpURLConnection
-                ?: throw IllegalArgumentException("url is invalid")
+            ?: throw IllegalArgumentException("url is invalid")
         connection.connectTimeout = timeout
         connection.readTimeout = timeout
         connection.doInput = true
@@ -412,5 +418,19 @@ object XMRWalletController {
         }
         connection.disconnect()
         return time
+    }
+
+    fun addSubAddress(label: String) {
+        getWallet()?.addSubaddress(label)
+        getWallet()?.store()
+    }
+
+    fun getSubAddresses(): List<SubAddress> {
+        val list = getWallet()?.subaddresses ?: emptyList()
+        val subAddress = mutableListOf<SubAddress>()
+        list.forEach {
+            subAddress.add(SubAddress(it.rowId, it.address, it.label))
+        }
+        return subAddress
     }
 }

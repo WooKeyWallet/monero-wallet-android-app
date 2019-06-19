@@ -66,14 +66,24 @@
                 android:src="@drawable/icon_copy_bold" />
 
             <ImageView
-                    android:id="@+id/visible"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/address"
-                    android:layout_marginTop="6dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_toStartOf="@id/copyAddress"
-                    android:src="@drawable/icon_visible_space" />
+                android:id="@+id/switchAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/address"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="10dp"
+                android:layout_toStartOf="@id/copyAddress"
+                android:src="@drawable/icon_switch_address" />
+
+            <ImageView
+                android:id="@+id/visible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/address"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="10dp"
+                android:layout_toStartOf="@id/switchAddress"
+                android:src="@drawable/icon_visible_space" />
         </RelativeLayout>
 
         <TextView

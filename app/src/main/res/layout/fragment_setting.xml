@@ -99,7 +99,7 @@
             app:sDividerLineColor="@color/color_DEDEDE"
             app:sDividerLineHeight="1px"
             app:sLeftIconMarginLeft="25dp"
-            app:sLeftIconRes="@drawable/icon_help_center"
+            app:sLeftIconRes="@drawable/icon_contact_us"
             app:sLeftTextColor="@color/color_333333"
             app:sLeftTextSize="@dimen/text_size_16"
             app:sLeftTextString="@string/contact_us"

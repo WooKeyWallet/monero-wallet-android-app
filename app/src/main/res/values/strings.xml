@@ -64,7 +64,7 @@
     <string name="add_address">Add Address</string>
     <string name="notes">Note</string>
     <string name="address">Address</string>
-    <string name="select_coin">Select Asset</string>
+    <string name="select_coin">Asset</string>
     <string name="cancel">Cancel</string>
     <string name="copy">Copy</string>
 
@@ -186,5 +186,14 @@
     <string name="dialog_block_height_content">If you don\'t set date or height, it may take several hours to sync.</string>
     <string name="dialog_block_height_cancel">Continue</string>
     <string name="dialog_block_height_confirm">Back to set</string>
+
+    <string name="find_new_version">new version</string>
+
+    <string name="address_setting">Addresses</string>
+    <string name="address_setting_prompt_one">You can add more subaddresses to protect your privacy.</string>
+    <string name="address_setting_prompt_two">The address which you select, would become the default address.</string>
+    <string name="address_tag">Address Label</string>
+    <string name="address_tag_hint">Please set the label of the new address.</string>
+    <string name="primary_address">Primary address</string>
 
 </resources>

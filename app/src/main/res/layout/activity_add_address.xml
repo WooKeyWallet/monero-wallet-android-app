@@ -75,9 +75,7 @@
             style="@style/text_16_333333"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:drawableEnd="@drawable/arrow_right"
-            android:drawablePadding="10dp" />
+            android:layout_marginStart="5dp" />
     </LinearLayout>
 
     <TextView

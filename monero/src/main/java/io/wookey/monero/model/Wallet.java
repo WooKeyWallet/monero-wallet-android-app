@@ -20,11 +20,14 @@ package io.wookey.monero.model;
 
 import android.nfc.Tag;
 import android.util.Log;
+
 import io.wookey.monero.data.TxData;
 
 import java.io.File;
+import java.lang.annotation.Retention;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 public class Wallet {
@@ -403,7 +406,17 @@ public class Wallet {
         return subaddress;
     }
 
+    public void addSubaddress(String label) {
+        addSubaddress(accountIndex, label);
+    }
+
+    public List<SubaddressRow> getSubaddresses() {
+        return getSubaddresses(accountIndex);
+    }
+
     public native void addSubaddress(int accountIndex, String label);
+
+    public native List<SubaddressRow> getSubaddresses(int accountIndex);
 
     public String getLastSubaddress(int accountIndex) {
         return getSubaddress(accountIndex, getNumSubaddresses(accountIndex) - 1);

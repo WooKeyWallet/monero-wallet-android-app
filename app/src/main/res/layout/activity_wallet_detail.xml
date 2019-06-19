@@ -27,37 +27,6 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp" />
 
-        <RelativeLayout
-            android:id="@+id/addressBg"
-            android:layout_width="match_parent"
-            android:layout_height="28dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="40dp"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp">
-
-            <TextView
-                android:id="@+id/address"
-                style="@style/text_14_333333"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"
-                android:ellipsize="middle"
-                android:gravity="center"
-                android:maxEms="10"
-                android:singleLine="true" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/icon_copy" />
-        </RelativeLayout>
-
         <View
             android:layout_width="match_parent"
             android:layout_height="1px"
@@ -89,10 +58,34 @@
             app:sUseRipple="false" />
 
         <com.allen.library.SuperTextView
+            android:id="@+id/address"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/color_FFFFFF"
+            app:sDividerLineColor="@color/color_DEDEDE"
+            app:sDividerLineHeight="1px"
+            app:sLeftTextColor="@color/color_333333"
+            app:sLeftTextSize="@dimen/text_size_16"
+            app:sLeftTextString="@string/address_setting"
+            app:sLeftViewGravity="left_center"
+            app:sLeftViewMarginLeft="25dp"
+            app:sRightIconMarginRight="25dp"
+            app:sRightIconRes="@drawable/arrow_right"
+            app:sRightTextColor="@color/color_9E9E9E"
+            app:sRightTextSize="@dimen/text_size_14"
+            app:sUseRipple="false" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/color_F6F6F6" />
+
+        <com.allen.library.SuperTextView
             android:id="@+id/passwordPrompt"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@color/color_FFFFFF"
+            app:sBottomDividerLineMarginLeft="25dp"
             app:sDividerLineColor="@color/color_DEDEDE"
             app:sDividerLineHeight="1px"
             app:sLeftTextColor="@color/color_333333"
@@ -103,11 +96,6 @@
             app:sRightIconMarginRight="25dp"
             app:sRightIconRes="@drawable/arrow_right"
             app:sUseRipple="false" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:background="@color/color_F6F6F6" />
 
         <com.allen.library.SuperTextView
             android:id="@+id/backupMnemonic"

@@ -3,6 +3,7 @@ package io.wookey.wallet
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
+import android.view.View
 import io.wookey.wallet.base.BaseActivity
 import io.wookey.wallet.feature.asset.AssetFragment
 import io.wookey.wallet.feature.setting.LanguageActivity
@@ -44,6 +45,16 @@ class MainActivity : BaseActivity() {
             switchFragment(1)
         } else {
             switchFragment(0)
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (App.newVersion) {
+            dot.visibility = View.VISIBLE
+            dot.setImageDrawable(BackgroundHelper.getRedDotDrawable(this))
+        } else {
+            dot.visibility = View.GONE
         }
     }
 

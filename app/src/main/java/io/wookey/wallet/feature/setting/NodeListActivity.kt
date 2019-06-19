@@ -18,6 +18,7 @@ import io.wookey.wallet.data.AppDatabase
 import io.wookey.wallet.data.entity.Node
 import io.wookey.wallet.dialog.NodeEditDialog
 import io.wookey.wallet.support.extensions.dp2px
+import io.wookey.wallet.support.extensions.openBrowser
 import io.wookey.wallet.support.extensions.toast
 import io.wookey.wallet.widget.DividerItemDecoration
 import io.wookey.wallet.widget.IOSDialog
@@ -32,7 +33,7 @@ class NodeListActivity : BaseTitleSecondActivity() {
 
         val viewModel = ViewModelProviders.of(this).get(NodeListViewModel::class.java)
 
-        val symbol = intent.getStringExtra("symbol")
+        val symbol = "XMR"
         val canDelete = intent.getBooleanExtra("canDelete", true)
         viewModel.setCanDelete(canDelete)
         setCenterTitle("$symbol ${getString(R.string.node_setting)}")
@@ -94,17 +95,6 @@ class NodeListActivity : BaseTitleSecondActivity() {
             setResult(Activity.RESULT_OK, Intent().apply { putExtra("node", it) })
             finish()
         })
-    }
-
-    private fun openBrowser(url: String) {
-        //从其他浏览器打开
-        val intent = Intent().apply {
-            action = Intent.ACTION_VIEW
-            data = Uri.parse(url)
-        }
-        if (intent.resolveActivity(packageManager) != null) {
-            startActivity(intent)
-        }
     }
 
     class NodeAdapter(val data: List<Node>, val viewModel: NodeListViewModel) : RecyclerView.Adapter<NodeAdapter.ViewHolder>() {
