@@ -1,14 +1,12 @@
 # WooKey Wallet: For Privacy
 
-> Less Privacy Collection; More Privacy Coins; Fully Open Source; Better User Experience
+> WooKey’s Monero Wallet enables users to securely store, send, receive XMR and monitor their balances.
+
+> Monero Wallet is a fully open-source, decentralized and free app, designed by WooKey, that provides the best possible     experience for users.
 
 ## Less Privacy Collection
 
-Don't collect and retain personal information, unless it's integral to our product or service.
-
-## More Privacy Coins
-
-Support privacy coins including Monero, Dash. Create or import private keys quickly and easily.
+Doesn’t collect and retain personal information unless it's integral to our product or service.
 
 ## Fully Open Source
 
@@ -28,9 +26,14 @@ Simple, efficient, ease of use. The easiest way to get started with cryptocurren
 
 https://github.com/WooKeyWallet/monero-android-lib
 
-## About Us
+## About Monero
 
-The WooKey team develops secure, professional, reliable and simple digital asset wallet applications. We strive to protect private data and property of users. We measure success by the ease with which new and non-tech savvy users can get started using cryptocurrencies.
+Monero is a private digital currency, is cash for a connected world. It’s fast, private, and secure. With Monero, you are your own bank. You can spend safely, knowing that others cannot see your balances or track your activity.
+
+## About WooKey
+
+WooKey aims to support all the privacy focused cryptocurrencies, or any cryptocurrencies with confidential transaction funtions.
+Also, it is WooKey's mission to provide best cryptocurrency wallet apps with the best possible experience for users.
 
 ## Donating
 
