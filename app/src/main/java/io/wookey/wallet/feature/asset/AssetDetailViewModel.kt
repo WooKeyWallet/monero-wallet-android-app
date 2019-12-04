@@ -146,6 +146,7 @@ class AssetDetailViewModel : BaseViewModel() {
     private fun refresh(firstBlock: Long): Long {
         var firstBlockHeight = firstBlock
         if (XMRWalletController.isSynchronized()) {
+            receiveEnabled.postValue(true)
             sendEnabled.postValue(true)
             synchronized.postValue(R.string.block_synchronized)
             synchronizeProgress.postValue(100)
@@ -167,6 +168,7 @@ class AssetDetailViewModel : BaseViewModel() {
                 synchronizeProgress.postValue(x)
                 synchronizing.postValue(n)
             } else {
+                receiveEnabled.postValue(true)
                 sendEnabled.postValue(true)
                 synchronized.postValue(R.string.block_synchronized)
                 synchronizeProgress.postValue(100)
@@ -215,7 +217,6 @@ class AssetDetailViewModel : BaseViewModel() {
 
     private fun switchNode(node: Node) {
 
-        val activeWallet = AppDatabase.getInstance().walletDao().getActiveWallet() ?: return
         val wallet = XMRWalletController.getWallet()
         // 异常处理
         if (wallet == null) {
@@ -234,6 +235,7 @@ class AssetDetailViewModel : BaseViewModel() {
             uiScope.launch {
                 try {
                     withContext(Dispatchers.IO) {
+                        val activeWallet = AppDatabase.getInstance().walletDao().getActiveWallet() ?: throw IllegalStateException()
                         XMRWalletController.stopRefresh()
                         indeterminate.postValue(null)
                         connecting.postValue(R.string.block_connecting)

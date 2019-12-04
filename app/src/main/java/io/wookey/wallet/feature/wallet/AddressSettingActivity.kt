@@ -1,9 +1,7 @@
 package io.wookey.wallet.feature.wallet
 
-import android.app.Activity
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
-import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -74,8 +72,6 @@ class AddressSettingActivity : BaseTitleSecondActivity() {
 
         viewModel.dataChanged.observe(this, Observer {
             adapter.notifyDataSetChanged()
-            setResult(Activity.RESULT_OK, Intent().apply { putExtra("subAddress", it) })
-            finish()
         })
 
         viewModel.showLoading.observe(this, Observer { showLoading() })

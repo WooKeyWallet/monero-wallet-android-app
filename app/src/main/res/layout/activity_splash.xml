@@ -9,14 +9,6 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="204dp"
+        android:layout_marginTop="135dp"
         android:src="@drawable/icon_splash_wookey" />
-
-    <TextView
-        style="@style/text_13_93D6CF"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:includeFontPadding="false"
-        android:text="For Privacy"/>
 </LinearLayout>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">WooKey Wallet</string>
+    <string name="app_name">Monero Wallet</string>
 
     <string name="slogan">For Privacy</string>
-    <string name="wallet_prompt">When using WooKey Wallet you must first create a new wallet or restore an existing one.</string>
+    <string name="wallet_prompt">When using Monero Wallet you must first create a new wallet or restore an existing one.</string>
     <string name="create_wallet">Create Wallet</string>
     <string name="recovery_wallet">Restore Wallet</string>
 

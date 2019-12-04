@@ -97,6 +97,8 @@ class AssetFragment : BaseFragment() {
             adapter.notifyVisibilityChanged(false)
         })
 
+        viewModel.initVisible()
+
         AppDatabase.getInstance().walletDao().loadActiveWallet().observe(this, Observer { wallet ->
             wallet?.let {
                 centerTitle.text = it.symbol

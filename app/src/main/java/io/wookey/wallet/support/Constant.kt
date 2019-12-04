@@ -42,10 +42,5 @@ val nodeArray = arrayOf(
             symbol = "XMR"
             url = "uwillrunanodesoon.moneroworld.com:18089"
             isSelected = false
-        },
-        Node().apply {
-            symbol = "XMR"
-            url = "124.160.224.28:18081"
-            isSelected = false
         }
 )

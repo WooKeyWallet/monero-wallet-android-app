@@ -18,16 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:src="@drawable/icon_wallet" />
-
-    <TextView
-        android:id="@+id/slogan"
-        style="@style/text_12_004C6D"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="6dp"
-        android:text="@string/slogan" />
+        android:src="@drawable/icon_monero_wallet" />
 
     <Space
         android:layout_width="match_parent"

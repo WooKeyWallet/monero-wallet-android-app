@@ -115,6 +115,9 @@ class VerifyMnemonicActivity : BaseTitleSecondActivity() {
             if (mnemonic1.text.isNullOrBlank()) {
                 return@setOnClickListener
             }
+            if (positionList.size != 1) {
+                return@setOnClickListener
+            }
             mnemonic1.text = ""
             positionList.removeAt(0)
             adapter.notifyDataSetChanged()
@@ -123,12 +126,18 @@ class VerifyMnemonicActivity : BaseTitleSecondActivity() {
             if (mnemonic2.text.isNullOrBlank()) {
                 return@setOnClickListener
             }
+            if (positionList.size != 2) {
+                return@setOnClickListener
+            }
             mnemonic2.text = ""
             positionList.removeAt(1)
             adapter.notifyDataSetChanged()
         }
         mnemonic3.setOnClickListener {
             if (mnemonic3.text.isNullOrBlank()) {
+                return@setOnClickListener
+            }
+            if (positionList.size != 3) {
                 return@setOnClickListener
             }
             mnemonic3.text = ""

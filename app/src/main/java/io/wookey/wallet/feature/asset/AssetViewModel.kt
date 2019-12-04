@@ -20,6 +20,15 @@ class AssetViewModel : BaseViewModel() {
 
     private var asset: Asset? = null
 
+    fun initVisible() {
+        val visible = sharedPreferences().getBoolean("assetVisible", true)
+        if (visible) {
+            assetVisible.call()
+        } else {
+            assetInvisible.call()
+        }
+    }
+
     fun onItemClick(value: Asset) {
         asset = value
         showPasswordDialog.call()

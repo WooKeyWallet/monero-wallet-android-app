@@ -19,13 +19,14 @@ import kotlinx.android.synthetic.main.activity_receive.*
 class ReceiveActivity : BaseTitleSecondActivity() {
 
     lateinit var viewModel: ReceiveViewModel
+    var assetId: Int = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_receive)
 
         val password = intent.getStringExtra("password")
-        val assetId = intent.getIntExtra("assetId", -1)
+        assetId = intent.getIntExtra("assetId", -1)
 
         if (password.isNullOrBlank()) {
             finish()
@@ -145,8 +146,12 @@ class ReceiveActivity : BaseTitleSecondActivity() {
         })
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        viewModel.handleResult(requestCode, resultCode, data)
+    override fun hide(): Boolean {
+        return false
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.setAssetId(assetId)
     }
 }

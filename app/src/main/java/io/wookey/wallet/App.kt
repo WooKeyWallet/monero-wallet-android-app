@@ -21,7 +21,7 @@ class App : Application() {
     companion object {
         var SYSTEM_DEFAULT_LOCALE: Locale by DelegatesExt.notNullSingleValue()
         var instance: App by DelegatesExt.notNullSingleValue()
-        var newVersion = true
+        var newVersion = false
     }
 
     override fun attachBaseContext(base: Context?) {

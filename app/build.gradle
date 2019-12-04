@@ -3,34 +3,12 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
-def computeVersionCode() {
-    def cmd = 'git rev-list HEAD --first-parent --count'
-    def trim = cmd.execute().text.trim()
-    if (trim == null || trim.length() == 0) {
-        trim = 1
-    }
-    trim.toInteger()
-    103
+static def computeVersionCode() {
+    105
 }
 
-def gitVersionTag() {
-    def cmd = 'git describe --tags'
-    def version = cmd.execute().text.trim()
-
-    def pattern = "-(\\d+)-g"
-    def matcher = version =~ pattern
-
-    if (matcher) {
-        version = version.substring(0, matcher.start()) + "." + matcher[0][1]
-    } else {
-        version = version + ".0"
-    }
-
-    return version
-}
-
-def computeVersionName() {
-    return "1.0.3"
+static def computeVersionName() {
+    return "1.0.5"
 }
 
 android {
@@ -70,7 +48,7 @@ android {
         variant.outputs.all { output ->
             def abiName = output.getFilter(com.android.build.OutputFile.ABI)
             if (abiName == null) abiName = "universal"
-            outputFileName = "wookey-${variant.versionName}-${variant.versionCode}-${abiName}.apk"
+            outputFileName = "monero-${variant.versionName}-${variant.versionCode}-${abiName}.apk"
         }
     }
 }

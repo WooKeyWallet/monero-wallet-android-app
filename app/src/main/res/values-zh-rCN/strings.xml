@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">WooKey Wallet</string>
+    <string name="app_name">Monero Wallet</string>
 
     <string name="slogan">为 隐 私 而 生</string>
-    <string name="wallet_prompt">使用 WooKey Wallet 至少需要一个钱包，您可以选择创建钱包或导入已有的钱包</string>
+    <string name="wallet_prompt">使用 Monero Wallet 至少需要一个钱包，您可以选择创建钱包或导入已有的钱包</string>
     <string name="create_wallet">创建钱包</string>
     <string name="recovery_wallet">导入钱包</string>
 
@@ -33,7 +33,7 @@
     <string name="recovery_mnemonic">助记词导入</string>
     <string name="recovery_private_key">私钥导入</string>
     <string name="mnemonic_title">助记词</string>
-    <string name="mnemonic_prompt">输入助记词，用空格分割</string>
+    <string name="mnemonic_prompt">输入助记词，用空格分隔</string>
     <string name="block_height_prompt">* 为了极大提升区块同步速度，我们强烈建议您填写区块号或近期交易时间</string>
     <string name="block_height_optional">区块号（选填）</string>
     <string name="transaction_date">近期交易日期（选填）</string>
