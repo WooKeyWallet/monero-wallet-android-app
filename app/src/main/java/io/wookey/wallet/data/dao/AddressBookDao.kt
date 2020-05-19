@@ -1,11 +1,9 @@
 package io.wookey.wallet.data.dao
 
 import android.arch.lifecycle.LiveData
-import android.arch.persistence.room.Dao
-import android.arch.persistence.room.Insert
-import android.arch.persistence.room.OnConflictStrategy
-import android.arch.persistence.room.Query
+import android.arch.persistence.room.*
 import io.wookey.wallet.data.entity.AddressBook
+import io.wookey.wallet.data.entity.Asset
 
 @Dao
 interface AddressBookDao {
@@ -33,4 +31,20 @@ interface AddressBookDao {
      */
     @Query("SELECT * FROM address_books WHERE symbol=:symbol ORDER BY _id DESC")
     fun loadAddressBooksBySymbol(symbol: String): LiveData<List<AddressBook>>
+
+    /**
+     * Update a addressBook in the database
+     *
+     * @param addressBook the addressBook to be updated.
+     */
+    @Update(onConflict = OnConflictStrategy.REPLACE)
+    fun updateAddressBook(addressBook: AddressBook)
+
+    /**
+     * Delete addressBook in the database
+     *
+     * @param addressBook the addressBook to be deleted.
+     */
+    @Delete
+    fun deleteAddressBook(addressBook: AddressBook)
 }

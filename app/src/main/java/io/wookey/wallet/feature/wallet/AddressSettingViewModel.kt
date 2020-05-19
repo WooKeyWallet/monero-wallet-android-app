@@ -21,6 +21,7 @@ class AddressSettingViewModel : BaseViewModel() {
     var currentAddress: String? = null
     var wallet: Wallet? = null
 
+    val updateAddress = MutableLiveData<SubAddress>()
     val subAddresses = MutableLiveData<List<SubAddress>>()
     val showLoading = MutableLiveData<Boolean>()
     val hideLoading = MutableLiveData<Boolean>()
@@ -103,6 +104,10 @@ class AddressSettingViewModel : BaseViewModel() {
             val path = repository.getWalletFilePath(wallet.name)
             XMRWalletController.openWallet(path, password!!)
         }
+    }
+
+    fun onLabelClick(subAddress: SubAddress) {
+        updateAddress.value = subAddress
     }
 
     fun onAddressClick(subAddress: SubAddress) {

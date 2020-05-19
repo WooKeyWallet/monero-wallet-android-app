@@ -48,6 +48,7 @@ class SettingFragment : BaseFragment() {
 
         about.setRightString(versionName())
 
+        market.setOnClickListener { openMarket() }
     }
 
     override fun onResume() {
@@ -85,5 +86,9 @@ class SettingFragment : BaseFragment() {
 
     private fun openAbout() {
         startActivity(Intent(context, AboutActivity::class.java))
+    }
+
+    private fun openMarket(){
+        startActivity(Intent(context, MarketActivity::class.java))
     }
 }

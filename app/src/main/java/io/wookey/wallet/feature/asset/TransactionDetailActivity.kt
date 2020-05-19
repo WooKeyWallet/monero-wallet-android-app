@@ -19,7 +19,7 @@ class TransactionDetailActivity : BaseTitleSecondActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_transaction_detail)
 
-        val transaction = intent.getParcelableExtra("transaction")as? TransactionInfo
+        val transaction = intent.getParcelableExtra("transaction") as? TransactionInfo
         if (transaction == null) {
             finish()
             return
@@ -48,9 +48,18 @@ class TransactionDetailActivity : BaseTitleSecondActivity() {
         if (transaction.direction == 1) {
             direction.text = getString(R.string.send)
             addressTitle.text = getString(R.string.received_address)
+
+            labelRow.visibility = View.GONE
         } else {
             direction.text = getString(R.string.receive)
             addressTitle.text = getString(R.string.sent_address)
+
+            labelRow.visibility = View.VISIBLE
+            if (transaction.subAddressLabel.isNullOrBlank()) {
+                label.setText(R.string.no_label)
+            } else {
+                label.text = transaction.subAddressLabel
+            }
         }
         amount.text = "${transaction.amount?.formatterAmountStrip() ?: "--"}"
         fee.text = "${transaction.fee?.formatterAmountStrip() ?: "--"}"

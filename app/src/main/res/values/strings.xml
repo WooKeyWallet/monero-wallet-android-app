@@ -196,4 +196,22 @@
     <string name="address_tag_hint">Please set the label of the new address.</string>
     <string name="primary_address">Primary address</string>
 
+    <string name="dialog_title_ssl_error">SSL verification failed, do you wish to continue?</string>
+
+    <string name="no_label">None</string>
+
+    <string name="edit_address_tag">Edit Label</string>
+
+    <string name="delete">Delete</string>
+    <string name="delete_confirm">Confirm</string>
+
+    <string name="edit_note">Edit Note</string>
+    <string name="input_note">Please enter address note</string>
+
+    <string name="market">Markets</string>
+
+    <string name="address_tag_table">Address Label: </string>
+
+    <string name="complete">Done</string>
+
 </resources>

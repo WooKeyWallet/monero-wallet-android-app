@@ -429,4 +429,7 @@ public class Wallet {
 
     private native int getDeviceTypeJ();
 
+    public void setSubaddressLabel(int addressIndex, String label) {
+        setSubaddressLabel(accountIndex, addressIndex, label);
+    }
 }

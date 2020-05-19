@@ -62,6 +62,10 @@
         <item name="android:textColor">@color/color_8D8D8D</item>
     </style>
 
+    <style name="text_12_9CA9B5" parent="text_12">
+        <item name="android:textColor">@color/color_9CA9B5</item>
+    </style>
+
     <style name="text_13">
         <item name="android:textSize">@dimen/text_size_13</item>
     </style>
@@ -128,6 +132,18 @@
 
     <style name="text_16_9E9E9E" parent="text_16">
         <item name="android:textColor">@color/color_9E9E9E</item>
+    </style>
+
+    <style name="text_16_070E26" parent="text_16">
+        <item name="android:textColor">@color/color_070E26</item>
+    </style>
+
+    <style name="text_16_314659" parent="text_16">
+        <item name="android:textColor">@color/color_314659</item>
+    </style>
+
+    <style name="text_16_027AFF" parent="text_16">
+        <item name="android:textColor">@color/color_027AFF</item>
     </style>
 
     <style name="text_18">
@@ -224,6 +240,11 @@
         <item name="android:backgroundDimEnabled">true</item>
         <!--  颜色  -->
         <item name="colorAccent">@color/color_00A761</item>
+    </style>
+
+    <style name="BottomDialog.Animation" parent="Animation.AppCompat.Dialog">
+        <item name="android:windowEnterAnimation">@anim/translate_dialog_in</item>
+        <item name="android:windowExitAnimation">@anim/translate_dialog_out</item>
     </style>
 
 </resources>

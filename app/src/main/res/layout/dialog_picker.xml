@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color_FFFFFF"
+    android:paddingBottom="15dp">
+
+    <TextView
+        android:id="@+id/cancel"
+        style="@style/text_16_027AFF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:text="@string/cancel"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/confirm"
+        style="@style/text_16_027AFF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:padding="15dp"
+        android:text="@string/complete"
+        android:textStyle="bold" />
+
+    <com.weigan.loopview.LoopView
+        android:id="@+id/loopView"
+        android:layout_width="match_parent"
+        android:layout_height="145dp"
+        android:layout_below="@id/cancel"
+        android:layout_marginTop="15dp"
+        app:awv_centerTextColor="0xFF333333"
+        app:awv_dividerTextColor="0xFFD8D8D8"
+        app:awv_itemsVisibleCount="7"
+        app:awv_lineSpace="2"
+        app:awv_outerTextColor="0xFF999999"
+        app:awv_textsize="18" />
+</RelativeLayout>

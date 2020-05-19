@@ -10,7 +10,7 @@ import io.wookey.wallet.App
 import io.wookey.wallet.data.dao.*
 import io.wookey.wallet.data.entity.*
 
-@Database(entities = [Wallet::class, Asset::class, Node::class, AddressBook::class, TransactionInfo::class], version = 2)
+@Database(entities = [Wallet::class, Asset::class, Node::class, AddressBook::class, TransactionInfo::class], version = 3)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun walletDao(): WalletDao
@@ -47,6 +47,13 @@ abstract class AppDatabase : RoomDatabase() {
             }
         }
 
+        private val MIGRATION_2_3 = object : Migration(2, 3) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                database.execSQL("ALTER TABLE `transactionInfo` "
+                            + " ADD COLUMN `subAddressLabel` TEXT")
+            }
+        }
+
         fun getInstance(context: Context = App.instance): AppDatabase =
                 INSTANCE ?: synchronized(this) {
                     INSTANCE ?: buildDatabase(context).also { INSTANCE = it }
@@ -56,6 +63,7 @@ abstract class AppDatabase : RoomDatabase() {
                 Room.databaseBuilder(context.applicationContext,
                         AppDatabase::class.java, "Wallet.db")
                         .addMigrations(MIGRATION_1_2)
+                        .addMigrations(MIGRATION_2_3)
                         .build()
 
     }

@@ -1,39 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="65dp"
-    android:background="@color/color_FFFFFF"
-    android:paddingStart="25dp"
-    android:paddingEnd="25dp">
-
-    <ImageView
-        android:id="@+id/icon"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:layout_centerVertical="true" />
+    android:layout_height="65dp">
 
     <TextView
-        android:id="@+id/title"
-        style="@style/text_16_333333"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="10dp"
-        android:layout_toEndOf="@id/icon"
-        android:ellipsize="end"
-        android:maxLines="1" />
+        android:id="@+id/delete"
+        style="@style/text_16_FFFFFF"
+        android:layout_width="130dp"
+        android:layout_height="65dp"
+        android:layout_alignParentEnd="true"
+        android:background="@color/color_FF3A5C"
+        android:gravity="center"
+        android:text="@string/delete" />
 
-    <TextView
-        android:id="@+id/subTitle"
-        style="@style/text_12_9E9E9E"
+    <RelativeLayout
+        android:id="@+id/item"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/title"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="10dp"
-        android:layout_toEndOf="@id/icon"
-        android:ellipsize="middle"
-        android:singleLine="true" />
+        android:layout_height="65dp"
+        android:background="@color/color_FFFFFF"
+        android:paddingStart="25dp"
+        android:paddingEnd="25dp">
+
+        <ImageView
+            android:id="@+id/edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_edit_note" />
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_centerVertical="true" />
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/text_16_333333"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="10dp"
+            android:layout_toStartOf="@id/edit"
+            android:layout_toEndOf="@id/icon"
+            android:ellipsize="end"
+            android:maxLines="1" />
+
+        <TextView
+            android:id="@+id/subTitle"
+            style="@style/text_12_9E9E9E"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="10dp"
+            android:layout_toStartOf="@id/edit"
+            android:layout_toEndOf="@id/icon"
+            android:ellipsize="middle"
+            android:singleLine="true" />
+
+    </RelativeLayout>
+
 </RelativeLayout>

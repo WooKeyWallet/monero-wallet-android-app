@@ -50,10 +50,19 @@
             android:padding="12dp">
 
             <TextView
+                android:id="@+id/label"
+                style="@style/text_16_333333"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp" />
+
+            <TextView
                 android:id="@+id/address"
                 style="@style/text_12_333333"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/label"
+                android:layout_marginTop="5dp"
                 android:lineSpacingMultiplier="1.4" />
 
             <ImageView

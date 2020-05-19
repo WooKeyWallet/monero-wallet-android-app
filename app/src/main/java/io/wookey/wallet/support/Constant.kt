@@ -42,5 +42,10 @@ val nodeArray = arrayOf(
             symbol = "XMR"
             url = "uwillrunanodesoon.moneroworld.com:18089"
             isSelected = false
+        },
+        Node().apply {
+            symbol = "XMR"
+            url = "node.imonero.org:18081"
+            isSelected = false
         }
 )

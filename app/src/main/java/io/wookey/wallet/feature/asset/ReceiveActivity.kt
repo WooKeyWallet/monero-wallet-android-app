@@ -54,6 +54,10 @@ class ReceiveActivity : BaseTitleSecondActivity() {
             }
         })
 
+        viewModel.label.observe(this, Observer { value ->
+            label.text = value ?: getString(R.string.no_label)
+        })
+
         viewModel.address.observe(this, Observer { value ->
             address.text = value ?: ""
         })

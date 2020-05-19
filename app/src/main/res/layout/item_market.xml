@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="69dp">
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="39dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/symbol"
+        style="@style/text_16_070E26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/valuation"
+        app:layout_constraintStart_toEndOf="@+id/icon"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/valuation"
+        style="@style/text_12_9CA9B5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/symbol"
+        app:layout_constraintTop_toBottomOf="@id/symbol" />
+
+    <TextView
+        android:id="@+id/price"
+        style="@style/text_16_314659"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="25dp"
+        android:ellipsize="end"
+        android:gravity="end"
+        android:maxLines="1"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/currency"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/symbol"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/currency"
+        style="@style/text_12_9CA9B5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/price"
+        app:layout_constraintTop_toBottomOf="@+id/price" />
+
+</android.support.constraint.ConstraintLayout>

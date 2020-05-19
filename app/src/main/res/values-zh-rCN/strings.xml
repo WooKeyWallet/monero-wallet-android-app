@@ -196,4 +196,22 @@
     <string name="address_tag_hint">请输入地址标签</string>
     <string name="primary_address">主地址</string>
 
+    <string name="dialog_title_ssl_error">SSL认证失败，是否继续访问？</string>
+
+    <string name="no_label">无标签</string>
+
+    <string name="edit_address_tag">编辑标签</string>
+
+    <string name="delete">删除</string>
+    <string name="delete_confirm">确认删除</string>
+
+    <string name="edit_note">编辑备注</string>
+    <string name="input_note">请输入地址备注</string>
+
+    <string name="market">行情</string>
+
+    <string name="address_tag_table">地址标签：</string>
+
+    <string name="complete">完成</string>
+
 </resources>

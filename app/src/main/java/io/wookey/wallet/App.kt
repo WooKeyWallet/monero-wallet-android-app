@@ -5,22 +5,17 @@ import android.app.Application
 import android.content.Context
 import android.content.res.Configuration
 import android.os.Bundle
-import android.util.Log
 import io.wookey.wallet.support.VersionManager
-import io.wookey.wallet.support.extensions.*
-import kotlinx.coroutines.*
-import org.json.JSONObject
-import java.io.BufferedReader
-import java.io.InputStreamReader
-import java.net.HttpURLConnection
-import java.net.URL
+import io.wookey.wallet.support.extensions.getLocale
+import io.wookey.wallet.support.extensions.getSystemDefaultLocale
+import io.wookey.wallet.support.extensions.setLocale
 import java.util.*
 
 class App : Application() {
 
     companion object {
-        var SYSTEM_DEFAULT_LOCALE: Locale by DelegatesExt.notNullSingleValue()
-        var instance: App by DelegatesExt.notNullSingleValue()
+        lateinit var SYSTEM_DEFAULT_LOCALE: Locale
+        lateinit var instance: App
         var newVersion = false
     }
 

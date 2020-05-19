@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import io.wookey.wallet.R
+import io.wookey.wallet.data.entity.SubAddress
 import io.wookey.wallet.support.BackgroundHelper
 import io.wookey.wallet.support.extensions.dp2px
 import io.wookey.wallet.support.extensions.hideKeyboard
@@ -22,6 +23,9 @@ class SubAddressEditDialog : DialogFragment() {
 
     private var cancelListener: (() -> Unit)? = null
     private var confirmListener: (() -> Unit)? = null
+
+    private var walletId = -1
+    private var address: SubAddress? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,12 +51,27 @@ class SubAddressEditDialog : DialogFragment() {
 
         confirm.background = BackgroundHelper.getButtonBackground(context)
 
-        confirm.setOnClickListener {
+        if (walletId != -1) {
+            title.setText(R.string.edit_address_tag)
+        } else {
+            title.setText(R.string.address_tag)
+        }
+
+        confirm.setOnClickListener { _ ->
             val tag = addressTag.text.toString().trim()
             if (tag.isNullOrBlank()) {
                 toast(R.string.address_tag_hint)
             } else {
-                viewModel.addSubAddress(tag)
+                if (walletId != -1) {
+                    if (address == null) {
+                        toast(R.string.data_exception)
+                    }
+                    address?.let {
+                        viewModel.setSubAddressLabel(tag, it)
+                    }
+                } else {
+                    viewModel.addSubAddress(tag)
+                }
             }
         }
 
@@ -102,6 +121,21 @@ class SubAddressEditDialog : DialogFragment() {
             }
             ft.addToBackStack(null)
             newInstance().apply {
+                this.cancelListener = cancelListener
+                this.confirmListener = confirmListener
+            }.show(ft, TAG)
+        }
+
+        fun display(fm: FragmentManager, walletId: Int, address: SubAddress?, cancelListener: (() -> Unit)? = null, confirmListener: (() -> Unit)?) {
+            val ft = fm.beginTransaction()
+            val prev = fm.findFragmentByTag(TAG)
+            if (prev != null) {
+                ft.remove(prev)
+            }
+            ft.addToBackStack(null)
+            newInstance().apply {
+                this.walletId = walletId
+                this.address = address
                 this.cancelListener = cancelListener
                 this.confirmListener = confirmListener
             }.show(ft, TAG)

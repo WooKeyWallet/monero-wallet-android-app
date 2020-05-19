@@ -39,5 +39,7 @@ data class TransactionInfo(
         @ColumnInfo
         var txKey: String? = "",
         @ColumnInfo
-        var address: String? = ""
+        var address: String? = "",
+        @ColumnInfo
+        var subAddressLabel: String? = ""
 ) : Parcelable

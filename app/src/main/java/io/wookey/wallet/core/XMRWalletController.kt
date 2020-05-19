@@ -33,33 +33,33 @@ object XMRWalletController {
 
     fun createWallet(aFile: File, password: String): io.wookey.wallet.data.entity.Wallet {
         val newWallet = WalletManager.getInstance()
-            .createWallet(aFile, password, MNEMONIC_LANGUAGE)
+                .createWallet(aFile, password, MNEMONIC_LANGUAGE)
         val success = newWallet.status == Wallet.Status.Status_Ok
         return close(success, newWallet)
     }
 
     fun recoveryWallet(
-        aFile: File,
-        password: String,
-        mnemonic: String,
-        restoreHeight: Long
+            aFile: File,
+            password: String,
+            mnemonic: String,
+            restoreHeight: Long
     ): io.wookey.wallet.data.entity.Wallet {
         val newWallet = WalletManager.getInstance()
-            .recoveryWallet(aFile, password, mnemonic, restoreHeight)
+                .recoveryWallet(aFile, password, mnemonic, restoreHeight)
         val success = newWallet.status == Wallet.Status.Status_Ok
         return close(success, newWallet)
     }
 
     fun createWalletWithKeys(
-        aFile: File,
-        password: String,
-        restoreHeight: Long,
-        address: String,
-        viewKey: String,
-        spendKey: String
+            aFile: File,
+            password: String,
+            restoreHeight: Long,
+            address: String,
+            viewKey: String,
+            spendKey: String
     ): io.wookey.wallet.data.entity.Wallet {
         val newWallet = WalletManager.getInstance()
-            .createWalletWithKeys(aFile, password, MNEMONIC_LANGUAGE, restoreHeight, address, viewKey, spendKey)
+                .createWalletWithKeys(aFile, password, MNEMONIC_LANGUAGE, restoreHeight, address, viewKey, spendKey)
         val success = newWallet.status == Wallet.Status.Status_Ok
         return close(success, newWallet)
     }
@@ -92,7 +92,7 @@ object XMRWalletController {
     }
 
     fun verifyWalletPasswordOnly(keyPath: String, password: String) =
-        WalletManager.getInstance().verifyWalletPasswordOnly(keyPath, password)
+            WalletManager.getInstance().verifyWalletPasswordOnly(keyPath, password)
 
 
     fun openWallet(path: String, password: String) {
@@ -293,11 +293,11 @@ object XMRWalletController {
     fun isPaymentIdValid(paymentId: String) = Wallet.isPaymentIdValid(paymentId)
 
     fun createTransaction(
-        isAll: Boolean = false,
-        dstAddress: String,
-        paymentId: String?,
-        amount: String, mixinCount: Int = 10,
-        priority: PendingTransaction.Priority = PendingTransaction.Priority.Priority_Default
+            isAll: Boolean = false,
+            dstAddress: String,
+            paymentId: String?,
+            amount: String, mixinCount: Int = 10,
+            priority: PendingTransaction.Priority = PendingTransaction.Priority.Priority_Default
     ) {
 
         val wallet = getWallet() ?: throw IllegalStateException("wallet opened failed")
@@ -377,6 +377,7 @@ object XMRWalletController {
             paymentId = it.paymentId
             txKey = it.txKey
             address = it.address
+            subAddressLabel = it.subaddressLabel
         }
     }
 
@@ -432,5 +433,30 @@ object XMRWalletController {
             subAddress.add(SubAddress(it.rowId, it.address, it.label))
         }
         return subAddress
+    }
+
+    fun getIndexByAddress(address: String): Int {
+        val list = getWallet()?.subaddresses ?: emptyList()
+        list.forEachIndexed { index, subaddressRow ->
+            if (subaddressRow.address == address) {
+                return index
+            }
+        }
+        return -1
+    }
+
+    fun getLabelByAddress(address: String): String {
+        val list = getWallet()?.subaddresses ?: emptyList()
+        list.forEach { subaddressRow ->
+            if (subaddressRow.address == address) {
+                return subaddressRow.label
+            }
+        }
+        return ""
+    }
+
+    fun setSubAddressLabel(label: String, index: Int) {
+        getWallet()?.setSubaddressLabel(index, label)
+        getWallet()?.store()
     }
 }

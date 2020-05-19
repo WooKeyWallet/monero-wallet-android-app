@@ -22,7 +22,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="77dp"
-                android:src="@drawable/icon_wallet" />
+                android:src="@drawable/icon_monero_wallet" />
 
             <TextView
                 style="@style/text_12_8E8E93"
