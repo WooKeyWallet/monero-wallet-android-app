@@ -10,8 +10,9 @@ import android.content.res.Resources
 import android.net.Uri
 import android.os.Build
 import android.os.LocaleList
-import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
+import android.security.KeyPairGeneratorSpec
+import android.security.keystore.KeyGenParameterSpec
+import android.security.keystore.KeyProperties
 import android.text.*
 import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
@@ -21,12 +22,27 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import com.bigkoo.pickerview.builder.TimePickerBuilder
 import io.wookey.wallet.App
 import io.wookey.wallet.R
+import io.wookey.wallet.support.KEY_ALIAS
+import io.wookey.wallet.support.RSA_KEY_ALIAS
+import java.lang.IllegalArgumentException
 import java.math.BigDecimal
+import java.math.BigInteger
+import java.security.KeyPair
+import java.security.KeyPairGenerator
+import java.security.KeyStore
+import java.security.spec.AlgorithmParameterSpec
 import java.text.SimpleDateFormat
 import java.util.*
+import javax.crypto.Cipher
+import javax.crypto.KeyGenerator
+import javax.crypto.SecretKey
+import javax.security.auth.x500.X500Principal
+import kotlin.math.max
 
 fun AppCompatActivity.toast(msg: String?) {
     if (msg.isNullOrBlank()) {
@@ -53,21 +69,21 @@ fun AppCompatActivity.copy(value: String?) {
     }
 }
 
-fun Fragment.toast(msg: String?) {
+fun androidx.fragment.app.Fragment.toast(msg: String?) {
     if (msg.isNullOrBlank()) {
         return
     }
     Toast.makeText(activity, msg, Toast.LENGTH_SHORT).show()
 }
 
-fun Fragment.toast(stringRes: Int?) {
+fun androidx.fragment.app.Fragment.toast(stringRes: Int?) {
     if (stringRes == null) {
         return
     }
     Toast.makeText(activity, getString(stringRes), Toast.LENGTH_SHORT).show()
 }
 
-fun Fragment.copy(value: String?) {
+fun androidx.fragment.app.Fragment.copy(value: String?) {
     if (value.isNullOrBlank()) {
         return
     }
@@ -88,7 +104,7 @@ fun AppCompatActivity.versionName(): String {
     return applicationContext.versionName()
 }
 
-fun Fragment.versionName(): String {
+fun androidx.fragment.app.Fragment.versionName(): String {
     return context?.versionName() ?: ""
 }
 
@@ -102,7 +118,7 @@ fun AppCompatActivity.versionCode(): Int {
     return applicationContext.versionCode()
 }
 
-fun Fragment.versionCode(): Int {
+fun androidx.fragment.app.Fragment.versionCode(): Int {
     return context?.versionCode() ?: 0
 }
 
@@ -112,7 +128,7 @@ fun dp2px(dp: Float): Float {
 
 fun dp2px(dp: Int): Int {
     return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp.toFloat(), Resources.getSystem().displayMetrics)
-        .toInt()
+            .toInt()
 }
 
 fun screenWidth(): Int {
@@ -254,16 +270,16 @@ fun SpannableString.clickableSpan(range: IntRange, color: Int, listener: (View) 
 }
 
 fun View.showTimePicker(
-    startDate: Calendar = Calendar.getInstance().apply { set(2014, 4, 1) },
-    listener: (Date) -> Unit
+        startDate: Calendar = Calendar.getInstance().apply { set(2014, 4, 1) },
+        listener: (Date) -> Unit
 ) {
     setOnClickListener {
         hideKeyboard()
         TimePickerBuilder(context) { date, v -> listener(date) }
-            .setRangDate(startDate, Calendar.getInstance())
-            .setLabel("", "", "", "", "", "")
-            .build()
-            .show()
+                .setRangDate(startDate, Calendar.getInstance())
+                .setLabel("", "", "", "", "", "")
+                .build()
+                .show()
     }
 }
 
@@ -306,7 +322,7 @@ fun Context.isSelectedLanguage(lang: String): Boolean {
     var locale = getLocale()
     if (locale.isNullOrBlank()) {
         locale = if (App.SYSTEM_DEFAULT_LOCALE.language == "zh"
-            && App.SYSTEM_DEFAULT_LOCALE.country == "CN"
+                && App.SYSTEM_DEFAULT_LOCALE.country == "CN"
         ) {
             "zh-CN"
         } else {
@@ -320,7 +336,7 @@ fun Context.getCurrentLocale(): String {
     var locale = getLocale()
     if (locale.isNullOrBlank()) {
         locale = if (App.SYSTEM_DEFAULT_LOCALE.language == "zh"
-            && App.SYSTEM_DEFAULT_LOCALE.country == "CN"
+                && App.SYSTEM_DEFAULT_LOCALE.country == "CN"
         ) {
             "zh-CN"
         } else {
@@ -347,4 +363,106 @@ fun Activity.openBrowser(url: String) {
     if (intent.resolveActivity(packageManager) != null) {
         startActivity(intent)
     }
+}
+
+fun generateSecretKey() {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        val keyGenerator = KeyGenerator.getInstance(
+                KeyProperties.KEY_ALGORITHM_AES, "AndroidKeyStore")
+        val builder = KeyGenParameterSpec.Builder(
+                KEY_ALIAS,
+                KeyProperties.PURPOSE_ENCRYPT or KeyProperties.PURPOSE_DECRYPT)
+                .setBlockModes(KeyProperties.BLOCK_MODE_CBC)
+                .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_PKCS7)
+                .setUserAuthenticationRequired(true)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            builder.setInvalidatedByBiometricEnrollment(true)
+        }
+        val keyGenParameterSpec = builder.build()
+        keyGenerator.init(keyGenParameterSpec)
+        keyGenerator.generateKey()
+    }
+}
+
+fun getSecretKey(): SecretKey {
+    val keyStore = KeyStore.getInstance("AndroidKeyStore")
+    keyStore.load(null)
+    if (keyStore.getKey(KEY_ALIAS, null) == null) {
+        generateSecretKey()
+    }
+    return keyStore.getKey(KEY_ALIAS, null) as SecretKey
+}
+
+@RequiresApi(Build.VERSION_CODES.M)
+fun getCipher(): Cipher {
+    return Cipher.getInstance(KeyProperties.KEY_ALGORITHM_AES + "/"
+            + KeyProperties.BLOCK_MODE_CBC + "/"
+            + KeyProperties.ENCRYPTION_PADDING_PKCS7)
+}
+
+fun generateRSAKey(context: Context) {
+    val start: Calendar = GregorianCalendar()
+    val end: Calendar = GregorianCalendar()
+    end.add(Calendar.YEAR, 50)
+    val kpGenerator: KeyPairGenerator = KeyPairGenerator
+            .getInstance("RSA", "AndroidKeyStore")
+    val spec: AlgorithmParameterSpec
+    spec = KeyPairGeneratorSpec.Builder(context)
+            .setAlias(RSA_KEY_ALIAS)
+            .setSubject(X500Principal("CN=$RSA_KEY_ALIAS"))
+            .setSerialNumber(BigInteger.valueOf(1337))
+            .setStartDate(start.time)
+            .setEndDate(end.time)
+            .build()
+    kpGenerator.initialize(spec)
+    kpGenerator.generateKeyPair()
+}
+
+fun getRSAKey(context: Context): KeyStore.PrivateKeyEntry {
+    val keyStore = KeyStore.getInstance("AndroidKeyStore")
+    keyStore.load(null)
+    if (keyStore.getEntry(RSA_KEY_ALIAS, null) == null) {
+        generateRSAKey(context)
+    }
+    return keyStore.getEntry(RSA_KEY_ALIAS, null) as KeyStore.PrivateKeyEntry
+}
+
+fun getRSACipher(): Cipher {
+    return Cipher.getInstance("RSA/ECB/PKCS1Padding")
+}
+
+fun processRSAData(data: ByteArray, cipher: Cipher, isEncrypt: Boolean): ByteArray {
+    val len = data.size
+    var blockSize = cipher.blockSize
+    blockSize = max(blockSize, 53)
+    var outputSize = cipher.getOutputSize(blockSize)
+    outputSize = max(outputSize, 64)
+    val maxLen = if (isEncrypt) blockSize else outputSize
+    val count = len / maxLen
+    if (count > 0) {
+        var ret = ByteArray(0)
+        var buff = ByteArray(maxLen)
+        var index = 0
+        for (i in 0 until count) {
+            System.arraycopy(data, index, buff, 0, maxLen)
+            ret = joins(ret, cipher.doFinal(buff))
+            index += maxLen
+        }
+        if (index != len) {
+            val restLen = len - index
+            buff = ByteArray(restLen)
+            System.arraycopy(data, index, buff, 0, restLen)
+            ret = joins(ret, cipher.doFinal(buff))
+        }
+        return ret
+    } else {
+        return cipher.doFinal(data)
+    }
+}
+
+fun joins(prefix: ByteArray, suffix: ByteArray): ByteArray {
+    val ret = ByteArray(prefix.size + suffix.size)
+    System.arraycopy(prefix, 0, ret, 0, prefix.size)
+    System.arraycopy(suffix, 0, ret, prefix.size, suffix.size)
+    return ret
 }

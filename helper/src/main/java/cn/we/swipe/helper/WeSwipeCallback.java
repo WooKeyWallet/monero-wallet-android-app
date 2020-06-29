@@ -1,7 +1,7 @@
 package cn.we.swipe.helper;
 
 import android.graphics.Canvas;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 
 /**

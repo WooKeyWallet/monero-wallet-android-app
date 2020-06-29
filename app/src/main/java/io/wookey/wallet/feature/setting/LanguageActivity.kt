@@ -1,8 +1,8 @@
 package io.wookey.wallet.feature.setting
 
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,7 +38,7 @@ class LanguageActivity : BaseTitleSecondActivity() {
     }
 
     class LanguageAdapter(val data: List<String>, val listener: (String) -> Unit) :
-        RecyclerView.Adapter<LanguageAdapter.ViewHolder>() {
+        androidx.recyclerview.widget.RecyclerView.Adapter<LanguageAdapter.ViewHolder>() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             val view = LayoutInflater.from(parent.context).inflate(R.layout.item_language, parent, false)
             return ViewHolder(view, listener)
@@ -51,7 +51,7 @@ class LanguageActivity : BaseTitleSecondActivity() {
         }
 
         class ViewHolder(override val containerView: View, val listener: (String) -> Unit) :
-            RecyclerView.ViewHolder(containerView), LayoutContainer {
+            androidx.recyclerview.widget.RecyclerView.ViewHolder(containerView), LayoutContainer {
             fun bindViewHolder(lang: String) {
                 content.text = getDisplayName(lang)
                 if (containerView.context.isSelectedLanguage(lang)) {

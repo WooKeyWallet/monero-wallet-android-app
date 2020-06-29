@@ -1,11 +1,11 @@
 package io.wookey.wallet.feature.generate.create
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
@@ -108,7 +108,7 @@ class BackupMnemonicActivity : BaseTitleSecondActivity() {
         return super.onKeyDown(keyCode, event)
     }
 
-    class MnemonicAdapter(val data: List<String>) : RecyclerView.Adapter<MnemonicAdapter.ViewHolder>() {
+    class MnemonicAdapter(val data: List<String>) : androidx.recyclerview.widget.RecyclerView.Adapter<MnemonicAdapter.ViewHolder>() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             val view = LayoutInflater.from(parent.context).inflate(R.layout.item_mnemonic, parent, false)
             view.background = BackgroundHelper.getBackground(parent.context, R.color.color_E7E9EC, dp2px(5))
@@ -121,7 +121,7 @@ class BackupMnemonicActivity : BaseTitleSecondActivity() {
             holder.bindViewHolder(data[position], position)
         }
 
-        class ViewHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView), LayoutContainer {
+        class ViewHolder(override val containerView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(containerView), LayoutContainer {
             fun bindViewHolder(mnemonic: String, position: Int) {
                 tag.text = (position + 1).toString()
                 title.text = mnemonic

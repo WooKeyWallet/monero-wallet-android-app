@@ -5,6 +5,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
 
     <application
         android:name=".App"
@@ -126,6 +127,18 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".feature.setting.MarketActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".feature.wallet.ReleaseModeActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".feature.auth.PatternSettingActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".feature.auth.PatternCheckingActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait" />
     </application>

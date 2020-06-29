@@ -1,10 +1,10 @@
 package io.wookey.wallet.dialog
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.v4.app.DialogFragment
-import android.support.v4.app.FragmentManager
+import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.FragmentManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -96,7 +96,7 @@ class NodeEditDialog : DialogFragment() {
             return fragment
         }
 
-        fun display(fm: FragmentManager, symbol: String = "", cancelListener: (() -> Unit)? = null, confirmListener: ((Node?) -> Unit)?) {
+        fun display(fm: androidx.fragment.app.FragmentManager, symbol: String = "", cancelListener: (() -> Unit)? = null, confirmListener: ((Node?) -> Unit)?) {
             val ft = fm.beginTransaction()
             val prev = fm.findFragmentByTag(TAG)
             if (prev != null) {

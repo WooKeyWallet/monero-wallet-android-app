@@ -1,6 +1,6 @@
 package io.wookey.wallet.feature.asset
 
-import android.arch.lifecycle.MutableLiveData
+import androidx.lifecycle.MutableLiveData
 import android.graphics.Bitmap
 import cn.bingoogolapple.qrcode.zxing.QRCodeEncoder
 import io.wookey.wallet.base.BaseViewModel

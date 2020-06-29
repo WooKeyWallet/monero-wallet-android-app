@@ -2,8 +2,8 @@ package io.wookey.wallet.feature.generate.create
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.content.ContextCompat
-import android.support.v7.widget.RecyclerView
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -151,7 +151,7 @@ class VerifyMnemonicActivity : BaseTitleSecondActivity() {
         private val positionList: List<Int>,
         private val listener: (String, Int) -> Unit
     ) :
-        RecyclerView.Adapter<VerifyMnemonicAdapter.ViewHolder>() {
+        androidx.recyclerview.widget.RecyclerView.Adapter<VerifyMnemonicAdapter.ViewHolder>() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             val view = LayoutInflater.from(parent.context).inflate(R.layout.item_mnemonic_verify, parent, false)
@@ -171,7 +171,7 @@ class VerifyMnemonicActivity : BaseTitleSecondActivity() {
         }
 
         class ViewHolder(override val containerView: View, private val listener: (String, Int) -> Unit) :
-            RecyclerView.ViewHolder(containerView), LayoutContainer {
+            androidx.recyclerview.widget.RecyclerView.ViewHolder(containerView), LayoutContainer {
 
             fun bindViewHolder(mnemonic: String, position: Int, positionList: List<Int>) {
                 title.text = mnemonic

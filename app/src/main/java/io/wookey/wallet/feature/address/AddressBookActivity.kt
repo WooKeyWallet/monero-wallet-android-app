@@ -1,12 +1,12 @@
 package io.wookey.wallet.feature.address
 
 import android.app.Activity
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -133,7 +133,7 @@ class AddressBookActivity : BaseTitleSecondActivity() {
     }
 
     class AddressAdapter(val data: List<AddressBook>, val viewModel: AddressBookViewModel) :
-        RecyclerView.Adapter<AddressAdapter.ViewHolder>() {
+        androidx.recyclerview.widget.RecyclerView.Adapter<AddressAdapter.ViewHolder>() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             val view =
@@ -148,7 +148,7 @@ class AddressBookActivity : BaseTitleSecondActivity() {
         }
 
         class ViewHolder(override val containerView: View, val viewModel: AddressBookViewModel) :
-            RecyclerView.ViewHolder(containerView), LayoutContainer,
+            androidx.recyclerview.widget.RecyclerView.ViewHolder(containerView), LayoutContainer,
             WeSwipeHelper.SwipeLayoutTypeCallBack {
 
             private var needRecovery = false

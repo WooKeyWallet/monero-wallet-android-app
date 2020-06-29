@@ -1,10 +1,10 @@
 package io.wookey.wallet.feature.generate
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.content.ContextCompat
+import androidx.core.content.ContextCompat
 import android.text.SpannableString
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.LinkMovementMethod

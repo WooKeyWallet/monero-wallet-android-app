@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_FFFFFF"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context="io.wookey.wallet.feature.auth.PatternSettingActivity">
+
+    <com.github.ihsg.patternlocker.PatternIndicatorView
+        android:id="@+id/patternIndicatorView"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="50dp"
+        app:piv_color="@color/color_D5DAE1"
+        app:piv_errorColor="@color/color_FF3A5C"
+        app:piv_fillColor="@color/color_D5DAE1"
+        app:piv_hitColor="@color/color_00BC6D" />
+
+    <TextView
+        android:id="@+id/msg"
+        style="@style/text_16_333333"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/pattern_canvas_first" />
+
+    <com.github.ihsg.patternlocker.PatternLockerView
+        android:id="@+id/patternLockerView"
+        android:layout_width="260dp"
+        android:layout_height="260dp"
+        android:layout_marginTop="50dp"
+        app:plv_color="@color/color_D5DAE1"
+        app:plv_errorColor="@color/color_FF3A5C"
+        app:plv_fillColor="@color/color_D5DAE1"
+        app:plv_hitColor="@color/color_00BC6D"
+        app:plv_lineWidth="2dp" />
+</LinearLayout>

@@ -2,7 +2,7 @@ package io.wookey.wallet.feature.generate
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.content.ContextCompat
+import androidx.core.content.ContextCompat
 import io.wookey.wallet.R
 import io.wookey.wallet.base.BaseActivity
 import io.wookey.wallet.support.BackgroundHelper

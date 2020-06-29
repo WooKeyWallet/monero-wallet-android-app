@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -56,7 +56,7 @@
                 android:text="@string/generate_wallet_prompt_two" />
         </RelativeLayout>
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/walletName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -73,13 +73,13 @@
                 android:imeOptions="actionDone"
                 android:inputType="textMultiLine"
                 android:textAlignment="textStart" />
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/setPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -96,7 +96,7 @@
                     android:imeOptions="actionDone"
                     android:inputType="textPassword"
                     android:textAlignment="textStart" />
-            </android.support.design.widget.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
             <io.wookey.wallet.widget.GradeIndicator
                 android:id="@+id/passwordGrade"
@@ -112,7 +112,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/confirmPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -130,7 +130,7 @@
                     android:inputType="textPassword"
                     android:paddingEnd="35dp"
                     android:textAlignment="textStart" />
-            </android.support.design.widget.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
             <ImageView
                 android:id="@+id/switchPassword"
@@ -143,7 +143,7 @@
                 android:src="@drawable/icon_password_hide" />
         </RelativeLayout>
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/passwordPrompt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -159,7 +159,7 @@
                 android:imeOptions="actionDone"
                 android:inputType="text"
                 android:textAlignment="textStart" />
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -191,4 +191,4 @@
             android:layout_marginBottom="45dp"
             android:text="@string/next" />
     </LinearLayout>
-</android.support.v4.widget.NestedScrollView>
+</androidx.core.widget.NestedScrollView>

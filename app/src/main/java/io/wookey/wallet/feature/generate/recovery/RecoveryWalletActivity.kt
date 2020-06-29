@@ -1,8 +1,8 @@
 package io.wookey.wallet.feature.generate.recovery
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentPagerAdapter
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentPagerAdapter
 import io.wookey.wallet.R
 import io.wookey.wallet.base.BaseTitleSecondActivity
 import kotlinx.android.synthetic.main.activity_recovery_wallet.*
@@ -39,7 +39,7 @@ class RecoveryWalletActivity : BaseTitleSecondActivity() {
         val fragments = arrayOf(mnemonicFragment, privateKeyFragment)
 
         viewPager.adapter = object : FragmentPagerAdapter(supportFragmentManager) {
-            override fun getItem(position: Int): Fragment {
+            override fun getItem(position: Int): androidx.fragment.app.Fragment {
                 return fragments[position]
             }
 

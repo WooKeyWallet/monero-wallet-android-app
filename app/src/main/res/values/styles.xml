@@ -114,6 +114,10 @@
         <item name="android:textColor">@color/color_8D8D8D</item>
     </style>
 
+    <style name="text_14_002C71" parent="text_14">
+        <item name="android:textColor">@color/color_002C71</item>
+    </style>
+
     <style name="text_16">
         <item name="android:textSize">@dimen/text_size_16</item>
     </style>

@@ -1,6 +1,6 @@
 package io.wookey.wallet.data.dao
 
-import android.arch.persistence.room.*
+import androidx.room.*
 import io.wookey.wallet.data.entity.TransactionInfo
 
 @Dao

@@ -1,10 +1,10 @@
 package io.wookey.wallet.dialog
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.v4.app.DialogFragment
-import android.support.v4.app.FragmentManager
+import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.FragmentManager
 import android.view.*
 import io.wookey.wallet.R
 import io.wookey.wallet.support.BackgroundHelper
@@ -90,7 +90,7 @@ class PasswordDialog : DialogFragment() {
             return fragment
         }
 
-        fun display(fm: FragmentManager, walletId: Int, supportCancel: Boolean = true, cancelListener: (() -> Unit)? = null, confirmListener: ((String) -> Unit)?) {
+        fun display(fm: androidx.fragment.app.FragmentManager, walletId: Int, supportCancel: Boolean = true, cancelListener: (() -> Unit)? = null, confirmListener: ((String) -> Unit)?) {
             if (walletId < 0) {
                 return
             }

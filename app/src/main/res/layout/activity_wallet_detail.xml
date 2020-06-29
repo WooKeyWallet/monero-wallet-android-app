@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -130,6 +130,22 @@
             app:sRightIconRes="@drawable/arrow_right"
             app:sUseRipple="false" />
 
+        <com.allen.library.SuperTextView
+            android:id="@+id/biological"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/color_FFFFFF"
+            app:sDividerLineColor="@color/color_DEDEDE"
+            app:sDividerLineHeight="1px"
+            app:sLeftTextColor="@color/color_333333"
+            app:sLeftTextSize="@dimen/text_size_16"
+            app:sLeftTextString="@string/biological"
+            app:sLeftViewGravity="left_center"
+            app:sLeftViewMarginLeft="25dp"
+            app:sRightIconMarginRight="25dp"
+            app:sRightIconRes="@drawable/arrow_right"
+            app:sUseRipple="false" />
+
         <View
             android:layout_width="match_parent"
             android:layout_height="10dp"
@@ -150,4 +166,4 @@
             android:background="@color/color_DEDEDE" />
     </LinearLayout>
 
-</android.support.v4.widget.NestedScrollView>
+</androidx.core.widget.NestedScrollView>

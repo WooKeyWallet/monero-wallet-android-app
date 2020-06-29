@@ -1,6 +1,6 @@
 package io.wookey.wallet.feature.wallet
 
-import android.arch.lifecycle.MutableLiveData
+import androidx.lifecycle.MutableLiveData
 import android.content.Intent
 import io.wookey.wallet.base.BaseViewModel
 import io.wookey.wallet.data.AppDatabase

@@ -1,8 +1,8 @@
 package io.wookey.wallet.dialog
 
 import android.os.Bundle
-import android.support.v4.app.DialogFragment
-import android.support.v4.app.FragmentManager
+import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.FragmentManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -52,7 +52,7 @@ class BakMnemonicDialog : DialogFragment() {
             return fragment
         }
 
-        fun display(fm: FragmentManager, cancelListener: (() -> Unit)? = null, confirmListener: (() -> Unit)?) {
+        fun display(fm: androidx.fragment.app.FragmentManager, cancelListener: (() -> Unit)? = null, confirmListener: (() -> Unit)?) {
             val ft = fm.beginTransaction()
             val prev = fm.findFragmentByTag(TAG)
             if (prev != null) {

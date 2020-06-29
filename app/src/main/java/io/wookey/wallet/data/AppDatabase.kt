@@ -1,16 +1,18 @@
 package io.wookey.wallet.data
 
-import android.arch.persistence.db.SupportSQLiteDatabase
-import android.arch.persistence.room.Database
-import android.arch.persistence.room.Room
-import android.arch.persistence.room.RoomDatabase
-import android.arch.persistence.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
+import androidx.room.Database
+import androidx.room.Room
+import androidx.room.RoomDatabase
+import androidx.room.migration.Migration
 import android.content.Context
 import io.wookey.wallet.App
 import io.wookey.wallet.data.dao.*
 import io.wookey.wallet.data.entity.*
 
-@Database(entities = [Wallet::class, Asset::class, Node::class, AddressBook::class, TransactionInfo::class], version = 3)
+@Database(entities = [Wallet::class, Asset::class, Node::class, AddressBook::class, TransactionInfo::class, WalletRelease::class],
+        version = 4
+)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun walletDao(): WalletDao
@@ -18,6 +20,7 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun nodeDao(): NodeDao
     abstract fun addressBookDao(): AddressBookDao
     abstract fun transactionInfoDao(): TransactionInfoDao
+    abstract fun walletReleaseDao(): WalletReleaseDao
 
     companion object {
 
@@ -50,7 +53,24 @@ abstract class AppDatabase : RoomDatabase() {
         private val MIGRATION_2_3 = object : Migration(2, 3) {
             override fun migrate(database: SupportSQLiteDatabase) {
                 database.execSQL("ALTER TABLE `transactionInfo` "
-                            + " ADD COLUMN `subAddressLabel` TEXT")
+                        + " ADD COLUMN `subAddressLabel` TEXT")
+            }
+        }
+
+        private val MIGRATION_3_4 = object : Migration(3, 4) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                database.execSQL("CREATE TABLE `walletRelease` " +
+                        "(`_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
+                        "`walletId` INTEGER NOT NULL, " +
+                        "`password` TEXT NOT NULL, " +
+                        "`iv` TEXT NOT NULL, " +
+                        "`openWallet` INTEGER NOT NULL, " +
+                        "`sendTransaction` INTEGER NOT NULL," +
+                        "`backup` INTEGER NOT NULL," +
+                        "`fingerprint` INTEGER NOT NULL," +
+                        "`pattern` INTEGER NOT NULL," +
+                        "`patternPassword` TEXT)")
+                database.execSQL("CREATE UNIQUE INDEX `index_walletRelease_walletId` ON `walletRelease` (`walletId`)")
             }
         }
 
@@ -64,6 +84,7 @@ abstract class AppDatabase : RoomDatabase() {
                         AppDatabase::class.java, "Wallet.db")
                         .addMigrations(MIGRATION_1_2)
                         .addMigrations(MIGRATION_2_3)
+                        .addMigrations(MIGRATION_3_4)
                         .build()
 
     }

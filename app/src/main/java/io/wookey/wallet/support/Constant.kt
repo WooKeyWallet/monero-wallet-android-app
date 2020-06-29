@@ -18,10 +18,19 @@ const val REQUEST_SELECT_ADDRESS = 102
 const val REQUEST_SELECT_NODE = 103
 const val REQUEST_SELECT_SUB_ADDRESS = 104
 
+const val REQUEST_PATTERN_SETTING = 105
+const val REQUEST_PATTERN_CHECKING = 106
+const val REQUEST_PATTERN_CHECKING_ADDRESS_SETTING = 107
+const val REQUEST_PATTERN_CHECKING_BACKUP_MNEMONIC = 108
+const val REQUEST_PATTERN_CHECKING_BACKUP_KEY = 109
+
 const val REQUEST_CODE_PERMISSION_CAMERA = 501
 
 const val ZH_CN = "zh-CN"
 const val EN = "en"
+
+const val KEY_ALIAS = "wookeyMonero"
+const val RSA_KEY_ALIAS = "wookeyMoneroRSA"
 
 val coinList = listOf(
         Coin("XMR", "Monero")

@@ -1,10 +1,10 @@
 package io.wookey.wallet.base
 
-import android.support.annotation.ColorRes
-import android.support.annotation.DrawableRes
-import android.support.annotation.StringRes
-import android.support.v4.content.ContextCompat
-import android.support.v7.widget.Toolbar
+import androidx.annotation.ColorRes
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
+import androidx.core.content.ContextCompat
+import androidx.appcompat.widget.Toolbar
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView

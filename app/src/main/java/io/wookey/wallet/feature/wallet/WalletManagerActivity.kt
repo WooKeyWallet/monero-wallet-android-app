@@ -1,11 +1,11 @@
 package io.wookey.wallet.feature.wallet
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -71,7 +71,7 @@ class WalletManagerActivity : BaseTitleSecondActivity() {
         }
     }
 
-    class WalletAdapter(val data: List<Wallet>, private val viewModel: WalletManagerViewModel) : RecyclerView.Adapter<WalletAdapter.ViewHolder>() {
+    class WalletAdapter(val data: List<Wallet>, private val viewModel: WalletManagerViewModel) : androidx.recyclerview.widget.RecyclerView.Adapter<WalletAdapter.ViewHolder>() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             val view = LayoutInflater.from(parent.context).inflate(R.layout.item_wallet, parent, false)
@@ -84,7 +84,7 @@ class WalletManagerActivity : BaseTitleSecondActivity() {
             holder.bindViewHolder(data[position])
         }
 
-        class ViewHolder(override val containerView: View, val viewModel: WalletManagerViewModel) : RecyclerView.ViewHolder(containerView), LayoutContainer {
+        class ViewHolder(override val containerView: View, val viewModel: WalletManagerViewModel) : androidx.recyclerview.widget.RecyclerView.ViewHolder(containerView), LayoutContainer {
             fun bindViewHolder(wallet: Wallet) {
                 name.text = wallet.name
                 if (wallet.isActive) {

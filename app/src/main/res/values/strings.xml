@@ -214,4 +214,47 @@
 
     <string name="complete">Done</string>
 
+    <string name="biological">Biometrics and Password</string>
+    <string name="release_mode">Unlock Settings</string>
+    <string name="release_mode_select">Select one or more scenes</string>
+    <string name="release_mode_setting">Select Unlock Method</string>
+    <string name="release_mode_fingerprint">Fingerprint Unlock</string>
+    <string name="release_mode_pattern">Gesture Password</string>
+    <string name="release_mode_pattern_modify">Change gesture</string>
+    <string name="release_open_wallet">Open wallet</string>
+    <string name="release_send_coin">Send XMR</string>
+    <string name="release_backup">Export private key and seed</string>
+    <string name="release_prompt_open">1. The security of the Fingerprint/FaceID/Gesture depends on users\' mobile devices, not WooKey \n2. Do not enable these functions for wallets with large amounts of assets\n3. WooKey shall not be liable for the loss of assets caused by biometric vulnerabilities or the loss of mobile devices or the loss of files</string>
+    <string name="release_prompt_close">Disable this feature, WooKey will clear all password related data. You should set up again to enable this feature.</string>
+    <string name="release_prompt_incompatible">Fingerprint and gesture cannot be activated at the same time</string>
+
+    <string name="dialog_title_release_risk">Risk warning and disclaimer</string>
+    <string name="dialog_confirm_know">I understand</string>
+
+    <string name="dialog_title_prompt">Reminder</string>
+    <string name="dialog_confirm">Confirm</string>
+
+    <string name="biometric_not_set">Please go to Settings page to enable Fingerprints</string>
+    <string name="biometric_open_failed">Unable to activate fingerprint lock</string>
+    <string name="biometric_open_success">Fingerprint is enabled</string>
+
+    <string name="biometric_prompt_title">Fingerprint unlock</string>
+    <string name="biometric_prompt_subtitle1">Verify fingerprint</string>
+
+    <string name="biometric_failed">Fingerprint unlock failed</string>
+    <string name="use_password">Use password</string>
+    <string name="release_mode_least">You must select at least one scene</string>
+
+    <string name="pattern_setting_title">Set Gesture Password</string>
+    <string name="pattern_canvas_first">Draw unlock pattern</string>
+    <string name="pattern_canvas_second">Draw unlock pattern again</string>
+    <string name="pattern_canvas_success">Unlock pattern is enabled</string>
+    <string name="pattern_open_success">Gesture Password is enabled</string>
+    <string name="pattern_canvas_failed">A pattern should connect at least %1$s dots, please redraw</string>
+    <string name="pattern_canvas_not_match">Inconsistent with the last drawing, please redraw</string>
+    <string name="pattern_success">Unlocked</string>
+    <string name="pattern_failed">Incorrect gesture password, %1$s remaining attempts</string>
+
+    <string name="pattern_reset">Reset</string>
+
 </resources>

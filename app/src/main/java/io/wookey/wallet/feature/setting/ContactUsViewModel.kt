@@ -1,6 +1,6 @@
 package io.wookey.wallet.feature.setting
 
-import android.arch.lifecycle.MutableLiveData
+import androidx.lifecycle.MutableLiveData
 import io.wookey.wallet.base.BaseViewModel
 
 class ContactUsViewModel : BaseViewModel() {

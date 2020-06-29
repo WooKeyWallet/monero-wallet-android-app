@@ -1,14 +1,14 @@
 package io.wookey.wallet.feature.setting
 
 import android.app.Activity
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.support.v4.content.ContextCompat
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -97,7 +97,7 @@ class NodeListActivity : BaseTitleSecondActivity() {
         })
     }
 
-    class NodeAdapter(val data: List<Node>, val viewModel: NodeListViewModel) : RecyclerView.Adapter<NodeAdapter.ViewHolder>() {
+    class NodeAdapter(val data: List<Node>, val viewModel: NodeListViewModel) : androidx.recyclerview.widget.RecyclerView.Adapter<NodeAdapter.ViewHolder>() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             val view = LayoutInflater.from(parent.context).inflate(R.layout.item_node, parent, false)
@@ -135,6 +135,6 @@ class NodeListActivity : BaseTitleSecondActivity() {
             }
         }
 
-        class ViewHolder(item: View) : RecyclerView.ViewHolder(item)
+        class ViewHolder(item: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(item)
     }
 }

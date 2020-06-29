@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_FFFFFF"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context="io.wookey.wallet.feature.auth.PatternCheckingActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_FFFFFF"
+        android:minHeight="?attr/actionBarSize"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp"
+        app:contentInsetStartWithNavigation="0dp"
+        app:navigationIcon="@drawable/arrow_back">
+
+        <TextView
+            android:id="@+id/leftTitle"
+            style="@style/text_14_9E9E9E"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|start"
+            android:gravity="center"
+            android:minHeight="?attr/actionBarSize"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:text="@string/cancel" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/icon_pattern_checking" />
+
+    <TextView
+        android:id="@+id/msg"
+        style="@style/text_16_333333"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/pattern_canvas_first" />
+
+    <com.github.ihsg.patternlocker.PatternLockerView
+        android:id="@+id/patternLockerView"
+        android:layout_width="260dp"
+        android:layout_height="260dp"
+        android:layout_marginTop="50dp"
+        app:plv_color="@color/color_D5DAE1"
+        app:plv_errorColor="@color/color_FF3A5C"
+        app:plv_fillColor="@color/color_D5DAE1"
+        app:plv_hitColor="@color/color_00BC6D"
+        app:plv_lineWidth="2dp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/usePassword"
+        style="@style/text_14_002C71"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:text="@string/use_password" />
+</LinearLayout>

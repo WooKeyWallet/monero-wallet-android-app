@@ -214,4 +214,47 @@
 
     <string name="complete">完成</string>
 
+    <string name="biological">生物锁/手势密码</string>
+    <string name="release_mode">解锁方式</string>
+    <string name="release_mode_select">请选择需要解锁的页面</string>
+    <string name="release_mode_setting">设置解锁方式</string>
+    <string name="release_mode_fingerprint">指纹解锁</string>
+    <string name="release_mode_pattern">手势密码</string>
+    <string name="release_mode_pattern_modify">手势修改</string>
+    <string name="release_open_wallet">打开钱包时</string>
+    <string name="release_send_coin">发送 XMR 时</string>
+    <string name="release_backup">导出私钥和助记词</string>
+    <string name="release_prompt_open">1、免密指纹/FaceID/手势密码的安全性，取决于手机生物识别的安全等级\n2、有大额资产的钱包请勿打开\n3、使用过程中由于生物识别技术漏洞或是因丢失手机和手机文件引起的资产丢失，本软件不承担法律责任</string>
+    <string name="release_prompt_close">关闭开关按钮，将清除所有密码相关数据，再次开启需要重新设置</string>
+    <string name="release_prompt_incompatible">指纹和手势密码解锁仅可开启一项</string>
+
+    <string name="dialog_title_release_risk">风险提示以及免责声明</string>
+    <string name="dialog_confirm_know">我知道了</string>
+
+    <string name="dialog_title_prompt">提示</string>
+    <string name="dialog_confirm">确认</string>
+
+    <string name="biometric_not_set">请先至设置页面开启指纹</string>
+    <string name="biometric_open_failed">指纹解锁设置失败</string>
+    <string name="biometric_open_success">指纹解锁设置成功</string>
+
+    <string name="biometric_prompt_title">指纹解锁</string>
+    <string name="biometric_prompt_subtitle1">验证指纹</string>
+
+    <string name="biometric_failed">指纹解锁失败</string>
+    <string name="use_password">使用密码</string>
+    <string name="release_mode_least">至少需要选择一项</string>
+
+    <string name="pattern_setting_title">设置手势密码</string>
+    <string name="pattern_canvas_first">绘制解锁图案</string>
+    <string name="pattern_canvas_second">请再次绘制解锁图案</string>
+    <string name="pattern_canvas_success">手势解锁图案设置成功</string>
+    <string name="pattern_open_success">手势密码设置成功</string>
+    <string name="pattern_canvas_failed">至少链接%1$s个点，请重新绘制</string>
+    <string name="pattern_canvas_not_match">与上次绘制不一致，请重新绘制</string>
+    <string name="pattern_success">解锁成功</string>
+    <string name="pattern_failed">手势密码不正确，剩余尝试次数%1$s次</string>
+
+    <string name="pattern_reset">重设</string>
+
 </resources>

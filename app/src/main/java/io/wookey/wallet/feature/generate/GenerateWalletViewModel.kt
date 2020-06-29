@@ -1,7 +1,7 @@
 package io.wookey.wallet.feature.generate
 
-import android.arch.lifecycle.MediatorLiveData
-import android.arch.lifecycle.MutableLiveData
+import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.MutableLiveData
 import android.content.Intent
 import io.wookey.wallet.R
 import io.wookey.wallet.base.BaseViewModel

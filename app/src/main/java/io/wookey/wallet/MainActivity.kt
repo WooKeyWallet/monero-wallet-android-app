@@ -1,8 +1,8 @@
 package io.wookey.wallet
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentTransaction
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import android.view.View
 import io.wookey.wallet.base.BaseActivity
 import io.wookey.wallet.feature.asset.AssetFragment
@@ -17,8 +17,8 @@ class MainActivity : BaseActivity() {
     private val TAG_ASSET_FRAGMENT = "tag_asset_fragment"
     private val TAG_SETTING_FRAGMENT = "tag_setting_fragment"
 
-    private var assetFragment: Fragment? = null
-    private var settingFragment: Fragment? = null
+    private var assetFragment: androidx.fragment.app.Fragment? = null
+    private var settingFragment: androidx.fragment.app.Fragment? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -96,7 +96,7 @@ class MainActivity : BaseActivity() {
 
     }
 
-    private fun hideAllFragment(transaction: FragmentTransaction) {
+    private fun hideAllFragment(transaction: androidx.fragment.app.FragmentTransaction) {
         assetFragment?.let {
             transaction.hide(it)
         }

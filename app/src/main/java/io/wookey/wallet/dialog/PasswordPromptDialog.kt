@@ -1,8 +1,8 @@
 package io.wookey.wallet.dialog
 
 import android.os.Bundle
-import android.support.v4.app.DialogFragment
-import android.support.v4.app.FragmentManager
+import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.FragmentManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -54,7 +54,7 @@ class PasswordPromptDialog : DialogFragment() {
             return fragment
         }
 
-        fun display(fm: FragmentManager, prompt: String, confirmListener: (() -> Unit)? = null) {
+        fun display(fm: androidx.fragment.app.FragmentManager, prompt: String, confirmListener: (() -> Unit)? = null) {
             val ft = fm.beginTransaction()
             val prev = fm.findFragmentByTag(TAG)
             if (prev != null) {

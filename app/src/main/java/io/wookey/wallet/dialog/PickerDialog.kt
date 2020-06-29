@@ -3,8 +3,8 @@ package io.wookey.wallet.dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.support.v4.app.DialogFragment
-import android.support.v4.app.FragmentManager
+import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.FragmentManager
 import android.util.Log
 import android.view.*
 import io.wookey.wallet.R
@@ -92,10 +92,10 @@ class PickerDialog : DialogFragment() {
         }
 
         fun display(
-            fm: FragmentManager,
-            data: List<String>,
-            cancelListener: (() -> Unit)? = null,
-            confirmListener: ((String) -> Unit)? = null
+                fm: androidx.fragment.app.FragmentManager,
+                data: List<String>,
+                cancelListener: (() -> Unit)? = null,
+                confirmListener: ((String) -> Unit)? = null
         ) {
             val ft = fm.beginTransaction()
             val prev = fm.findFragmentByTag(TAG)

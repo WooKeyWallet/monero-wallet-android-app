@@ -1,17 +1,24 @@
 package io.wookey.wallet.feature.asset
 
 import android.content.Intent
+import androidx.lifecycle.MutableLiveData
 import io.wookey.wallet.base.BaseViewModel
+import io.wookey.wallet.data.AppDatabase
 import io.wookey.wallet.data.entity.Asset
 import io.wookey.wallet.data.entity.Wallet
+import io.wookey.wallet.data.entity.WalletRelease
 import io.wookey.wallet.support.extensions.putBoolean
 import io.wookey.wallet.support.extensions.sharedPreferences
 import io.wookey.wallet.support.viewmodel.SingleLiveEvent
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class AssetViewModel : BaseViewModel() {
 
-    val showPasswordDialog = SingleLiveEvent<Unit>()
     val openAssetDetail = SingleLiveEvent<Intent>()
+
+    val walletRelease = MutableLiveData<WalletRelease>()
 
     var wallet: Wallet? = null
 
@@ -31,7 +38,18 @@ class AssetViewModel : BaseViewModel() {
 
     fun onItemClick(value: Asset) {
         asset = value
-        showPasswordDialog.call()
+        wallet?.let {
+            uiScope.launch {
+                try {
+                    withContext(Dispatchers.IO) {
+                        walletRelease.postValue(AppDatabase.getInstance().walletReleaseDao().loadDataByWalletId(it.id))
+                    }
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                    walletRelease.postValue(null)
+                }
+            }
+        }
     }
 
     fun next(password: String) {

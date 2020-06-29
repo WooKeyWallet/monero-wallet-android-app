@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context="io.wookey.wallet.feature.wallet.ReleaseModeActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_FFFFFF">
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/text_16_333333"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="@string/release_mode_select"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/group1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="@id/group3"
+            app:layout_constraintEnd_toStartOf="@id/group2"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title">
+
+            <ImageView
+                android:id="@+id/image1"
+                android:layout_width="101dp"
+                android:layout_height="163dp"
+                android:src="@drawable/bg_open_wallet" />
+
+            <TextView
+                android:id="@+id/text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:maxWidth="101dp"
+                android:minHeight="55dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:text="@string/release_open_wallet" />
+
+            <ImageView
+                android:id="@+id/checkbox1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_round_unchecked" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/group2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="@id/group3"
+            app:layout_constraintEnd_toStartOf="@id/group3"
+            app:layout_constraintStart_toEndOf="@id/group1"
+            app:layout_constraintTop_toTopOf="@id/group1">
+
+            <ImageView
+                android:id="@+id/image2"
+                android:layout_width="101dp"
+                android:layout_height="163dp"
+                android:src="@drawable/bg_send_coin" />
+
+            <TextView
+                android:id="@+id/text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:maxWidth="101dp"
+                android:minHeight="55dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:text="@string/release_send_coin" />
+
+            <ImageView
+                android:id="@+id/checkbox2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_round_unchecked" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/group3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/group2"
+            app:layout_constraintTop_toTopOf="@id/group1">
+
+            <ImageView
+                android:id="@+id/image3"
+                android:layout_width="101dp"
+                android:layout_height="163dp"
+                android:src="@drawable/bg_backup" />
+
+            <TextView
+                android:id="@+id/text3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:maxWidth="101dp"
+                android:minHeight="55dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:text="@string/release_backup" />
+
+            <ImageView
+                android:id="@+id/checkbox3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_round_unchecked" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/divider1"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="30dp"
+            android:background="@color/color_DEDEDE"
+            app:layout_constraintTop_toBottomOf="@id/group1" />
+
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/color_F6F6F6"
+            app:layout_constraintTop_toTopOf="@id/divider1" />
+
+        <TextView
+            android:id="@+id/settingTitle"
+            style="@style/text_13_9E9E9E"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:text="@string/release_mode_setting"
+            app:layout_constraintBottom_toBottomOf="@id/divider2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/divider2" />
+
+        <TextView
+            android:id="@+id/mode1"
+            style="@style/text_16_333333"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:text="@string/release_mode_fingerprint"
+            app:layout_constraintBottom_toTopOf="@id/divider3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider2" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switch1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="25dp"
+            app:layout_constraintBottom_toTopOf="@id/divider3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider2" />
+
+        <View
+            android:id="@+id/divider3"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="50dp"
+            android:background="@color/color_DEDEDE"
+            app:layout_constraintTop_toBottomOf="@id/divider2" />
+
+        <View
+            android:id="@+id/divider4"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/color_F6F6F6"
+            app:layout_constraintTop_toTopOf="@id/divider3" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/modeGroup1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="mode1,switch1,divider3,divider4" />
+
+        <TextView
+            android:id="@+id/mode2"
+            style="@style/text_16_333333"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:text="@string/release_mode_pattern"
+            app:layout_constraintBottom_toTopOf="@id/divider5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider4" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switch2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="25dp"
+            app:layout_constraintBottom_toTopOf="@id/divider5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider4" />
+
+        <View
+            android:id="@+id/divider5"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="50dp"
+            android:background="@color/color_DEDEDE"
+            android:visibility="visible"
+            app:layout_constraintTop_toBottomOf="@id/divider4" />
+
+        <View
+            android:id="@+id/divider6"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginStart="25dp"
+            android:background="@color/color_DEDEDE"
+            app:layout_constraintTop_toBottomOf="@id/divider5" />
+
+        <TextView
+            android:id="@+id/modify2"
+            style="@style/text_16_333333"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:drawableEnd="@drawable/arrow_right"
+            android:text="@string/release_mode_pattern_modify"
+            app:layout_constraintBottom_toTopOf="@id/divider7"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider6" />
+
+        <View
+            android:id="@+id/divider7"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="50dp"
+            android:background="@color/color_DEDEDE"
+            app:layout_constraintTop_toBottomOf="@id/divider6" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/modifyGroup2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:constraint_referenced_ids="divider6,modify2,divider7" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/color_F6F6F6"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="@id/divider7" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

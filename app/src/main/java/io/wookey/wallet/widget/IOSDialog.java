@@ -7,8 +7,8 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
-import android.support.annotation.ColorInt;
-import android.support.v7.widget.LinearLayoutCompat;
+import androidx.annotation.ColorInt;
+import androidx.appcompat.widget.LinearLayoutCompat;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
@@ -40,11 +40,11 @@ public class IOSDialog implements View.OnClickListener {
     /**
      * 资源ID
      */
-    @android.support.annotation.IdRes
+    @androidx.annotation.IdRes
     int mTitleView_ID = R.id.ios_dialog_title;
-    @android.support.annotation.IdRes
+    @androidx.annotation.IdRes
     int mContentView_ID = R.id.ios_dialog_content;
-    @android.support.annotation.IdRes
+    @androidx.annotation.IdRes
     int mBottomView_ID = R.id.ios_dialog_bottom;
 
     private Dialog mDialog = null;

@@ -1,10 +1,10 @@
 package io.wookey.wallet.feature.wallet
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -92,7 +92,7 @@ class AddressSettingActivity : BaseTitleSecondActivity() {
     }
 
     class SubAddressAdapter(val data: List<SubAddress>, val viewModel: AddressSettingViewModel) :
-        RecyclerView.Adapter<SubAddressAdapter.ViewHolder>() {
+        androidx.recyclerview.widget.RecyclerView.Adapter<SubAddressAdapter.ViewHolder>() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             val view = LayoutInflater.from(parent.context)
                 .inflate(R.layout.item_sub_address, parent, false)
@@ -106,7 +106,7 @@ class AddressSettingActivity : BaseTitleSecondActivity() {
         }
 
         class ViewHolder(override val containerView: View, val viewModel: AddressSettingViewModel) :
-            RecyclerView.ViewHolder(containerView), LayoutContainer {
+            androidx.recyclerview.widget.RecyclerView.ViewHolder(containerView), LayoutContainer {
             fun bindViewHolder(subAddress: SubAddress) {
                 address.text = subAddress.address
                 if (subAddress.label.isNullOrBlank()) {

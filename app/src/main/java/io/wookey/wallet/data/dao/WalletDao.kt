@@ -1,7 +1,7 @@
 package io.wookey.wallet.data.dao
 
-import android.arch.lifecycle.LiveData
-import android.arch.persistence.room.*
+import androidx.lifecycle.LiveData
+import androidx.room.*
 import io.wookey.wallet.data.entity.Wallet
 
 @Dao

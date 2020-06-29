@@ -174,3 +174,27 @@
   **[] $VALUES;
   public *;
 }
+
+-dontwarn kotlin.**
+-keep class kotlinx.coroutines.android.AndroidExceptionPreHandler
+-keep class kotlinx.coroutines.android.AndroidDispatcherFactory
+
+-keepattributes *Annotation*, InnerClasses
+-dontnote kotlinx.serialization.SerializationKt
+
+-keep class com.bumptech.glide.load.data.ParcelFileDescriptorRewinder$InternalRewinder {
+  *** rewind();
+}
+
+-keep class kotlin.reflect.jvm.internal.impl.builtins.BuiltInsLoaderImpl
+
+-keepclassmembers class kotlin.Metadata {
+    public <methods>;
+}
+
+-dontwarn com.google.android.material.**
+-keep class com.google.android.material.** { *; }
+
+-dontwarn androidx.**
+-keep class androidx.** { *; }
+-keep interface androidx.** { *; }
