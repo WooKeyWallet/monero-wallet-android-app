@@ -158,8 +158,20 @@
         <item name="android:textColor">@color/color_222222</item>
     </style>
 
+    <style name="text_18_333333" parent="text_18">
+        <item name="android:textColor">@color/color_333333</item>
+    </style>
+
     <style name="text_18_FFFFFF" parent="text_18">
         <item name="android:textColor">@color/color_FFFFFF</item>
+    </style>
+
+    <style name="text_23">
+        <item name="android:textSize">@dimen/text_size_23</item>
+    </style>
+
+    <style name="text_23_333333" parent="text_23">
+        <item name="android:textColor">@color/color_333333</item>
     </style>
 
     <style name="text_25">
@@ -181,12 +193,6 @@
     </style>
 
     <style name="edit_text_16" parent="text_16">
-        <item name="android:textColor">@color/color_333333</item>
-        <item name="android:textColorHint">@color/color_9E9E9E</item>
-        <item name="android:backgroundTint">@color/color_DEDEDE</item>
-    </style>
-
-    <style name="edit_text_16_" parent="text_16">
         <item name="android:textColor">@color/color_333333</item>
         <item name="android:textColorHint">@color/color_9E9E9E</item>
         <item name="android:backgroundTint">@color/color_DEDEDE</item>

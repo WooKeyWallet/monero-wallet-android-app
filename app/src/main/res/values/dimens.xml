@@ -6,5 +6,6 @@
     <dimen name="text_size_14">14dp</dimen>
     <dimen name="text_size_16">16dp</dimen>
     <dimen name="text_size_18">18dp</dimen>
+    <dimen name="text_size_23">23dp</dimen>
     <dimen name="text_size_25">25dp</dimen>
 </resources>

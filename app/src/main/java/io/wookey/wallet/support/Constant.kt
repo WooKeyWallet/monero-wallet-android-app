@@ -18,6 +18,9 @@ const val REQUEST_SELECT_ADDRESS = 102
 const val REQUEST_SELECT_NODE = 103
 const val REQUEST_SELECT_SUB_ADDRESS = 104
 
+const val REQUEST_SWAP_SCAN_ADDRESS = 200
+const val REQUEST_SWAP_SELECT_ADDRESS = 202
+
 const val REQUEST_PATTERN_SETTING = 105
 const val REQUEST_PATTERN_CHECKING = 106
 const val REQUEST_PATTERN_CHECKING_ADDRESS_SETTING = 107
@@ -33,28 +36,28 @@ const val KEY_ALIAS = "wookeyMonero"
 const val RSA_KEY_ALIAS = "wookeyMoneroRSA"
 
 val coinList = listOf(
-        Coin("XMR", "Monero")
+    Coin("XMR", "Monero")
 )
 
 val nodeArray = arrayOf(
-        Node().apply {
-            symbol = "XMR"
-            url = "node.moneroworld.com:18089"
-            isSelected = true
-        },
-        Node().apply {
-            symbol = "XMR"
-            url = "opennode.xmr-tw.org:18089"
-            isSelected = false
-        },
-        Node().apply {
-            symbol = "XMR"
-            url = "uwillrunanodesoon.moneroworld.com:18089"
-            isSelected = false
-        },
-        Node().apply {
-            symbol = "XMR"
-            url = "node.imonero.org:18081"
-            isSelected = false
-        }
+    Node().apply {
+        symbol = "XMR"
+        url = "node.moneroworld.com:18089"
+        isSelected = true
+    },
+    Node().apply {
+        symbol = "XMR"
+        url = "opennode.xmr-tw.org:18089"
+        isSelected = false
+    },
+    Node().apply {
+        symbol = "XMR"
+        url = "uwillrunanodesoon.moneroworld.com:18089"
+        isSelected = false
+    },
+    Node().apply {
+        symbol = "XMR"
+        url = "node.imonero.org:18081"
+        isSelected = false
+    }
 )

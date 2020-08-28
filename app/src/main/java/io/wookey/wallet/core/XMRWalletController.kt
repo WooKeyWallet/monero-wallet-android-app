@@ -1,6 +1,7 @@
 package io.wookey.wallet.core
 
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import io.wookey.wallet.support.extensions.sharedPreferences
 
 import io.wookey.monero.data.Node
@@ -14,6 +15,8 @@ import java.net.HttpURLConnection
 import java.net.URL
 
 object XMRWalletController {
+
+    val stopWallet = MutableLiveData<Boolean>()
 
     const val TAG = "XMRWalletController"
 
@@ -33,33 +36,41 @@ object XMRWalletController {
 
     fun createWallet(aFile: File, password: String): io.wookey.wallet.data.entity.Wallet {
         val newWallet = WalletManager.getInstance()
-                .createWallet(aFile, password, MNEMONIC_LANGUAGE)
+            .createWallet(aFile, password, MNEMONIC_LANGUAGE)
         val success = newWallet.status == Wallet.Status.Status_Ok
         return close(success, newWallet)
     }
 
     fun recoveryWallet(
-            aFile: File,
-            password: String,
-            mnemonic: String,
-            restoreHeight: Long
+        aFile: File,
+        password: String,
+        mnemonic: String,
+        restoreHeight: Long
     ): io.wookey.wallet.data.entity.Wallet {
         val newWallet = WalletManager.getInstance()
-                .recoveryWallet(aFile, password, mnemonic, restoreHeight)
+            .recoveryWallet(aFile, password, mnemonic, restoreHeight)
         val success = newWallet.status == Wallet.Status.Status_Ok
         return close(success, newWallet)
     }
 
     fun createWalletWithKeys(
-            aFile: File,
-            password: String,
-            restoreHeight: Long,
-            address: String,
-            viewKey: String,
-            spendKey: String
+        aFile: File,
+        password: String,
+        restoreHeight: Long,
+        address: String,
+        viewKey: String,
+        spendKey: String
     ): io.wookey.wallet.data.entity.Wallet {
         val newWallet = WalletManager.getInstance()
-                .createWalletWithKeys(aFile, password, MNEMONIC_LANGUAGE, restoreHeight, address, viewKey, spendKey)
+            .createWalletWithKeys(
+                aFile,
+                password,
+                MNEMONIC_LANGUAGE,
+                restoreHeight,
+                address,
+                viewKey,
+                spendKey
+            )
         val success = newWallet.status == Wallet.Status.Status_Ok
         return close(success, newWallet)
     }
@@ -92,7 +103,7 @@ object XMRWalletController {
     }
 
     fun verifyWalletPasswordOnly(keyPath: String, password: String) =
-            WalletManager.getInstance().verifyWalletPasswordOnly(keyPath, password)
+        WalletManager.getInstance().verifyWalletPasswordOnly(keyPath, password)
 
 
     fun openWallet(path: String, password: String) {
@@ -139,7 +150,11 @@ object XMRWalletController {
 
     fun startWallet(path: String, password: String, restoreHeight: Long, observer: Observer) {
 
-        stopWallet()
+        // 关闭之前的钱包失败
+        if (stopWallet() == false) {
+            observer.onWalletOpenFailed("wallet opened failed")
+            return
+        }
 
         val wallet = WalletManager.getInstance().openWallet(path, password)
         if (wallet == null) {
@@ -233,8 +248,9 @@ object XMRWalletController {
         getWallet()?.setListener(null)
     }
 
-    fun stopWallet() {
-        getWallet()?.let {
+    fun stopWallet(): Boolean? {
+        stopWallet.postValue(true)
+        return getWallet()?.let {
             it.pauseRefresh()
             it.setListener(null)
             it.close()
@@ -293,11 +309,11 @@ object XMRWalletController {
     fun isPaymentIdValid(paymentId: String) = Wallet.isPaymentIdValid(paymentId)
 
     fun createTransaction(
-            isAll: Boolean = false,
-            dstAddress: String,
-            paymentId: String?,
-            amount: String, mixinCount: Int = 10,
-            priority: PendingTransaction.Priority = PendingTransaction.Priority.Priority_Default
+        isAll: Boolean = false,
+        dstAddress: String,
+        paymentId: String?,
+        amount: String, mixinCount: Int = 10,
+        priority: PendingTransaction.Priority = PendingTransaction.Priority.Priority_Default
     ) {
 
         val wallet = getWallet() ?: throw IllegalStateException("wallet opened failed")
@@ -386,7 +402,12 @@ object XMRWalletController {
     fun testRpcService(url: String, timeout: Int = 3 * 1000): Long {
         var time = Long.MAX_VALUE
         val split = url.split(":")
-        val connection = URL("http", split[0], split[1].toInt(), "json_rpc").openConnection() as? HttpURLConnection
+        val connection = URL(
+            "http",
+            split[0],
+            split[1].toInt(),
+            "json_rpc"
+        ).openConnection() as? HttpURLConnection
             ?: throw IllegalArgumentException("url is invalid")
         connection.connectTimeout = timeout
         connection.readTimeout = timeout

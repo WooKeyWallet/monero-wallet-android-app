@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_FFFFFF"
+    android:orientation="vertical">
+
+    <include layout="@layout/base_title_second" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nsv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <io.wookey.wallet.widget.InterceptTouchEventLayout
+            android:id="@+id/intercept"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="25dp">
+
+                <View
+                    android:id="@+id/divider1"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:background="@color/color_F3F4F6"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/fromCoin"
+                    style="@style/text_23_333333"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:text="XMR"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@id/divider1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/divider1" />
+
+                <EditText
+                    android:id="@+id/fromAmount"
+                    style="@style/text_23_333333"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="25dp"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:inputType="numberDecimal"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textColorHint="@color/color_33333333"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@id/fromAmountDescribe"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/fromCoin"
+                    app:layout_constraintTop_toTopOf="@id/divider1"
+                    app:layout_constraintVertical_chainStyle="packed" />
+
+                <TextView
+                    android:id="@+id/fromAmountDescribe"
+                    style="@style/text_12_9E9E9E"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0.5dp"
+                    android:layout_marginEnd="25dp"
+                    android:text="@string/swap_from_amount"
+                    app:layout_constraintBottom_toBottomOf="@id/divider1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/fromAmount" />
+
+                <ImageView
+                    android:id="@+id/indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:src="@drawable/icon_swap_indicator"
+                    app:layout_constraintBottom_toTopOf="@id/divider2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider1" />
+
+                <TextView
+                    android:id="@+id/balanceDescribe"
+                    style="@style/text_12_9E9E9E"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/balance_describe"
+                    app:layout_constraintBottom_toTopOf="@id/rateDescribe"
+                    app:layout_constraintStart_toEndOf="@id/indicator"
+                    app:layout_constraintTop_toBottomOf="@id/divider1"
+                    app:layout_constraintVertical_chainStyle="packed" />
+
+                <TextView
+                    android:id="@+id/balance"
+                    style="@style/text_12_333333"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@id/balanceDescribe"
+                    app:layout_constraintStart_toEndOf="@id/balanceDescribe"
+                    app:layout_constraintTop_toTopOf="@id/balanceDescribe" />
+
+                <TextView
+                    android:id="@+id/rateDescribe"
+                    style="@style/text_12_9E9E9E"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/rate_describe"
+                    app:layout_constraintBottom_toTopOf="@id/divider2"
+                    app:layout_constraintStart_toEndOf="@id/indicator"
+                    app:layout_constraintTop_toBottomOf="@id/balanceDescribe" />
+
+                <TextView
+                    android:id="@+id/rate"
+                    style="@style/text_12_333333"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@id/rateDescribe"
+                    app:layout_constraintStart_toEndOf="@id/rateDescribe"
+                    app:layout_constraintTop_toTopOf="@id/rateDescribe" />
+
+                <View
+                    android:id="@+id/divider2"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="73dp"
+                    android:layout_marginEnd="25dp"
+                    android:background="@color/color_DEDEDE"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider1" />
+
+                <TextView
+                    android:id="@+id/toCoin"
+                    style="@style/text_23_333333"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:drawableEnd="@drawable/arrow_down2"
+                    android:drawablePadding="5dp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@id/divider3"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider2" />
+
+                <TextView
+                    android:id="@+id/toAmount"
+                    style="@style/text_23_333333"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="25dp"
+                    android:gravity="end|center_vertical"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@id/toAmountDescribe"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/toCoin"
+                    app:layout_constraintTop_toBottomOf="@id/divider2"
+                    app:layout_constraintVertical_chainStyle="packed" />
+
+                <TextView
+                    android:id="@+id/toAmountDescribe"
+                    style="@style/text_12_9E9E9E"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0.5dp"
+                    android:layout_marginEnd="25dp"
+                    android:text="@string/swap_to_amount"
+                    app:layout_constraintBottom_toTopOf="@id/divider3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/toAmount" />
+
+                <View
+                    android:id="@+id/divider3"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginTop="80dp"
+                    android:background="@color/color_DEDEDE"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider2" />
+
+                <View
+                    android:id="@+id/divider4"
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:background="@color/color_F6F6F6"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider3" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/toAddress"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginEnd="10dp"
+                    app:layout_constraintEnd_toStartOf="@id/scan"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider4">
+
+                    <EditText
+                        style="@style/edit_text_16"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/swap_to_address"
+                        android:imeOptions="actionDone"
+                        android:inputType="textMultiLine"
+                        android:textAlignment="textStart" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <ImageView
+                    android:id="@+id/scan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="37dp"
+                    android:layout_marginEnd="15dp"
+                    android:src="@drawable/icon_scan_green"
+                    app:layout_constraintEnd_toStartOf="@id/addressBook"
+                    app:layout_constraintTop_toBottomOf="@id/divider4" />
+
+                <ImageView
+                    android:id="@+id/addressBook"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="37dp"
+                    android:layout_marginEnd="25dp"
+                    android:src="@drawable/icon_address_book"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider4" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/toAddressTag"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="25dp"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/toAddress">
+
+                    <EditText
+                        style="@style/edit_text_16"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/swap_to_address_tag"
+                        android:imeOptions="actionDone"
+                        android:inputType="textMultiLine"
+                        android:textAlignment="textStart" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <CheckBox
+                    android:id="@+id/saveTag"
+                    style="@style/text_13_9E9E9E"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/color_FFFFFF"
+                    android:button="@null"
+                    android:checked="false"
+                    android:drawableStart="@drawable/save_tag_cb"
+                    android:drawablePadding="5dp"
+                    android:text="@string/add_to_address_book"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/toAddressTag" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/extraID"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="10dp"
+                    app:layout_constraintEnd_toStartOf="@id/extraIDHelp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/saveTag">
+
+                    <EditText
+                        style="@style/edit_text_16"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/swap_to_extra_id_optional"
+                        android:imeOptions="actionDone"
+                        android:inputType="textMultiLine"
+                        android:textAlignment="textStart" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <ImageView
+                    android:id="@+id/extraIDHelp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="28dp"
+                    android:layout_marginEnd="25dp"
+                    android:src="@drawable/icon_help_green"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/saveTag" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/refundAddress"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="25dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/extraID">
+
+                    <EditText
+                        style="@style/edit_text_16"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/swap_refund_address"
+                        android:imeOptions="actionDone"
+                        android:inputType="textMultiLine"
+                        android:textAlignment="textStart" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.constraintlayout.widget.Group
+                    android:id="@+id/moreGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:constraint_referenced_ids="extraID,extraIDHelp,refundAddress" />
+
+                <CheckBox
+                    android:id="@+id/more"
+                    style="@style/text_14_9E9E9E"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:button="@null"
+                    android:checked="false"
+                    android:drawableEnd="@drawable/more_option_cb"
+                    android:drawablePadding="5dp"
+                    android:paddingStart="15dp"
+                    android:paddingTop="5dp"
+                    android:paddingEnd="15dp"
+                    android:paddingBottom="5dp"
+                    android:text="@string/expend_option"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/refundAddress" />
+
+                <FrameLayout
+                    android:id="@+id/swapBg"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="45dp"
+                    android:layout_marginEnd="25dp"
+                    android:background="@drawable/button_disabled_bg"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/more">
+
+                    <TextView
+                        android:id="@+id/swap"
+                        style="@style/text_16_FFFFFF"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:drawablePadding="10dp"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:singleLine="true"
+                        android:text="@string/swap" />
+
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/swapDescribe"
+                    style="@style/text_12_9E9E9E"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/swap_describe"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/swapBg" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </io.wookey.wallet.widget.InterceptTouchEventLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

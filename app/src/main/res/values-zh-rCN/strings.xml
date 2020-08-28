@@ -222,7 +222,7 @@
     <string name="release_mode_pattern">手势密码</string>
     <string name="release_mode_pattern_modify">手势修改</string>
     <string name="release_open_wallet">打开钱包时</string>
-    <string name="release_send_coin">发送 XMR 时</string>
+    <string name="release_send_coin">发送时</string>
     <string name="release_backup">导出私钥和助记词</string>
     <string name="release_prompt_open">1、免密指纹/FaceID/手势密码的安全性，取决于手机生物识别的安全等级\n2、有大额资产的钱包请勿打开\n3、使用过程中由于生物识别技术漏洞或是因丢失手机和手机文件引起的资产丢失，本软件不承担法律责任</string>
     <string name="release_prompt_close">关闭开关按钮，将清除所有密码相关数据，再次开启需要重新设置</string>
@@ -256,5 +256,54 @@
     <string name="pattern_failed">手势密码不正确，剩余尝试次数%1$s次</string>
 
     <string name="pattern_reset">重设</string>
+
+    <string name="swap">兑换</string>
+    <string name="swap_from_amount">兑换数量</string>
+    <string name="swap_from_amount_hint">%1$s 起换</string>
+    <string name="balance_describe">钱包余额：</string>
+    <string name="rate_describe">参考汇率：</string>
+    <string name="swap_to_amount">预估到账</string>
+
+    <string name="swap_to_address">接收地址</string>
+    <string name="swap_to_address_tag">地址标签（必填）</string>
+    <string name="add_to_address_book">添加到地址簿</string>
+    <string name="swap_to_extra_id_optional">ExtraID（选填）</string>
+    <string name="swap_to_extra_id_required">ExtraID（必填）</string>
+    <string name="swap_refund_address">退款地址</string>
+    <string name="expend_option">更多选项</string>
+    <string name="fold_option">收起选项</string>
+    <string name="swap_describe">同步后才能兑换</string>
+
+    <string name="swap_records">兑换明细</string>
+    <string name="swap_detail">兑换详情</string>
+
+    <string name="dialog_swap_risk_title">风险提示</string>
+    <string name="dialog_swap_risk">兑换服务由第三方平台Changelly提供，用户使用兑换服务必须同意Changelly平台的用户协议及规则，若用户在兑换中有任何问题，可通过联系Changelly指定邮箱support@changelly.com获得帮助，Wookey Wallet不承担因使用兑换功能而遭受的或与该功能相关的损失。</string>
+    <string name="dialog_swap_risk_know">我已知晓该风险</string>
+
+    <string name="dialog_swap_extra_id_title">ExtraID</string>
+    <string name="dialog_swap_extra_id_content">用于标识交易地址的附加ID，例如EOS的Memo</string>
+
+    <string name="no_data">暂无记录</string>
+
+    <string name="swap_detail_id">订单号：</string>
+    <string name="swap_detail_from_amount_colon">兑换数量：</string>
+    <string name="swap_detail_to_amount_colon">兑出数量：</string>
+    <string name="swap_detail_fee_colon">手续费：</string>
+    <string name="swap_detail_to_address_tag_colon">地址标签：</string>
+    <string name="swap_detail_to_address_colon">兑出地址：</string>
+
+    <string name="swap_block_synchronized">同步完成，创建交易中</string>
+    <string name="swap_send_transaction">交易创建完成</string>
+    <string name="swap_block_synchronize_failed">同步失败，请切换节点后重试</string>
+    <string name="swap_transaction_interrupt">交易中断</string>
+
+    <string name="swap_address_book">兑换地址簿</string>
+
+    <string name="dialog_left_current_screen">离开当前页面，可能导致交易中断，确定离开？</string>
+
+    <string name="swap_success">兑换成功</string>
+    <string name="swap_failed">兑换失败</string>
+    <string name="swap_pending">处理中</string>
 
 </resources>

@@ -22,10 +22,6 @@ class AuthManager(val walletRelease: WalletRelease?, val walletId: Int) {
 
     fun openWallet(activity: BaseActivity, fragment: Fragment? = null, requestCode: Int = REQUEST_PATTERN_CHECKING, block: (String?) -> Unit) {
         val fragmentManager = fragment?.childFragmentManager ?: activity.supportFragmentManager
-        if (BiometricManager.from(activity).canAuthenticate() != BiometricManager.BIOMETRIC_SUCCESS) {
-            showPasswordDialog(fragmentManager, block)
-            return
-        }
         if (walletRelease == null) {
             showPasswordDialog(fragmentManager, block)
             return
@@ -33,7 +29,11 @@ class AuthManager(val walletRelease: WalletRelease?, val walletId: Int) {
         if (walletRelease.openWallet) {
             when {
                 walletRelease.fingerprint -> {
-                    showBiometricPrompt(activity, fragmentManager, block)
+                    if (BiometricManager.from(activity).canAuthenticate() != BiometricManager.BIOMETRIC_SUCCESS) {
+                        showPasswordDialog(fragmentManager, block)
+                    } else {
+                        showBiometricPrompt(activity, fragmentManager, block)
+                    }
                 }
                 walletRelease.pattern -> {
                     showPattern(activity, fragment, requestCode, block)
@@ -49,10 +49,6 @@ class AuthManager(val walletRelease: WalletRelease?, val walletId: Int) {
 
     fun sendTransaction(activity: BaseActivity, fragment: Fragment? = null, requestCode: Int = REQUEST_PATTERN_CHECKING, block: (String?) -> Unit) {
         val fragmentManager = fragment?.childFragmentManager ?: activity.supportFragmentManager
-        if (BiometricManager.from(activity).canAuthenticate() != BiometricManager.BIOMETRIC_SUCCESS) {
-            showPasswordDialog(fragmentManager, block)
-            return
-        }
         if (walletRelease == null) {
             showPasswordDialog(fragmentManager, block)
             return
@@ -60,7 +56,11 @@ class AuthManager(val walletRelease: WalletRelease?, val walletId: Int) {
         if (walletRelease.sendTransaction) {
             when {
                 walletRelease.fingerprint -> {
-                    showBiometricPrompt(activity, fragmentManager, block)
+                    if (BiometricManager.from(activity).canAuthenticate() != BiometricManager.BIOMETRIC_SUCCESS) {
+                        showPasswordDialog(fragmentManager, block)
+                    } else {
+                        showBiometricPrompt(activity, fragmentManager, block)
+                    }
                 }
                 walletRelease.pattern -> {
                     showPattern(activity, fragment, requestCode, block)
@@ -76,10 +76,6 @@ class AuthManager(val walletRelease: WalletRelease?, val walletId: Int) {
 
     fun backup(activity: BaseActivity, fragment: Fragment? = null, requestCode: Int = REQUEST_PATTERN_CHECKING, block: (String?) -> Unit) {
         val fragmentManager = fragment?.childFragmentManager ?: activity.supportFragmentManager
-        if (BiometricManager.from(activity).canAuthenticate() != BiometricManager.BIOMETRIC_SUCCESS) {
-            showPasswordDialog(fragmentManager, block)
-            return
-        }
         if (walletRelease == null) {
             showPasswordDialog(fragmentManager, block)
             return
@@ -87,7 +83,11 @@ class AuthManager(val walletRelease: WalletRelease?, val walletId: Int) {
         if (walletRelease.backup) {
             when {
                 walletRelease.fingerprint -> {
-                    showBiometricPrompt(activity, fragmentManager, block)
+                    if (BiometricManager.from(activity).canAuthenticate() != BiometricManager.BIOMETRIC_SUCCESS) {
+                        showPasswordDialog(fragmentManager, block)
+                    } else {
+                        showBiometricPrompt(activity, fragmentManager, block)
+                    }
                 }
                 walletRelease.pattern -> {
                     showPattern(activity, fragment, requestCode, block)

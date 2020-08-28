@@ -24,18 +24,24 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bigkoo.pickerview.builder.TimePickerBuilder
 import io.wookey.wallet.App
 import io.wookey.wallet.R
+import io.wookey.wallet.data.remote.entity.RPCResponse
 import io.wookey.wallet.support.KEY_ALIAS
 import io.wookey.wallet.support.RSA_KEY_ALIAS
-import java.lang.IllegalArgumentException
 import java.math.BigDecimal
 import java.math.BigInteger
-import java.security.KeyPair
 import java.security.KeyPairGenerator
 import java.security.KeyStore
 import java.security.spec.AlgorithmParameterSpec
+import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
 import javax.crypto.Cipher
@@ -123,12 +129,20 @@ fun androidx.fragment.app.Fragment.versionCode(): Int {
 }
 
 fun dp2px(dp: Float): Float {
-    return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, Resources.getSystem().displayMetrics)
+    return TypedValue.applyDimension(
+        TypedValue.COMPLEX_UNIT_DIP,
+        dp,
+        Resources.getSystem().displayMetrics
+    )
 }
 
 fun dp2px(dp: Int): Int {
-    return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp.toFloat(), Resources.getSystem().displayMetrics)
-            .toInt()
+    return TypedValue.applyDimension(
+        TypedValue.COMPLEX_UNIT_DIP,
+        dp.toFloat(),
+        Resources.getSystem().displayMetrics
+    )
+        .toInt()
 }
 
 fun screenWidth(): Int {
@@ -252,7 +266,12 @@ fun String.formatterAmountStrip(): String {
 }
 
 fun SpannableString.foregroundColorSpan(range: IntRange, color: Int) {
-    setSpan(ForegroundColorSpan(color), range.start, range.endInclusive, Spannable.SPAN_INCLUSIVE_EXCLUSIVE)
+    setSpan(
+        ForegroundColorSpan(color),
+        range.start,
+        range.endInclusive,
+        Spannable.SPAN_INCLUSIVE_EXCLUSIVE
+    )
 }
 
 fun SpannableString.clickableSpan(range: IntRange, color: Int, listener: (View) -> Unit) {
@@ -270,16 +289,16 @@ fun SpannableString.clickableSpan(range: IntRange, color: Int, listener: (View) 
 }
 
 fun View.showTimePicker(
-        startDate: Calendar = Calendar.getInstance().apply { set(2014, 4, 1) },
-        listener: (Date) -> Unit
+    startDate: Calendar = Calendar.getInstance().apply { set(2014, 4, 1) },
+    listener: (Date) -> Unit
 ) {
     setOnClickListener {
         hideKeyboard()
         TimePickerBuilder(context) { date, v -> listener(date) }
-                .setRangDate(startDate, Calendar.getInstance())
-                .setLabel("", "", "", "", "", "")
-                .build()
-                .show()
+            .setRangDate(startDate, Calendar.getInstance())
+            .setLabel("", "", "", "", "", "")
+            .build()
+            .show()
     }
 }
 
@@ -322,7 +341,7 @@ fun Context.isSelectedLanguage(lang: String): Boolean {
     var locale = getLocale()
     if (locale.isNullOrBlank()) {
         locale = if (App.SYSTEM_DEFAULT_LOCALE.language == "zh"
-                && App.SYSTEM_DEFAULT_LOCALE.country == "CN"
+            && App.SYSTEM_DEFAULT_LOCALE.country == "CN"
         ) {
             "zh-CN"
         } else {
@@ -336,7 +355,7 @@ fun Context.getCurrentLocale(): String {
     var locale = getLocale()
     if (locale.isNullOrBlank()) {
         locale = if (App.SYSTEM_DEFAULT_LOCALE.language == "zh"
-                && App.SYSTEM_DEFAULT_LOCALE.country == "CN"
+            && App.SYSTEM_DEFAULT_LOCALE.country == "CN"
         ) {
             "zh-CN"
         } else {
@@ -368,13 +387,15 @@ fun Activity.openBrowser(url: String) {
 fun generateSecretKey() {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
         val keyGenerator = KeyGenerator.getInstance(
-                KeyProperties.KEY_ALGORITHM_AES, "AndroidKeyStore")
+            KeyProperties.KEY_ALGORITHM_AES, "AndroidKeyStore"
+        )
         val builder = KeyGenParameterSpec.Builder(
-                KEY_ALIAS,
-                KeyProperties.PURPOSE_ENCRYPT or KeyProperties.PURPOSE_DECRYPT)
-                .setBlockModes(KeyProperties.BLOCK_MODE_CBC)
-                .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_PKCS7)
-                .setUserAuthenticationRequired(true)
+            KEY_ALIAS,
+            KeyProperties.PURPOSE_ENCRYPT or KeyProperties.PURPOSE_DECRYPT
+        )
+            .setBlockModes(KeyProperties.BLOCK_MODE_CBC)
+            .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_PKCS7)
+            .setUserAuthenticationRequired(true)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             builder.setInvalidatedByBiometricEnrollment(true)
         }
@@ -395,9 +416,11 @@ fun getSecretKey(): SecretKey {
 
 @RequiresApi(Build.VERSION_CODES.M)
 fun getCipher(): Cipher {
-    return Cipher.getInstance(KeyProperties.KEY_ALGORITHM_AES + "/"
-            + KeyProperties.BLOCK_MODE_CBC + "/"
-            + KeyProperties.ENCRYPTION_PADDING_PKCS7)
+    return Cipher.getInstance(
+        KeyProperties.KEY_ALGORITHM_AES + "/"
+                + KeyProperties.BLOCK_MODE_CBC + "/"
+                + KeyProperties.ENCRYPTION_PADDING_PKCS7
+    )
 }
 
 fun generateRSAKey(context: Context) {
@@ -405,15 +428,15 @@ fun generateRSAKey(context: Context) {
     val end: Calendar = GregorianCalendar()
     end.add(Calendar.YEAR, 50)
     val kpGenerator: KeyPairGenerator = KeyPairGenerator
-            .getInstance("RSA", "AndroidKeyStore")
+        .getInstance("RSA", "AndroidKeyStore")
     val spec: AlgorithmParameterSpec
     spec = KeyPairGeneratorSpec.Builder(context)
-            .setAlias(RSA_KEY_ALIAS)
-            .setSubject(X500Principal("CN=$RSA_KEY_ALIAS"))
-            .setSerialNumber(BigInteger.valueOf(1337))
-            .setStartDate(start.time)
-            .setEndDate(end.time)
-            .build()
+        .setAlias(RSA_KEY_ALIAS)
+        .setSubject(X500Principal("CN=$RSA_KEY_ALIAS"))
+        .setSerialNumber(BigInteger.valueOf(1337))
+        .setStartDate(start.time)
+        .setEndDate(end.time)
+        .build()
     kpGenerator.initialize(spec)
     kpGenerator.generateKeyPair()
 }
@@ -465,4 +488,95 @@ fun joins(prefix: ByteArray, suffix: ByteArray): ByteArray {
     System.arraycopy(prefix, 0, ret, 0, prefix.size)
     System.arraycopy(suffix, 0, ret, prefix.size, suffix.size)
     return ret
+}
+
+inline fun <reified VM : ViewModel> AppCompatActivity.viewModel(noinline factoryProducer: (() -> ViewModelProvider.Factory))
+        : Lazy<VM> = lazy { factoryProducer.invoke().create(VM::class.java) }
+
+inline fun <reified VM : ViewModel> AppCompatActivity.viewModel()
+        : Lazy<VM> = lazy { ViewModelProviders.of(this).get(VM::class.java) }
+
+inline fun <reified VM : ViewModel> Fragment.viewModel()
+        : Lazy<VM> = lazy { ViewModelProviders.of(this).get(VM::class.java) }
+
+inline fun <reified T> RPCResponse<T>.unWrap(): T? {
+    if (this.error == null) {
+        return this.result
+    } else {
+        throw IllegalStateException(this.error.message)
+    }
+}
+
+fun String.decimalFormat(digit: Int = 8): String {
+    return try {
+        val formatter = DecimalFormat("#.${"#".repeat(digit)}")
+        formatter.format(this.toDouble())
+    } catch (e: Exception) {
+        e.printStackTrace()
+        "--"
+    }
+}
+
+const val VISIBLE_THRESHOLD = 5
+fun RecyclerView.setOnLoadMoreListener(loadMore: () -> Unit) {
+    addOnScrollListener(object : RecyclerView.OnScrollListener() {
+        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+            super.onScrolled(recyclerView, dx, dy)
+            val layoutManager = recyclerView.layoutManager
+            if (layoutManager is LinearLayoutManager) {
+                val totalItemCount = layoutManager.itemCount
+                val visibleItemCount = layoutManager.childCount
+                val lastVisibleItem = layoutManager.findLastVisibleItemPosition()
+                if (visibleItemCount + lastVisibleItem + VISIBLE_THRESHOLD >= totalItemCount) {
+                    loadMore()
+                }
+            }
+        }
+    })
+}
+
+fun EditText.afterDecimalTextChanged(afterTextChanged: (String) -> Unit) {
+    this.addTextChangedListener(object : TextWatcher {
+        override fun afterTextChanged(s: Editable?) {
+            val trim = s?.toString()?.trim()
+            if (trim != null && trim.startsWith("0") && trim.length > 1) {
+                val index = trim.indexOf(".")
+                if (index != 1) {
+                    val dest = trim.toBigDecimal().stripTrailingZeros().toPlainString()
+                    setText(dest)
+                    setSelection(dest?.length ?: 0)
+                } else {
+                    afterTextChanged(trim)
+                }
+            } else {
+                afterTextChanged(trim ?: "")
+            }
+        }
+
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+    })
+}
+
+private fun formatInput(it: String?, input: EditText): Boolean {
+    if (it != null && it.startsWith("0") && it.length > 1) {
+        val index = it.indexOf(".")
+        if (index != 1) {
+            val decimal = BigDecimal(it).toPlainString()
+            input.setText(decimal)
+            return true
+        }
+    }
+    return false
+}
+
+fun String.displayCoin(): String {
+    if (this.equals("usdt", true)) {
+        return "USDT(OMNI)"
+    }
+    if (this.equals("usdt20", true)) {
+        return "USDT(ERC20)"
+    }
+    return this.toUpperCase(Locale.CHINA)
 }

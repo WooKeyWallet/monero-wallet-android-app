@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/editContainer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color_FFFFFF"
+    android:orientation="vertical"
+    android:paddingStart="30dp"
+    android:paddingTop="25dp"
+    android:paddingEnd="30dp"
+    android:paddingBottom="22dp">
+
+    <TextView
+        style="@style/text_16_222222"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:drawableStart="@drawable/icon_dot_green"
+        android:drawablePadding="8dp"
+        android:text="@string/dialog_swap_extra_id_title" />
+
+    <TextView
+        android:id="@+id/promptTv"
+        style="@style/text_14_9E9E9E"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="25dp"
+        android:gravity="center"
+        android:lineSpacingMultiplier="1.2"
+        android:text="@string/dialog_swap_extra_id_content" />
+
+    <TextView
+        android:id="@+id/confirm"
+        style="@style/text_16_FFFFFF"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:text="@string/dialog_ok" />
+
+</LinearLayout>

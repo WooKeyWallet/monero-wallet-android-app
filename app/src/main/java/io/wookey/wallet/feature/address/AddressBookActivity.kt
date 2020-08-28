@@ -171,7 +171,7 @@ class AddressBookActivity : BaseTitleSecondActivity() {
                     edit.setOnClickListener {
                         viewModel.edit(addressBook)
                     }
-                    itemView.setOnClickListener {
+                    item.setOnClickListener {
                         viewModel.itemClick(addressBook)
                     }
                 }

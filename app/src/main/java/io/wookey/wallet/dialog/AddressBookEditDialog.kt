@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import io.wookey.wallet.R
 import io.wookey.wallet.data.entity.AddressBook
+import io.wookey.wallet.data.entity.SwapAddressBook
 import io.wookey.wallet.support.BackgroundHelper
 import io.wookey.wallet.support.extensions.dp2px
 import io.wookey.wallet.support.extensions.hideKeyboard
@@ -23,6 +24,7 @@ class AddressBookEditDialog : DialogFragment() {
     private var cancelListener: (() -> Unit)? = null
     private var confirmListener: (() -> Unit)? = null
     private lateinit var addressBook: AddressBook
+    private lateinit var swapAddressBook: SwapAddressBook
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,8 +60,14 @@ class AddressBookEditDialog : DialogFragment() {
             if (tag.isNullOrBlank()) {
                 toast(R.string.input_note)
             } else {
-                addressBook.notes = tag
-                viewModel.updateAddressBook(addressBook)
+                if (::addressBook.isInitialized) {
+                    addressBook.notes = tag
+                    viewModel.updateAddressBook(addressBook)
+                }
+                if (::swapAddressBook.isInitialized) {
+                    swapAddressBook.notes = tag
+                    viewModel.updateAddressBook(swapAddressBook)
+                }
             }
         }
 
@@ -97,15 +105,14 @@ class AddressBookEditDialog : DialogFragment() {
     companion object {
         private const val TAG = "AddressBookEditDialog"
         fun newInstance(): AddressBookEditDialog {
-            val fragment = AddressBookEditDialog()
-            return fragment
+            return AddressBookEditDialog()
         }
 
         fun display(
-                fm: androidx.fragment.app.FragmentManager,
-                addressBook: AddressBook,
-                cancelListener: (() -> Unit)? = null,
-                confirmListener: (() -> Unit)? = null
+            fm: FragmentManager,
+            addressBook: AddressBook,
+            cancelListener: (() -> Unit)? = null,
+            confirmListener: (() -> Unit)? = null
         ) {
             val ft = fm.beginTransaction()
             val prev = fm.findFragmentByTag(TAG)
@@ -115,6 +122,25 @@ class AddressBookEditDialog : DialogFragment() {
             ft.addToBackStack(null)
             newInstance().apply {
                 this.addressBook = addressBook
+                this.cancelListener = cancelListener
+                this.confirmListener = confirmListener
+            }.show(ft, TAG)
+        }
+
+        fun display(
+            fm: FragmentManager,
+            swapAddressBook: SwapAddressBook,
+            cancelListener: (() -> Unit)? = null,
+            confirmListener: (() -> Unit)? = null
+        ) {
+            val ft = fm.beginTransaction()
+            val prev = fm.findFragmentByTag(TAG)
+            if (prev != null) {
+                ft.remove(prev)
+            }
+            ft.addToBackStack(null)
+            newInstance().apply {
+                this.swapAddressBook = swapAddressBook
                 this.cancelListener = cancelListener
                 this.confirmListener = confirmListener
             }.show(ft, TAG)

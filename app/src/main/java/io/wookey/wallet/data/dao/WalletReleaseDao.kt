@@ -1,6 +1,5 @@
 package io.wookey.wallet.data.dao
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
 import io.wookey.wallet.data.entity.WalletRelease
 

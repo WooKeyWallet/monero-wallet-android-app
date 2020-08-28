@@ -222,7 +222,7 @@
     <string name="release_mode_pattern">Gesture Password</string>
     <string name="release_mode_pattern_modify">Change gesture</string>
     <string name="release_open_wallet">Open wallet</string>
-    <string name="release_send_coin">Send XMR</string>
+    <string name="release_send_coin">Send</string>
     <string name="release_backup">Export private key and seed</string>
     <string name="release_prompt_open">1. The security of the Fingerprint/FaceID/Gesture depends on users\' mobile devices, not WooKey \n2. Do not enable these functions for wallets with large amounts of assets\n3. WooKey shall not be liable for the loss of assets caused by biometric vulnerabilities or the loss of mobile devices or the loss of files</string>
     <string name="release_prompt_close">Disable this feature, WooKey will clear all password related data. You should set up again to enable this feature.</string>
@@ -256,5 +256,54 @@
     <string name="pattern_failed">Incorrect gesture password, %1$s remaining attempts</string>
 
     <string name="pattern_reset">Reset</string>
+
+    <string name="swap">Swap</string>
+    <string name="swap_from_amount">You send</string>
+    <string name="swap_from_amount_hint">%1$s minimum</string>
+    <string name="balance_describe">Wallet Balance:</string>
+    <string name="rate_describe">Reference rate:</string>
+    <string name="swap_to_amount">You get</string>
+
+    <string name="swap_to_address">Recipient Address:</string>
+    <string name="swap_to_address_tag">Address Label (Required)</string>
+    <string name="add_to_address_book">Add to address book</string>
+    <string name="swap_to_extra_id_optional">ExtraID (Optional)</string>
+    <string name="swap_to_extra_id_required">ExtraID (Required)</string>
+    <string name="swap_refund_address">Refund Address</string>
+    <string name="expend_option">More Options</string>
+    <string name="fold_option">Hide Options</string>
+    <string name="swap_describe">Must wait for block sync before swapping</string>
+
+    <string name="swap_records">Swap Records</string>
+    <string name="swap_detail">Swap Details</string>
+
+    <string name="dialog_swap_risk_title">Risk Warning</string>
+    <string name="dialog_swap_risk">The swap service is powered by Changelly, a third-party platform. Users must agree to the user agreement and rules of Changelly before using this service. For any questions, please directly contact Changelly by sending email to support@changelly.com for help. Wookey Wallet is not responsible for direct or indirect losses caused by this service.</string>
+    <string name="dialog_swap_risk_know">I already know the risk</string>
+
+    <string name="dialog_swap_extra_id_title">ExtraID</string>
+    <string name="dialog_swap_extra_id_content">Additional ID to identify the transaction address, such as Memo of EOS</string>
+
+    <string name="no_data">No records</string>
+
+    <string name="swap_detail_id">Order Number:</string>
+    <string name="swap_detail_from_amount_colon">Swap Amount:</string>
+    <string name="swap_detail_to_amount_colon">Received Amount:</string>
+    <string name="swap_detail_fee_colon">Transaction Fee:</string>
+    <string name="swap_detail_to_address_tag_colon">Address Label:</string>
+    <string name="swap_detail_to_address_colon">Recipient Address:</string>
+
+    <string name="swap_block_synchronized">Sync done, transaction is being created</string>
+    <string name="swap_send_transaction">Transaction creation completed</string>
+    <string name="swap_block_synchronize_failed">Sync failed, please switch nodes and try again</string>
+    <string name="swap_transaction_interrupt">Transaction Interrupted</string>
+
+    <string name="swap_address_book">Swap Address Book</string>
+
+    <string name="dialog_left_current_screen">Leave this page, transaction would be interrupted. Are you sure you want to leave?</string>
+
+    <string name="swap_success">Swap success</string>
+    <string name="swap_failed">Swap failed</string>
+    <string name="swap_pending">Processing</string>
 
 </resources>

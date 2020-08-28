@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentManager
 import android.util.Log
 import android.view.*
 import io.wookey.wallet.R
+import io.wookey.wallet.support.extensions.displayCoin
 import io.wookey.wallet.support.extensions.screenWidth
 import io.wookey.wallet.support.extensions.sharedPreferences
 import kotlinx.android.synthetic.main.dialog_picker.*
@@ -19,6 +20,7 @@ class PickerDialog : DialogFragment() {
     private var confirmListener: ((String) -> Unit)? = null
 
     private lateinit var data: List<String>
+    private var select: String? = null
 
     private var position = 0
 
@@ -54,15 +56,14 @@ class PickerDialog : DialogFragment() {
 
         val list = mutableListOf<String>()
         data.forEachIndexed { i, s ->
-            list.add(s.toUpperCase(Locale.CHINA))
-            if (s == sharedPreferences().getString("currentCurrency", "usd")) {
+            list.add(s.displayCoin())
+            if (s == select) {
                 position = i
             }
         }
         loopView.setItems(list)
         loopView.setInitPosition(position)
         loopView.setListener {
-            Log.e("position: ", it.toString())
             position = it
         }
 
@@ -92,10 +93,11 @@ class PickerDialog : DialogFragment() {
         }
 
         fun display(
-                fm: androidx.fragment.app.FragmentManager,
-                data: List<String>,
-                cancelListener: (() -> Unit)? = null,
-                confirmListener: ((String) -> Unit)? = null
+            fm: FragmentManager,
+            data: List<String>,
+            select: String? = sharedPreferences().getString("currentCurrency", "usd"),
+            cancelListener: (() -> Unit)? = null,
+            confirmListener: ((String) -> Unit)? = null
         ) {
             val ft = fm.beginTransaction()
             val prev = fm.findFragmentByTag(TAG)
@@ -105,6 +107,7 @@ class PickerDialog : DialogFragment() {
             ft.addToBackStack(null)
             newInstance().apply {
                 this.data = data
+                this.select = select
                 this.cancelListener = cancelListener
                 this.confirmListener = confirmListener
             }.show(ft, TAG)

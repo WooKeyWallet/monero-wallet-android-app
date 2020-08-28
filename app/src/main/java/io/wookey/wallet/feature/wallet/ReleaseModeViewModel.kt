@@ -1,17 +1,12 @@
 package io.wookey.wallet.feature.wallet
 
-import android.os.Build
-import android.util.Base64
 import androidx.lifecycle.MutableLiveData
 import io.wookey.wallet.base.BaseViewModel
 import io.wookey.wallet.data.AppDatabase
 import io.wookey.wallet.data.entity.WalletRelease
-import io.wookey.wallet.support.extensions.getCipher
-import io.wookey.wallet.support.extensions.getSecretKey
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import javax.crypto.Cipher
 
 class ReleaseModeViewModel : BaseViewModel() {
 

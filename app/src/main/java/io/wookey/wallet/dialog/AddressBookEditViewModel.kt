@@ -5,6 +5,7 @@ import io.wookey.wallet.R
 import io.wookey.wallet.base.BaseViewModel
 import io.wookey.wallet.data.AppDatabase
 import io.wookey.wallet.data.entity.AddressBook
+import io.wookey.wallet.data.entity.SwapAddressBook
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -22,6 +23,22 @@ class AddressBookEditViewModel : BaseViewModel() {
             withContext(Dispatchers.IO) {
                 try {
                     AppDatabase.getInstance().addressBookDao().updateAddressBook(addressBook)
+                    success.postValue(true)
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                    toastRes.postValue(R.string.data_exception)
+                }
+            }
+            hideLoading.postValue(true)
+        }
+    }
+
+    fun updateAddressBook(swapAddressBook: SwapAddressBook) {
+        showLoading.value = true
+        uiScope.launch {
+            withContext(Dispatchers.IO) {
+                try {
+                    AppDatabase.getInstance().swapAddressBookDao().update(swapAddressBook)
                     success.postValue(true)
                 } catch (e: Exception) {
                     e.printStackTrace()
