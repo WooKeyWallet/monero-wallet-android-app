@@ -80,7 +80,7 @@ class AssetFragment : BaseFragment() {
         viewModel.openAssetDetail.observe(this, Observer { value ->
             value?.let {
                 startActivity(it.apply {
-                    setClass(context, AssetDetailActivity::class.java)
+                    setClass(context!!, AssetDetailActivity::class.java)
                 })
             }
         })

@@ -70,7 +70,7 @@ fun AppCompatActivity.copy(value: String?) {
     }
     val cmb = getSystemService(Context.CLIPBOARD_SERVICE) as? ClipboardManager
     if (cmb != null) {
-        cmb.primaryClip = ClipData.newPlainText(null, value)
+        cmb.setPrimaryClip(ClipData.newPlainText(null, value))
         toast(R.string.copy_success)
     }
 }
@@ -95,7 +95,7 @@ fun androidx.fragment.app.Fragment.copy(value: String?) {
     }
     val cmb = context!!.getSystemService(Context.CLIPBOARD_SERVICE) as? ClipboardManager
     if (cmb != null) {
-        cmb.primaryClip = ClipData.newPlainText(null, value)
+        cmb.setPrimaryClip(ClipData.newPlainText(null, value))
         toast(R.string.copy_success)
     }
 }

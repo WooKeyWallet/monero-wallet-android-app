@@ -5,19 +5,19 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlinx-serialization'
 
 static def computeVersionCode() {
-    111
+    112
 }
 
 static def computeVersionName() {
-    return "2.0.0"
+    return "2.1.0"
 }
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     defaultConfig {
         applicationId "io.wookey.wallet.monero"
         minSdkVersion 21
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode computeVersionCode()
         versionName computeVersionName()
 //        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'

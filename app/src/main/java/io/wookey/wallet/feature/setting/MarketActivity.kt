@@ -71,7 +71,7 @@ class MarketActivity : BaseTitleSecondActivity() {
         "zar"
     )
 
-    private var currentCurrency = sharedPreferences().getString("currentCurrency", CURRENCY_LIST[0])
+    private var currentCurrency = sharedPreferences().getString("currentCurrency", CURRENCY_LIST[0])?:CURRENCY_LIST[0]
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
