@@ -104,4 +104,14 @@ class ActivityStackManager private constructor() {
         }
     }
 
+    fun finishAll() {
+        synchronized(activityStack) {
+            val iterator = activityStack.iterator()
+            while (iterator.hasNext()) {
+                val next = iterator.next()
+                next.finish()
+            }
+        }
+    }
+
 }

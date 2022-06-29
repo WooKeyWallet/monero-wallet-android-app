@@ -15,7 +15,7 @@
     <string name="set_password">设置密码</string>
     <string name="confirm_password">确认密码</string>
     <string name="password_prompt_optional">密码提示（选填）</string>
-    <string name="agreement_prompt">我已仔细阅读并同意</string>
+    <string name="agreement_prompt">我已仔细阅读并同意%1$s和%2$s</string>
     <string name="agreement_term">服务及隐私条款</string>
     <string name="next">下一步</string>
 
@@ -154,6 +154,7 @@
     <string name="version_placeholder">版本号 V %1$s</string>
     <string name="about">WooKey 团队致力于提供安全、专业、可靠、易用的数字资产钱包应用，守护用户的隐私和财产自由，推动加密货币的普及与发展</string>
     <string name="agreement">服务协议</string>
+    <string name="about_privacy">隐私政策</string>
 
     <string name="select_language">选择语言</string>
 
@@ -305,5 +306,19 @@
     <string name="swap_success">兑换成功</string>
     <string name="swap_failed">兑换失败</string>
     <string name="swap_pending">处理中</string>
+
+    <string name="dialog_title_privacy">个人信息保护指引</string>
+    <string name="dialog_content_privacy">欢迎使用 Monero Wallet！我们将通过%1$s和%2$s，帮助您了解我们为您提供的服务，及收集、处理个人信息的方式。
+        \n点击"同意"按钮代表您已同意前述协议及以下约定。
+        \n1.我们会申请网络权限，以实现网络连接等基本功能。
+        \n2.我们可能会申请相机（摄像头）权限，以实现扫描二维码等功能。
+        \n3.我们可能会申请生物特征（指纹，人脸）权限，以实现快捷解锁等功能。
+        \n4.相机（摄像头）等敏感权限均不会默认或强制开启收集信息。
+    </string>
+    <string name="dialog_privacy_agree">同意</string>
+    <string name="dialog_privacy_exit">退出应用</string>
+
+    <string name="user_agreement">《用户服务协议》</string>
+    <string name="privacy">《隐私政策》</string>
 
 </resources>

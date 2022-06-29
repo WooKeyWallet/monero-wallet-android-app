@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/dialogContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_FFFFFF"
+        android:orientation="vertical"
+        android:paddingStart="24dp"
+        android:paddingTop="16dp"
+        android:paddingEnd="24dp"
+        android:paddingBottom="16dp">
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/text_18_222222"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:drawablePadding="8dp"
+            android:textStyle="bold"
+            android:text="@string/dialog_title_privacy"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/content"
+            style="@style/text_14_222222"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="12dp"
+            android:maxHeight="315dp"
+            android:scrollbars="vertical"
+            android:lineSpacingMultiplier="1.2" />
+
+        <TextView
+            android:id="@+id/confirm"
+            style="@style/text_16_FFFFFF"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/dialog_privacy_agree"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/cancel"
+            style="@style/text_14_9E9E9E"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:paddingVertical="8dp"
+            android:text="@string/dialog_privacy_exit"
+            android:gravity="center" />
+
+    </LinearLayout>
+
+</LinearLayout>

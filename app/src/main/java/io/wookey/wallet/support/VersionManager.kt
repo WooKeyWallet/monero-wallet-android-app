@@ -1,5 +1,6 @@
 package io.wookey.wallet.support
 
+import android.util.Log
 import io.wookey.wallet.App
 import io.wookey.wallet.support.extensions.versionCode
 import kotlinx.coroutines.CoroutineScope
@@ -59,6 +60,8 @@ class VersionManager {
                 tagNames.forEachIndexed { index, s ->
                     tagCode += s.toInt().times(Math.pow(10.0, (tagNames.size - (index + 1)).toDouble())).toInt()
                 }
+
+                Log.e("xxx","$tagCode")
 
                 App.newVersion = tagCode > App.instance.versionCode()
             }

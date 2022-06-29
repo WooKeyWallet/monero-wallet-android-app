@@ -238,3 +238,22 @@
 -keepclasseswithmembers class io.wookey.wallet.** { # <-- change package name to your app's
     kotlinx.serialization.KSerializer serializer(...);
 }
+
+-dontwarn io.wookey.monero.**
+-keep class io.wookey.monero.** { *; }
+-keep interface io.wookey.monero.** { *; }
+
+-assumenosideeffects class android.util.Log {
+  public static *** v(...);
+  public static *** d(...);
+  public static *** i(...);
+  public static *** w(...);
+  public static *** e(...);
+}
+
+-assumenosideeffects class java.io.PrintStream {
+     public void print(%);
+     public void print(**);
+     public void println(%);
+     public void println(**);
+ }

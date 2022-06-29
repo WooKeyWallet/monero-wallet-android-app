@@ -17,10 +17,8 @@ import javax.net.ssl.SSLSession
 
 object RetrofitManager {
     const val CHANGELLY_API = "https://api.changelly.com/"
-
-    // modify to your's
-    const val API_KEY = "your changelly api key"
-    const val SECRET = "your changelly api secret"
+    const val API_KEY = "fbdbc96e3a9f42d99b6ef07b01f46c50"
+    const val SECRET = "fd1f3f7abd5a942ae03c6b00b81cbb7e557638270f5070e58bcbfcb019dfd7c7"
 
     fun retrofit(okHttpClient: OkHttpClient = okHttpClient()): Retrofit =
         Retrofit.Builder()
@@ -54,13 +52,13 @@ object RetrofitManager {
                 level = HttpLoggingInterceptor.Level.BODY
             })
 
-        try {
-            val ssl = SSLSocketFactoryImpl(KeyStore.getInstance(KeyStore.getDefaultType()))
-            clientBuilder.sslSocketFactory(ssl.sSlContext.socketFactory, ssl.trustManager)
-            clientBuilder.hostnameVerifier { hostname, session -> session.verify() }
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
+//        try {
+//            val ssl = SSLSocketFactoryImpl(KeyStore.getInstance(KeyStore.getDefaultType()))
+//            clientBuilder.sslSocketFactory(ssl.sSlContext.socketFactory, ssl.trustManager)
+//            clientBuilder.hostnameVerifier { hostname, session -> session.verify() }
+//        } catch (e: Exception) {
+//            e.printStackTrace()
+//        }
         return clientBuilder.build()
     }
 

@@ -2,10 +2,13 @@ package io.wookey.wallet
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import io.wookey.wallet.base.BaseActivity
 import io.wookey.wallet.data.AppDatabase
+import io.wookey.wallet.dialog.PrivacyDialog
 import io.wookey.wallet.feature.generate.WalletActivity
 import io.wookey.wallet.feature.generate.create.BackupMnemonicActivity
+import io.wookey.wallet.support.extensions.putBoolean
 import io.wookey.wallet.support.extensions.sharedPreferences
 import kotlinx.coroutines.*
 
@@ -17,8 +20,22 @@ class SplashActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
+        val agreePrivacy = sharedPreferences().getBoolean("agreePrivacy", false)
+        if (agreePrivacy) {
+            startApp()
+        } else {
+            PrivacyDialog.display(supportFragmentManager, {
+                sharedPreferences().putBoolean("agreePrivacy", true)
+                startApp()
+            }) {
+                ActivityStackManager.getInstance().finishAll()
+            }
+        }
+    }
+
+    private fun startApp() {
         uiScope.launch {
-            delay(1500)
+            //            delay(1500)
             val walletId = sharedPreferences().getInt("walletId", -1)
             val activeWallet = withContext(Dispatchers.IO) {
                 val wallets = AppDatabase.getInstance().walletDao().getWallets()
@@ -27,12 +44,14 @@ class SplashActivity : BaseActivity() {
                 } else {
                     val activeWallets = AppDatabase.getInstance().walletDao().getActiveWallets()
                     if (activeWallets.isNullOrEmpty()) {
-                        AppDatabase.getInstance().walletDao().updateWallets(wallets[0].apply { isActive = true })
+                        AppDatabase.getInstance().walletDao()
+                            .updateWallets(wallets[0].apply { isActive = true })
                         wallets[0]
                     } else {
                         activeWallets.forEachIndexed { index, wallet ->
                             if (index > 0) {
-                                AppDatabase.getInstance().walletDao().updateWallets(wallet.apply { isActive = false })
+                                AppDatabase.getInstance().walletDao()
+                                    .updateWallets(wallet.apply { isActive = false })
                             }
                         }
                         activeWallets[0]

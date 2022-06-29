@@ -8,6 +8,7 @@ import io.wookey.wallet.R
 import io.wookey.wallet.base.BaseTitleSecondActivity
 import io.wookey.wallet.support.BackgroundHelper
 import io.wookey.wallet.support.extensions.dp2px
+import io.wookey.wallet.support.extensions.getCurrentLocale
 import io.wookey.wallet.support.extensions.openBrowser
 import io.wookey.wallet.support.extensions.versionName
 import kotlinx.android.synthetic.main.activity_about.*
@@ -26,7 +27,15 @@ class AboutActivity : BaseTitleSecondActivity() {
         }
 
         agreement.setOnClickListener {
-            startActivity(Intent(this, WebViewActivity::class.java))
+            startActivity(Intent(this, WebViewActivity::class.java).apply {
+                putExtra("url", "https://wallet.wookey.io/service-docs/terms-of-service.html")
+            })
+        }
+
+        privacy.setOnClickListener {
+            startActivity(Intent(this, WebViewActivity::class.java).apply {
+                putExtra("url", "https://wallet.wookey.io/service-docs/privacy-policy.html?lang=${getCurrentLocale()}")
+            })
         }
     }
 

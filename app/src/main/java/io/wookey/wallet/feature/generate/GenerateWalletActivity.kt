@@ -16,10 +16,7 @@ import io.wookey.wallet.feature.generate.recovery.RecoveryWalletActivity
 import io.wookey.wallet.feature.setting.WebViewActivity
 import io.wookey.wallet.support.BackgroundHelper
 import io.wookey.wallet.support.LengthFilter
-import io.wookey.wallet.support.extensions.afterTextChanged
-import io.wookey.wallet.support.extensions.clickableSpan
-import io.wookey.wallet.support.extensions.dp2px
-import io.wookey.wallet.support.extensions.toast
+import io.wookey.wallet.support.extensions.*
 import kotlinx.android.synthetic.main.activity_generate_wallet.*
 
 class GenerateWalletActivity : BaseTitleSecondActivity() {
@@ -41,13 +38,24 @@ class GenerateWalletActivity : BaseTitleSecondActivity() {
         agree.buttonDrawable = BackgroundHelper.getCheckBoxButton(this)
         next.background = BackgroundHelper.getButtonBackground(this)
 
-        val term = getString(R.string.agreement_term)
-        val s = "${getString(R.string.agreement_prompt)} $term"
-        val start = s.indexOf(term)
-        val end = start + term.length
+        val term1 = getString(R.string.user_agreement)
+        val term2 = getString(R.string.privacy)
+
+        val s = getString(R.string.agreement_prompt, term1, term2)
+        val start1 = s.indexOf(term1)
+        val end1 = start1 + term1.length
+        val start2 = s.indexOf(term2)
+        val end2 = start2 + term2.length
         val style = SpannableString(s)
-        style.clickableSpan(start..end, ContextCompat.getColor(this, R.color.color_2179FF)) {
-            startActivity(Intent(this, WebViewActivity::class.java))
+        style.clickableSpan(start1..end1, ContextCompat.getColor(this, R.color.color_2179FF)) {
+            startActivity(Intent(this, WebViewActivity::class.java).apply {
+                putExtra("url", "https://wallet.wookey.io/service-docs/terms-of-service.html")
+            })
+        }
+        style.clickableSpan(start2..end2, ContextCompat.getColor(this, R.color.color_2179FF)) {
+            startActivity(Intent(this, WebViewActivity::class.java).apply {
+                putExtra("url", "https://wallet.wookey.io/service-docs/privacy-policy.html?lang=${getCurrentLocale()}")
+            })
         }
         agreement.text = style
         agreement.movementMethod = LinkMovementMethod.getInstance()

@@ -5,18 +5,18 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlinx-serialization'
 
 static def computeVersionCode() {
-    112
+    211
 }
 
 static def computeVersionName() {
-    return "2.1.0"
+    return "2.1.1"
 }
 
 android {
     compileSdkVersion 29
     defaultConfig {
         applicationId "io.wookey.wallet.monero"
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 29
         versionCode computeVersionCode()
         versionName computeVersionName()
@@ -35,8 +35,9 @@ android {
             versionNameSuffix ' D'
         }
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 

@@ -15,7 +15,7 @@
     <string name="set_password">Set Password</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="password_prompt_optional">Password Hint (Optional)</string>
-    <string name="agreement_prompt">I have carefully read and agree with</string>
+    <string name="agreement_prompt">I have carefully read and agree with %1$s and %2$s</string>
     <string name="agreement_term">Terms of Service and Privacy Policy</string>
     <string name="next">Next</string>
 
@@ -154,6 +154,7 @@
     <string name="version_placeholder">Version V %1$s</string>
     <string name="about">The WooKey team develops secure, professional, reliable and simple digital asset wallet applications. We strive to protect private data and property of users. We measure success by the ease with which new and non-tech savvy users can get started using cryptocurrencies.</string>
     <string name="agreement">Terms of Service</string>
+    <string name="about_privacy">Privacy Policy</string>
 
     <string name="select_language">Select Language</string>
 
@@ -305,5 +306,19 @@
     <string name="swap_success">Swap success</string>
     <string name="swap_failed">Swap failed</string>
     <string name="swap_pending">Processing</string>
+
+    <string name="dialog_title_privacy">Personal Information Protection Guidelines</string>
+    <string name="dialog_content_privacy">Welcome to use Monero Wallet! We will use %1$s and %2$s to help you understand the services we provide and how we collect and process Personal Information.
+        \nClicking the "Agree" button means that you have agreed to the foregoing agreement and the following agreements.
+        \n1.We will ask for network permissions to enable network connection and other basic functions.
+        \n2.We may ask for camera permission to enable QR code scanning and other functions.
+        \n3.We may ask for biometric (fingerprint, face ID) permissions to enable quick unlocking and other functions.
+        \n4.Sensitive permissions such as camera will not be enabled by default or forced to collect information.
+    </string>
+    <string name="dialog_privacy_agree">Agree</string>
+    <string name="dialog_privacy_exit">Exit</string>
+
+    <string name="user_agreement">《Terms of Service》</string>
+    <string name="privacy">《Privacy Policy》</string>
 
 </resources>

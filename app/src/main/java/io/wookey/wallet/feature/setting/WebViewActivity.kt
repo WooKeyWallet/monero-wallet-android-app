@@ -28,6 +28,8 @@ class WebViewActivity : BaseTitleSecondActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_webview)
 
+        val url  = intent.getStringExtra("url")
+
         val slowlyProgressBar = SlowlyProgressBar(progressBar)
 
         mWebView = WebView(this)
@@ -65,16 +67,14 @@ class WebViewActivity : BaseTitleSecondActivity() {
         // 自动开启声音
         settings.mediaPlaybackRequiresUserGesture = false
 
+        settings.savePassword = false
+
         // 5.0以上开启混合模式加载
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             settings.mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
         }
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            if (0 != applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE) {
-                WebView.setWebContentsDebuggingEnabled(true)
-            }
-        }
+        WebView.setWebContentsDebuggingEnabled(false)
 
         mWebView.webViewClient = object : WebViewClient() {
 
@@ -129,7 +129,8 @@ class WebViewActivity : BaseTitleSecondActivity() {
                 writeData(getCurrentLocale())
             }
         }
-        mWebView.loadUrl("https://wallet.wookey.io/service-docs/app.html")
+//        mWebView.loadUrl("https://wallet.wookey.io/service-docs/app.html")
+        mWebView.loadUrl(url)
 
         setRightIcon(R.drawable.icon_refresh)
         setRightIconClick(View.OnClickListener { mWebView.reload() })

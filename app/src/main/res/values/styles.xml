@@ -66,6 +66,10 @@
         <item name="android:textColor">@color/color_9CA9B5</item>
     </style>
 
+    <style name="text_12_222222" parent="text_12">
+        <item name="android:textColor">@color/color_222222</item>
+    </style>
+
     <style name="text_13">
         <item name="android:textSize">@dimen/text_size_13</item>
     </style>
@@ -116,6 +120,10 @@
 
     <style name="text_14_002C71" parent="text_14">
         <item name="android:textColor">@color/color_002C71</item>
+    </style>
+
+    <style name="text_14_222222" parent="text_14">
+        <item name="android:textColor">@color/color_222222</item>
     </style>
 
     <style name="text_16">
